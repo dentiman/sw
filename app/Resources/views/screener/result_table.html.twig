@@ -1,0 +1,35 @@
+{% extends 'screener/result_layout.html.twig' %}
+{% block search_result_content %}
+    <div class="container">
+
+        <table class="table table-hover table-striped quote_table">
+            <tr>
+                {% for key in pagination[0]|keys %}
+                    <th>
+                        {% if pagination.paginatorOptions.sortFieldParameterName == key %}
+                            {% if pagination.paginatorOptions.sortDirectionParameterName == 1 %}
+                                <button onclick="screener.setOrder('{{ key }}','')"
+                                        class="btn btn-danger">{{ key }}</button>
+                            {% else %}
+                                <button onclick="screener.setOrder('{{ key }}','1')"
+                                        class="btn btn-success">{{ key }}</button>
+                            {% endif %}
+                        {% else %}
+                            <button onclick="screener.setOrder('{{ key }}','1')"
+                                    class="btn btn-default">{{ key }}</button>
+                        {% endif %}
+                    </th>
+                {% endfor %}
+            </tr>
+            {# table body #}
+            {% for row in pagination %}
+                <tr {% if loop.index is odd %}class="color"{% endif %}>
+                    {% for col in row %}
+                        <td>{{ col }}</td>
+                    {% endfor %}
+
+                </tr>
+            {% endfor %}
+        </table>
+    </div>
+{% endblock %}

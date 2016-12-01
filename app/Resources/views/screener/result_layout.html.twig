@@ -1,0 +1,49 @@
+{% block body %}
+    {% if pagination.getTotalItemCount == 0 %}
+        <div class="content">
+            <div style="margin:0 auto;width:400px">
+                No result!!
+                {{ dump(pagination) }}
+            </div>
+        </div>
+    {% else %}
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                    <div class="count">
+                        {{ pagination.getTotalItemCount }}
+                    </div>
+                </div>
+                <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
+                    <div class="navigation pull-right">
+                        {{ knp_pagination_render(pagination) }}
+                    </div>
+                </div>
+            </div>
+        </div>
+            {% block search_result_content %}
+            {% endblock %}
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                    <div class="count">
+                        {{ pagination.getTotalItemCount }}
+                    </div>
+                </div>
+                <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
+                    <div class="navigation pull-right">
+                        {{ knp_pagination_render(pagination) }}
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script>
+            $(document).ready(function () {
+                $('.pagination a').click(function (event) {
+                    event.preventDefault();
+                    screener.search(this.href);
+                })
+            });
+        </script>
+    {% endif %}
+{% endblock %}

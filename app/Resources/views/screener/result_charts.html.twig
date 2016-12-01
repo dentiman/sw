@@ -1,0 +1,10 @@
+{% extends 'screener/result_layout.html.twig' %}
+{% block search_result_content %}
+    <div id="screener-chart-container">
+        {% for row in pagination %}
+            {% include 'screener/chart.html.twig' with row %}
+        {% endfor %}
+    </div>
+
+
+{% endblock %}

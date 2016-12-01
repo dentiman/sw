@@ -29,6 +29,55 @@ class User extends BaseUser
 
 
     /**
+     * @var int
+     *
+     * @ORM\Column(name="columns_id", type="integer")
+     */
+    private $columnsId;
+
+
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="charts_id", type="integer")
+     */
+    private $chartsId;
+
+
+    /**
+     * @return int
+     */
+    public function getColumnsId()
+    {
+        return $this->columnsId;
+    }
+
+    /**
+     * @param int $columnsId
+     */
+    public function setColumnsId($columnsId)
+    {
+        $this->columnsId = $columnsId;
+    }
+
+    /**
+     * @return int
+     */
+    public function getChartsId()
+    {
+        return $this->chartsId;
+    }
+
+    /**
+     * @param int $chartsId
+     */
+    public function setChartsId($chartsId)
+    {
+        $this->chartsId = $chartsId;
+    }
+
+
+    /**
      * Set premiumExpireAt
      *
      * @param \DateTime $premiumExpireAt

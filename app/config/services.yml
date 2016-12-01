@@ -12,3 +12,39 @@ services:
         arguments: [~, AppBundle\Entity\User, ~]
         tags:
             - { name: sonata.admin, manager_type: orm, label: Users }
+
+    app.form_type.screener_order_type:
+        class: AppBundle\Form\Type\ScreenerOrderType
+        tags:
+            - { name: form.type, alias: order_range_type }
+        arguments: ['@app.service.filters_manager']
+    app.service.filters_manager:
+        class: AppBundle\Service\FiltersManager
+        arguments: ['@doctrine.orm.entity_manager', 'AppBundle\Entity\Filters']
+
+    app.service.researcher:
+        class: AppBundle\Service\Researcher
+        arguments: ['@app.service.filters_manager', '@knp_paginator','@security.token_storage']
+
+    sha256salted_encoder:
+        class: AppBundle\Service\Sha512whirlpool
+    dentiman_bootstrap.form_type.color_picker_type:
+            class: Dentiman\BootstrapBundle\Form\Type\ColorPickerType
+            tags:
+                - { name: form.type, alias: dentiman_color_picker }
+    dentiman_bootstrap.form_type.dater_picker_type:
+                class: Dentiman\BootstrapBundle\Form\Type\DatePickerType
+                tags:
+                    - { name: form.type, alias: dentiman_date_picker }
+    dentiman_bootstrap.form_type.date_range_picker_type:
+                    class: Dentiman\BootstrapBundle\Form\Type\DateRangePickerType
+                    tags:
+                        - { name: form.type, alias: dentiman_date_range_picker }
+    dentiman_bootstrap.form_type.multi_choice_type:
+                class: Dentiman\BootstrapBundle\Form\Type\MultiChoiceType
+                tags:
+                    - { name: form.type, alias: dentiman_multi_choice }
+    app.form_type.checkbox_color_type:
+                class: AppBundle\Form\Type\CheckboxColorType
+                tags:
+                    - { name: form.type, alias: dentiman_checkbox_color }

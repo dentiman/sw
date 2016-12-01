@@ -1,0 +1,22 @@
+{% extends 'presets/_layout.html.twig' %}
+
+{% block presets_content %}
+    <div class="panel panel-default">
+        <div class="panel-heading"></div>
+        <div class="panel-body">
+            {{ form_start(form, {'attr': {'id': 'charts-layout-form'}}) }}
+            {% form_theme form 'Form/chartPresetsFields.html.twig' %}
+            {{ form_widget(form) }}
+            {{ form_end(form) }}
+        </div>
+
+    </div>
+
+    {#{{ include('presets/_form.html.twig', {#}
+        {#form: delete_form,#}
+        {#button_label: 'action.delete_post'|trans,#}
+        {#button_css: 'btn btn-lg btn-block btn-danger',#}
+        {#show_confirmation: true,#}
+    {#}, with_context = false) }}#}
+
+{% endblock %}

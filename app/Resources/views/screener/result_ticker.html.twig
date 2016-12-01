@@ -1,0 +1,17 @@
+{% block search_result_content %}
+    <div class="container">
+        {{ result|length }}
+        <ul id="tabs" class="nav nav-tabs" data-tabs="tabs">
+            <li class="active"><a href="#" data-toggle="tab">Row</a></li>
+            <li><a href="#" data-toggle="tab">Column</a></li>
+        </ul>
+        <div class="tab-content">
+            <div class="tab-pane active" id="red">
+            <textarea class="form-control" rows="12" style="resize: none;">{% for row in result %}{{ row.ticker }} {% endfor %}</textarea>
+            </div>
+            <div class="tab-pane" id="orange">
+                <textarea class="form-control" rows="12" style="resize: none;">{% for row in result %}{{ row.ticker }}&#13;&#10;{% endfor %}</textarea>
+            </div>
+        </div>
+    </div>
+{% endblock %}

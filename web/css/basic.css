@@ -1,0 +1,41 @@
+body {
+    margin-top: 50px;
+}
+#screener-chart-container {
+    display: table-cell;
+    vertical-align: inherit;
+    text-align: center;
+}
+#screener-chart-container .chart-panel {
+    display: inline-block;
+}
+
+.chart-panel .chart-float:nth-child(1),.chart-panel .chart-float:nth-child(2) {
+    float: left;
+}
+
+.chart-panel .chart-float:nth-child(3) {
+    float: right;
+}
+.chart-panel .panel-body {
+    padding: 3px;
+}
+.chart-navbar {
+    border-width: 0;
+    background-color: transparent;
+    min-height: 20px !important;
+    margin-bottom: 0px !important;
+    box-shadow: none;
+    border-radius: 4px 4px 0px 0px;
+}
+
+.colorpicker-element > .input-group-btn > .btn-group {
+    width:100%
+}
+.colorpicker-element > input[type=text] {
+    display:none;
+}
+
+#filters-form .btn-group {
+    width: 100%;
+}

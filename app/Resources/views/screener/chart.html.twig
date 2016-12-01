@@ -1,0 +1,72 @@
+<div class="panel panel-default chart-panel" ticker="{{ row.ticker }}" id="{{ row.ticker }}all" style="">
+    <div class="panel-heading chart-footer" style="padding:0px">
+        <nav class="navbar navbar-default chart-navbar" role="navigation">
+            <div class="container-fluid">
+                <div class="navbar-header"><a class="navbar-brand" onclick="qttt('{{ row.ticker }}')"><b>{{ row.ticker }}</b></a></div>
+                <div class="collapse navbar-collapse ">
+                    <ul class="nav navbar-nav navbar-right change-chart ">
+                        <li><a class="for-change">
+                                {{ row.ch }}
+                                {{ row.chp }}
+                            </a>
+                        </li>
+                    </ul>
+                    <ul class="nav navbar-nav pluses-list">
+                        <li class="list-success no-hover ">
+                            <a onclick="watchlist.plusclick('{{ row.ticker }}',1,this)"><i class="fa fa-plus text-green"></i></a>
+                        </li>
+                        <li class="list-info no-hover">
+                            <a onclick="watchlist.plusclick('{{ row.ticker }}',2,this)"><i  class="fa fa-plus text-info"></i></a>
+                        </li>
+                        <li class="list-danger no-hover">
+                            <a onclick="watchlist.plusclick('{{ row.ticker }}',3,this)"><i class="fa fa-plus text-danger"></i></a>
+                        </li>
+                    </ul>
+                    <div class="head-info">
+                        <span style="">
+                            <a href="http://www.stock-watcher.com/screener?sec=Services">{{ row.sec }}</a>
+                        </span>,
+                        <span style="">
+                            <a href="http://www.stock-watcher.com/screener?ind=Shipping">{{ row.ind }}</a>
+                        </span>,
+                        <span style="">{{ row.e }}</span>, <span style="">{{ row.coun }}</span></div>
+                </div>
+            </div>
+        </nav>
+    </div>
+    <div class="panel-body chart-info">
+        <div class="for-param-label">
+            {% for key, column in charts.columns %}
+                <span class="label label-default">
+                  {{ column }}: {{ row[column] }}
+                </span>
+            {% endfor %}
+        </div>
+        <div class="chart-body">
+            {% for chart in charts.charts %}
+                <div class="chart-div-1 chart-float">
+                    <div class="btn-group chart-but-1" style="position:absolute">
+                        <button type="button" onclick="set_tf('1','{{ row.ticker }}all-1')" class="btn btn-default btn-xs ">1</button>
+                        <button type="button" onclick="set_tf('2','{{ row.ticker }}all-1')" class="btn btn-default btn-xs ">2</button>
+                        <button type="button" onclick="set_tf('3','{{ row.ticker }}all-1')" class="btn btn-default btn-xs ">3</button>
+                        <button type="button" onclick="set_tf('5','{{ row.ticker }}all-1')" class="btn btn-default btn-xs ">5</button>
+                        <button type="button" onclick="set_tf('15','{{ row.ticker }}all-1')" class="btn btn-default btn-xs ">15</button>
+                        <button type="button" onclick="set_tf('60','{{ row.ticker }}all-1')" class="btn btn-default btn-xs ">60</button>
+                        <button type="button" onclick="set_tf('d','{{ row.ticker }}all-1')" class="btn btn-default btn-xs ">d</button>
+                        <button type="button" onclick="set_tf('w','{{ row.ticker }}all-1')" class="btn btn-default btn-xs ">w</button>
+                        <button type="button" onclick="premch('{{ row.ticker }}all-1')" class="btn btn-default btn-xs">prem</button>
+                        <button type="button" onclick="range2(1,'{{ row.ticker }}all-1')" class="btn btn-default btn-xs">+</button>
+                        <button type="button" onclick="range2(-1,'{{ row.ticker }}all-1')" class="btn btn-default btn-xs">-</button>
+                    </div>
+                    <div class="for-img">
+                        <img class="chart_img"
+                             ticker="{{ row.ticker }}"
+                             onclick="watchlist.chartclick('{{ row.ticker }}')"
+                             id="{{ row.ticker }}all-1"
+                             src="http://charts.stocksinplay.ru/charts.php?t={{ row.ticker }}&tf={{ chart.tf }}&{{ chart.src }}">
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>

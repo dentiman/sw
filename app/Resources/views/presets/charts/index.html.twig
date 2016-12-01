@@ -1,0 +1,34 @@
+{% extends 'presets/_layout.html.twig' %}
+
+{% block presets_content %}
+    <div class="panel panel-default">
+        <div class="panel-heading"></div>
+        <div class="panel-body">
+            <a href="{{ path('presets_charts_new') }}" class="btn btn-default">New layout</a>
+            <table class="table ">
+                <tr>
+                    <th></th>
+                    <th>Name</th>
+                    <th></th>
+                </tr>
+                {% for row in pagination %}
+                    <tr >
+                        <td>{{ row.id }}</td>
+                        <td><a href="{{ path('presets_charts_edit', {'id': row.id}) }}">{{ row.name }}</a></td>
+                        <td>
+                            {{ render(controller('AppBundle:Presets/Charts:_deleteForm', {
+                                'id': row.id
+                            })) }}
+                        </td>
+                    </tr>
+                {% endfor %}
+            </table>
+            {# display navigation #}
+            <div class="navigation">
+                {{ knp_pagination_render(pagination) }}
+            </div>
+        </div>
+
+    </div>
+    {{ include('presets/_delete_confirmation.html.twig') }}
+{% endblock %}

@@ -30,8 +30,14 @@
         "incenteev/composer-parameter-handler": "^2.0",
         "friendsofsymfony/user-bundle": "~2.0@dev",
         "sonata-project/admin-bundle": "^3.9",
-        "sonata-project/doctrine-orm-admin-bundle": "^3.1"
+        "sonata-project/doctrine-orm-admin-bundle": "^3.1",
+        "knplabs/knp-paginator-bundle": "^2.5",
+        "dentiman/bootstrap-bundle" : "dev-master"
     },
+    "repositories" : [{
+        "type" : "vcs",
+        "url" : "https://github.com/dentiman/BootstrapBundle.git"
+    }],
     "require-dev": {
         "sensio/generator-bundle": "^3.0",
         "symfony/phpunit-bridge": "^3.0"
@@ -64,4 +70,5 @@
         },
         "branch-alias": null
     }
+
 }

@@ -1,13 +1,48 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="UTF-8" />
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        {% block stylesheets %}{% endblock %}
-        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
-    </head>
-    <body>
-        {% block body %}{% endblock %}
-        {% block javascripts %}{% endblock %}
-    </body>
+<head>
+    <meta charset="UTF-8" />
+
+    <script src="{{ asset('bundles/dentimanbootstrap/js/jquery.min.js') }}"></script>
+    <script src="{{ asset('bundles/dentimanbootstrap/js/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('bundles/dentimanbootstrap/js/moment.min.js') }}"></script>
+    <script src="{{ asset('bundles/dentimanbootstrap/colorpicker/js/bootstrap-colorpicker.min.js') }}"></script>
+    <script src="{{ asset('bundles/dentimanbootstrap/datepicker/js/bootstrap-datepicker.min.js') }}"></script>
+    <script src="{{ asset('bundles/dentimanbootstrap/multiselect/js/bootstrap-multiselect.js') }}"></script>
+    <script src="{{ asset('bundles/dentimanbootstrap/daterangepicker/daterangepicker.js') }}"></script>
+    <script src="{{ asset('bundles/dentimanbootstrap/js/jquery.cookie.js') }}"></script>
+    <script src="{{ asset('bundles/dentimanbootstrap/js/flateelements.js') }}"></script>
+    <script src="{{ asset('js/main.js') }}"></script>
+
+    <link rel="stylesheet"  href="{{ asset('bundles/dentimanbootstrap/css/bootstrap.min.css') }}" />
+    <link rel="stylesheet"  href="{{ asset('bundles/dentimanbootstrap/colorpicker/css/bootstrap-colorpicker.min.css') }}" />
+    <link rel="stylesheet"  href="{{ asset('bundles/dentimanbootstrap/datepicker/css/bootstrap-datepicker3.min.css') }}" />
+    <link rel="stylesheet"  href="{{ asset('bundles/dentimanbootstrap/multiselect/css/bootstrap-multiselect.css') }}" />
+    <link rel="stylesheet"  href="{{ asset('bundles/dentimanbootstrap/daterangepicker/daterangepicker.css') }}" />
+    <link rel="stylesheet"  href="{{ asset('bundles/dentimanbootstrap/font-awesome-4.7.0/css/font-awesome.min.css') }}" />
+    <link rel="stylesheet"  href="{{ asset('bundles/dentimanbootstrap/css/flateelements.css') }}" />
+
+    <link rel="stylesheet"  href="{{ asset('css/basic.css') }}" />
+    <link rel="stylesheet"  href="{{ asset('css/bootstrap-notifications.min.css') }}" />
+
+
+    <title>{% block title %}Welcome!{% endblock %}</title>
+    {% block stylesheets %}{% endblock %}
+    <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+</head>
+<body>
+{% embed '@MopaBootstrap/Navbar/navbar.html.twig' with { fixedTop: true } %}
+    {% block brand %}
+        <a class="navbar-brand" href="#">Acme</a>
+    {% endblock %}
+
+    {% block menu %}
+        {{ mopa_bootstrap_menu('AppBundle:Builder:mainMenu', {'automenu':'navbar'}) }}
+    {% endblock %}
+{% endembed %}
+
+{% block body %}{% endblock %}
+{% block javascripts %}{% endblock %}
+
+</body>
 </html>

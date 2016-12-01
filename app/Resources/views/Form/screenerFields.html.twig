@@ -1,0 +1,79 @@
+{% extends 'DentimanBootstrapBundle:Form:fields.html.twig' %}
+
+{% block dentiman_date_range_picker_widget %}
+    {% spaceless %}
+        {{ block('form_widget_simple') }}
+
+        <script type="text/javascript">
+            jQuery(document).ready(function($) {
+                $('#{{ id }}').daterangepicker({
+                    autoUpdateInput: false,
+                    locale: {
+                        cancelLabel: 'Clear',
+                        "format": "YYYY-MM-DD"
+                    }
+                });
+
+                $('#{{ id }}').on('apply.daterangepicker', function(ev, picker) {
+                    $(this).val(picker.startDate.format('YYYY-MM-DD') + ' - ' + picker.endDate.format('YYYY-MM-DD'));
+                });
+
+                $('#{{ id }}').on('cancel.daterangepicker', function(ev, picker) {
+                    $(this).val('');
+                });
+
+            });
+        </script>
+    {% endspaceless %}
+{% endblock %}
+
+{%- block choice_widget -%}
+    {% set type = 'select' %}
+    {{ parent() }}
+{%- endblock choice_widget -%}
+
+{% block form_label %}
+    {% if label is empty %}
+    {% else %}
+        <span {% for attrname, attrvalue in label_attr %} {{ attrname }}="{{ attrvalue }}"{% endfor %}
+        class="input-group-addon"
+        data-toggle="tooltip" title=""
+        style="width: 50%" data-original-title="">
+        <i class="fa fa-check-circle"></i>
+        <i class="fa fa-circle-o"></i>
+        {{ label|trans({}, translation_domain) }}
+        </span>
+    {% endif %}
+{% endblock form_label %}
+
+
+
+{% block form_row %}
+    {% spaceless %}
+        {% if 'tab' in form.vars.block_prefixes %}
+            {{ parent() }}
+
+        {% elseif 'checkbox' in form.vars.block_prefixes %}
+            <div class="{{ horizontal_label_class }}" style="padding:4px 15px">
+                {{ form_widget(form) }}
+            </div>
+        {% else %}
+            {% if label == false %}
+
+                {{ form_widget(form) }}
+            {% else %}
+                <div class="{{ horizontal_label_class }}">
+                    <div class="input-group" style="width:100%">
+                        {{ form_label(form, label|default(null)) }}
+                        {{ form_widget(form) }}
+
+
+                    </div>
+                </div>
+            {% endif %}
+        {% endif %}
+    {% endspaceless %}
+{% endblock form_row %}
+
+
+

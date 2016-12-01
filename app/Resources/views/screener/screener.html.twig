@@ -1,0 +1,99 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+        <div class="container">
+
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <ul class="nav nav-pills dropdown dropdown-notifications sw-open">
+                        <li class="dropdown-toggle" data-toggle="dropdown">
+                            <a href="ww">333</a>
+                        </li>
+                        <div class="dropdown-container">
+                            <div class="dropdown-toolbar">
+                                {{ form_start(filter_save_form, {'attr': {'id': 'filters-save-form','class':'form-inline'}}) }}
+                                {% form_theme filter_save_form ':Form:screenerFields.html.twig' %}
+                                {{ form_widget(filter_save_form) }}
+                                {{ form_end(filter_save_form) }}
+
+                            </div><!-- /dropdown-toolbar -->
+                        </div>
+
+                        <li >
+                            <a href="ww">gg</a>
+                        </li>
+
+                        <li >
+                            <a href="ww">gdf</a>
+                        </li>
+
+                    </ul>
+                </div>
+                <div class="panel-body">
+                    {{ form_start(form, {'attr': {'id': 'filters-form'}}) }}
+                    {% form_theme form 'Form/screenerFields.html.twig' %}
+                    {{ form_widget(form) }}
+                    {{ form_end(form) }}
+                </div>
+                <div class="panel-footer">
+                    <div class="row">
+                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                            {{ mopa_bootstrap_menu('AppBundle:Builder:NavbarsMenu', {'automenu':'navbar'}) }}
+                        </div>
+                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4"></div>
+                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                            <button class="btn btn-success" id="search-button">search</button>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+        <div id="search-content"></div>
+
+
+{% endblock %}
+
+{% block stylesheets %}
+
+{% endblock %}
+{% block javascripts %}
+    <script>
+        screener = {
+            search: function (url) {
+
+                $.post(url,$('#filters-form').serialize(),function (data) {
+                    $('#search-content').html(data);
+                });
+
+            },
+            setOrder: function (order,asc) {
+                $('#screener_filters_gr_1_order_order').val(order);
+                $('#screener_filters_gr_1_order_asc').val(asc);
+
+                this.search('/search');
+            },
+            setLayout: function (name) {
+
+                $.cookie("chview", name, {expires: 30});
+
+                if(name != 'table' && name != 'ticker') {
+
+                    $.get("{{ path('presets_set_chart_id') }}",{chview: name},function (data) {
+
+                        screener.search('/search');
+                    });
+                } else {
+                    this.search('/search');
+                }
+            }
+        };
+
+        $('#search-button').click(function () {
+
+            screener.search('/search');
+        });
+
+    </script>
+{% endblock %}
