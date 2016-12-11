@@ -28,6 +28,9 @@ services:
 
     sha256salted_encoder:
         class: AppBundle\Service\Sha512whirlpool
+    slugger:
+            class: AppBundle\Service\Slugger
+
     dentiman_bootstrap.form_type.color_picker_type:
             class: Dentiman\BootstrapBundle\Form\Type\ColorPickerType
             tags:

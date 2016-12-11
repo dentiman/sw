@@ -7,27 +7,18 @@
             </div>
         </div>
     {% else %}
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
-                    <div class="count">
-                        {{ pagination.getTotalItemCount }}
-                    </div>
-                </div>
-                <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
-                    <div class="navigation pull-right">
+
+                    <div id="top-pagination-from" style="display: none">
                         {{ knp_pagination_render(pagination) }}
                     </div>
-                </div>
-            </div>
-        </div>
+
             {% block search_result_content %}
             {% endblock %}
         <div class="container">
             <div class="row">
                 <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
                     <div class="count">
-                        {{ pagination.getTotalItemCount }}
+
                     </div>
                 </div>
                 <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
@@ -38,6 +29,10 @@
             </div>
         </div>
         <script>
+            $('#total-result').html('total: {{ pagination.getTotalItemCount }}');
+
+            $('#top-pagination').prepend($('#top-pagination-from').html());
+
             $(document).ready(function () {
                 $('.pagination a').click(function (event) {
                     event.preventDefault();

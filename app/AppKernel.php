@@ -28,8 +28,8 @@ class AppKernel extends Kernel
 
             new Knp\Bundle\PaginatorBundle\KnpPaginatorBundle(),
             new Mopa\Bundle\BootstrapBundle\MopaBootstrapBundle(),
-            new Dentiman\BootstrapBundle\DentimanBootstrapBundle()
-
+            new Dentiman\BootstrapBundle\DentimanBootstrapBundle(),
+            new ConsoleBundle\ConsoleBundle(),
         ];
 
         if (in_array($this->getEnvironment(), ['dev', 'test'], true)) {

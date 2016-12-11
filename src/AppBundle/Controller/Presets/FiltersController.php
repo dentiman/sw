@@ -5,6 +5,7 @@ namespace AppBundle\Controller\Presets;
 use AppBundle\Entity\Presets\Filters;
 use AppBundle\Entity\User;
 
+use AppBundle\Form\ScreenerFiltersType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
@@ -16,13 +17,40 @@ use Symfony\Component\HttpFoundation\Request;
 class FiltersController extends Controller
 {
 
+    /**
+     * @Route("/presets/filters", name="presets_filters")
+     * @Security("is_granted('IS_AUTHENTICATED_FULLY')")
+     */
+    public function indexAction(Request $request)
+    {
+        $em  = $this->get('doctrine.orm.entity_manager');
+        $qb = $em->getRepository('AppBundle:Presets\Filters')
+            ->createQueryBuilder('f')
+            ->select('f.id, f.name')
+            ->where('f.userId = :user')
+            ->setParameter('user', $this->getUser()->getId())
+            ->orderBy('f.createdAt', 'DESC');
+
+        $query = $qb; //for pagination
+
+
+        $paginator  = $this->get('knp_paginator');
+        $pagination = $paginator->paginate(
+            $query,
+            $request->query->getInt('page', 1),
+            10
+        );
+
+        return $this->render('presets/filters/index.html.twig',['pagination' => $pagination]);
+    }
+
 
     /**
-     * @Route("/presets/filters/edit/{id}",requirements={"id": "\d+"}, name="presets_filters_edit")
+     * @Route("/presets/filters/edit/{slug}", name="presets_filters_edit")
      * @Route("/presets/filters/new", name="presets_filters_new")
      * @Security("is_granted('IS_AUTHENTICATED_FULLY')")
      */
-    public function EditAction(Request $request, Filters $filters=null)
+    public function EditAction(Request $request, Filters $filters = null)
     {
         $user = $this->getUser();
 
@@ -37,7 +65,7 @@ class FiltersController extends Controller
 
 
         $form = $this->createForm(
-            FiltersLayoutsType::class,
+            ScreenerFiltersType::class,
             $filters,
             ['filter_manager' => $this->container->get('app.service.filters_manager')]
         );
@@ -47,22 +75,25 @@ class FiltersController extends Controller
         if ($form->isSubmitted() && $form->isValid()) {
 
             if(!$user->isPremium()) {
-
-                return $this->redirectToRoute('premium');
+                return new JsonResponse(['alert'=>['message'=>'Filters can only be edited in Premium account','type'=>'warning']]);
             }
 
-            $filters->setUserId($user->getId());
             $em = $this->getDoctrine()->getManager();
+
+
+            $filters->setUserId($user->getId());
+
+
             $em->persist($filters);
             $em->flush();
 
-            $this->addFlash('success', 'post.updated_successfully');
+            return new JsonResponse(['slug'=>$filters->getSlug(),'name'=> $filters->getName(),
+                'alert'=>['message'=>'Filter "'.$filters->getName().'" has been successfully saved.','type'=>'success']]);
 
-            return $this->redirectToRoute('presets_filters');
+        } else {
+            return new JsonResponse( ['alert'=>['message'=>'Error!!!','type'=>'danger']]);
         }
-        return $this->render('presets/filters/edit.html.twig',[
-            'form'=>$form->createView()
-            ]);
+
     }
 
 
@@ -82,7 +113,7 @@ class FiltersController extends Controller
                 $entityManager->remove($filters);
                 $entityManager->flush();
 
-                $this->addFlash('success', 'post.deleted_successfully');
+
             }
 
         return $this->redirectToRoute('presets_filters');
@@ -100,7 +131,8 @@ class FiltersController extends Controller
             'form'=>$deleteForm->createView(),
             'button_label' => 'delete',
             'button_css' => 'btn btn-xs btn-danger',
-            'show_confirmation' => true
+            'show_confirmation' => false,
+            'ajax_container' => '#modal-content'
         ]);
     }
 
@@ -109,7 +141,7 @@ class FiltersController extends Controller
      */
     private function createDeleteForm($id)
     {
-        return $this->createFormBuilder()
+        return $this->createFormBuilder(null,array('attr' => array('ajax-container' => '#modal-content')))
             ->setAction($this->generateUrl('presets_filters_delete', ['id' => $id]))
             ->setMethod('DELETE')
             ->getForm();
@@ -117,7 +149,7 @@ class FiltersController extends Controller
 
 
     /**
-     * @Route("/presets/filters/setlayout", name="presets_set_chart_id")
+     * @Route("/presets/filters/setlayout", name="presets_set_filters_id")
      * @Security("is_granted('IS_AUTHENTICATED_FULLY')")
      */
     public function setChartLayout(Request $request) {

@@ -9,6 +9,7 @@ use Doctrine\ORM\Mapping as ORM;
  *
  * @ORM\Table(name="presets_columns")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\Presets\ColumnsRepository")
+ * @ORM\HasLifecycleCallbacks
  */
 class Columns
 {
@@ -42,6 +43,13 @@ class Columns
      */
     private $data;
 
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(type="datetime")
+     */
+    private $createdAt;
 
     /**
      * Get id
@@ -123,6 +131,50 @@ class Columns
     public function getData()
     {
         return $this->data;
+    }
+
+    /**
+     * @return \DateTime
+     */
+    public function getCreatedAt()
+    {
+        return $this->createdAt;
+    }
+
+    /**
+     * @param \DateTime $createdAt
+     */
+    public function setCreatedAt($createdAt)
+    {
+        $this->createdAt = $createdAt;
+    }
+
+    /**
+     * Gets triggered only on insert
+     * @ORM\PrePersist
+     */
+    public function onPrePersist()
+    {
+        $this->createdAt = new \DateTime("now");
+
+    }
+
+
+    public function isAuthor($user){
+
+        return $this->userId === $user->getId();
+
+    }
+
+
+    public function getColumnsArray(){
+        $A =[];
+        foreach ($this->data as $name => $value) {
+            if($value === true) {
+                $A[] = $name;
+            }
+        }
+        return $A;
     }
 }
 

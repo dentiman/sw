@@ -36,12 +36,20 @@ class Filters
      */
     private $name;
 
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(type="string", unique=true, nullable=false)
+     */
+    private $slug;
+
     /**
      * @var array
      *
-     * @ORM\Column(name="filters", type="array")
+     * @ORM\Column(name="filters_data", type="array")
      */
-    private $filters;
+    private $filtersData;
 
 
     /**
@@ -50,6 +58,7 @@ class Filters
      * @ORM\Column(type="datetime")
      */
     private $createdAt;
+
 
 
     /**
@@ -129,13 +138,13 @@ class Filters
     /**
      * Set filters
      *
-     * @param array $filters
+     * @param array $filtersData
      *
      * @return Filters
      */
-    public function setFilters($filters)
+    public function setFiltersData($filtersData)
     {
-        $this->filters = $filters;
+        $this->filtersData = $filtersData;
 
         return $this;
     }
@@ -145,10 +154,27 @@ class Filters
      *
      * @return array
      */
-    public function getFilters()
+    public function getFiltersData()
     {
-        return $this->filters;
+        return $this->filtersData;
     }
+
+    /**
+     * @return string
+     */
+    public function getSlug()
+    {
+        return $this->slug;
+    }
+
+    /**
+     * @param string $slug
+     */
+    public function setSlug($slug)
+    {
+        $this->slug = $slug;
+    }
+
 
 
     /**
@@ -158,6 +184,7 @@ class Filters
     public function onPrePersist()
     {
         $this->createdAt = new \DateTime("now");
+        $this->slug = time();
     }
 
 
@@ -165,6 +192,10 @@ class Filters
 
         return $this->userId === $user->getId();
 
+    }
+
+    public function __toString() {
+        return $this->name;
     }
 
 

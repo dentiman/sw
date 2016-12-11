@@ -1,0 +1,64 @@
+<div class="panel panel-default">
+    <div class="panel-body">
+        {{ form_start(form, {'attr': {'id': 'columns-layout-form'}}) }}
+        {% form_theme form 'Form/chartPresetsFields.html.twig' %}
+        {{ form_widget(form) }}
+        {{ form_end(form) }}
+    </div>
+    <div class="panel-footer">
+        <button class="btn btn-default" id="save-current-columns">Save current</button>
+        {{ form_start(save_as_form, {'attr': {'id': 'filters-save-form-new','class':'form-inline'}}) }}
+        <div class="input-group">
+
+
+            {% form_theme save_as_form ':Form:screenerFields.html.twig' %}
+            {{ form_widget(save_as_form.name) }}
+            <div class="input-group-btn">
+                {{ form_widget(save_as_form.save) }}
+
+            </div>
+        </div>
+        {{ form_end(save_as_form) }}
+
+    </div>
+</div>
+<script>
+    $('#save-current-columns').click(function () {
+
+        $('#columns-layout-form').submit();
+
+
+    });
+
+    $('#filters-save-form-new').submit(function (event) {
+        event.preventDefault();
+    });
+
+
+    $('#filters-save-form-new').submit(function (event) {
+
+        event.preventDefault();
+
+        $('#screener_filters_name').val($('#filters-save-form-new input[type=text]').val());
+
+        $('#filters-save-form-new input[type=text]').val('');
+
+        $("#filters-save-dropdown").dropdown("toggle");
+
+        $.ajax({
+            method: "POST",
+            url: '{{ path('presets_filters_new') }}',
+            dataType : "json",
+            data: $('#screener-filters-form').serialize(),
+            success: function (data) {
+                $.alert(data.alert);
+                if(data.slug){
+                    $('#current_filter_name').append('<option value="'+data.slug+'">'+data.name+'</option>')
+                            .val(data.slug);
+                }
+
+            }
+        });
+    });
+
+</script>

@@ -12,6 +12,7 @@
     <script src="{{ asset('bundles/dentimanbootstrap/daterangepicker/daterangepicker.js') }}"></script>
     <script src="{{ asset('bundles/dentimanbootstrap/js/jquery.cookie.js') }}"></script>
     <script src="{{ asset('bundles/dentimanbootstrap/js/flateelements.js') }}"></script>
+    <script src="{{ asset('bundles/dentimanbootstrap/js/bootstrap-notify.min.js') }}"></script>
     <script src="{{ asset('js/main.js') }}"></script>
 
     <link rel="stylesheet"  href="{{ asset('bundles/dentimanbootstrap/css/bootstrap.min.css') }}" />
@@ -41,7 +42,21 @@
     {% endblock %}
 {% endembed %}
 
+{% for flash_message in app.session.flashBag.get('success') %}
+    <div class="flash-notice">
+        {{ flash_message }}
+    </div>
+{% endfor %}
+
 {% block body %}{% endblock %}
+{# Bootstrap modal, see http://getbootstrap.com/javascript/#modals #}
+<div class="modal fade" id="globalModal" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content" id="modal-content">
+            loading...
+        </div>
+    </div>
+</div>
 {% block javascripts %}{% endblock %}
 
 </body>

@@ -1,56 +1,40 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-        <div class="container">
+    <div class="container">
+        <div class="panel panel-default">
 
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    <ul class="nav nav-pills dropdown dropdown-notifications sw-open">
-                        <li class="dropdown-toggle" data-toggle="dropdown">
-                            <a href="ww">333</a>
-                        </li>
-                        <div class="dropdown-container">
-                            <div class="dropdown-toolbar">
-                                {{ form_start(filter_save_form, {'attr': {'id': 'filters-save-form','class':'form-inline'}}) }}
-                                {% form_theme filter_save_form ':Form:screenerFields.html.twig' %}
-                                {{ form_widget(filter_save_form) }}
-                                {{ form_end(filter_save_form) }}
+            {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+            {{ include('screener/filters_edit_menu.html.twig') }}
+            {% endif %}
 
-                            </div><!-- /dropdown-toolbar -->
-                        </div>
-
-                        <li >
-                            <a href="ww">gg</a>
-                        </li>
-
-                        <li >
-                            <a href="ww">gdf</a>
-                        </li>
-
-                    </ul>
-                </div>
-                <div class="panel-body">
-                    {{ form_start(form, {'attr': {'id': 'filters-form'}}) }}
-                    {% form_theme form 'Form/screenerFields.html.twig' %}
-                    {{ form_widget(form) }}
-                    {{ form_end(form) }}
-                </div>
-                <div class="panel-footer">
-                    <div class="row">
-                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
-                            {{ mopa_bootstrap_menu('AppBundle:Builder:NavbarsMenu', {'automenu':'navbar'}) }}
-                        </div>
-                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4"></div>
-                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
-                            <button class="btn btn-success" id="search-button">search</button>
-                        </div>
+            <div class="panel-body" id="screener-form-container">
+                {{ form_start(form, {'attr': {'id': 'screener-filters-form'}}) }}
+                {% form_theme form 'Form/screenerFields.html.twig' %}
+                {{ form_widget(form) }}
+                {{ form_end(form) }}
+            </div>
+            <div class="panel-footer">
+                <div class="row">
+                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+                        {{ mopa_bootstrap_menu('AppBundle:Builder:NavbarsMenu', {'automenu':'navbar'}) }}
                     </div>
-
+                    <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+                        <a href="{{ path('presets_columns') }}" ajax-container="#columns-form-container" ><i class="fa fa-cog"></i></a>
+                        <div id="total-result"></div>
+                    </div>
+                    <div class="col-lg-5 col-md-5 col-sm-5 col-xs-4">
+                        <div id="top-pagination"></div>
+                    </div>
+                    <div class="col-lg-1 col-md-1 col-sm-2 col-xs-2">
+                        <button class="btn btn-success" id="search-button">search</button>
+                    </div>
                 </div>
             </div>
-
         </div>
-        <div id="search-content"></div>
+    </div>
+    <div class="container" id="columns-form-container"></div>
+    <div id="search-content"></div>
 
 
 {% endblock %}
@@ -60,40 +44,121 @@
 {% endblock %}
 {% block javascripts %}
     <script>
+
         screener = {
+
+            load: function (slug) {
+
+                $.get("/screener/form/" + slug, function (data) {
+                    $('#screener-form-container').html(data);
+                    screener.search('{{ path('search') }}');
+                });
+            },
             search: function (url) {
 
-                $.post(url,$('#filters-form').serialize(),function (data) {
+                if(!url) { url = '{{ path('search') }}';}
+
+                $.post(url, $('#screener-filters-form').serialize(), function (data) {
                     $('#search-content').html(data);
                 });
 
             },
-            setOrder: function (order,asc) {
+            setOrder: function (order, asc) {
                 $('#screener_filters_gr_1_order_order').val(order);
                 $('#screener_filters_gr_1_order_asc').val(asc);
 
-                this.search('/search');
+                this.search('{{ path('search') }}');
             },
             setLayout: function (name) {
 
-                $.cookie("chview", name, {expires: 30});
 
-                if(name != 'table' && name != 'ticker') {
+                $.cookie('chview',name,{ expires: 30, path:'/search' });
 
-                    $.get("{{ path('presets_set_chart_id') }}",{chview: name},function (data) {
+                if (name != 'table' && name != 'ticker') {
 
-                        screener.search('/search');
+                    $.get("{{ path('presets_set_chart_id') }}", {chview: name}, function (data) {
+
+                        screener.search('{{ path('search') }}');
                     });
                 } else {
-                    this.search('/search');
+                    this.search('{{ path('search') }}');
                 }
             }
         };
 
-        $('#search-button').click(function () {
+        $('#filters-save-form-new').submit(function (event) {
 
-            screener.search('/search');
+            event.preventDefault();
+
+            $('#screener_filters_name').val($('#filters-save-form-new input[type=text]').val());
+
+            $('#filters-save-form-new input[type=text]').val('');
+
+            $("#filters-save-dropdown").dropdown("toggle");
+
+            $.ajax({
+                method: "POST",
+                url: '{{ path('presets_filters_new') }}',
+                dataType : "json",
+                data: $('#screener-filters-form').serialize(),
+                success: function (data) {
+                    $.alert(data.alert);
+                    if(data.slug){
+                        $('#current_filter_name').append('<option value="'+data.slug+'">'+data.name+'</option>')
+                                .val(data.slug);
+                    }
+
+                }
+            });
         });
 
+
+
+        $('#current-filter-save').click(function () {
+
+            slug = $('#current_filter_name').val();
+
+            if(slug != '') {
+
+                $.ajax({
+                    method: "POST",
+                    url: '/presets/filters/edit/'+slug,
+                    dataType : "json",
+                    data: $('#screener-filters-form').serialize(),
+                    success: function (data) {
+                       $.alert(data.alert);
+                    }
+                });
+
+
+            }
+        });
+
+
+        $('#current_filter_name').change(function (e) {
+
+            slug = $('#current_filter_name').val();
+
+            if(slug != '') {
+                screener.load(slug);
+            }
+        });
+
+
+
+        $('#search-button').click(function () {
+
+            screener.search('{{ path('search') }}');
+        });
+
+
+        (function ($) {
+            $(document).ready(function () {
+
+                // default search on load page
+                screener.search();
+
+            });
+        })(window.jQuery);
     </script>
 {% endblock %}

@@ -1,0 +1,32 @@
+<div class="panel-heading">
+    <div class="row">
+        <div class="col-md-4">
+
+            <div class="input-group">
+                <div class="input-group-btn">
+                    <a class="btn btn-default" data-toggle="global-modal" href="{{ path('presets_filters') }}" >ma</a>
+                </div>
+
+                {% form_theme filters_edit_form 'Form/screenerFields.html.twig' %}
+                {{ form_row(filters_edit_form.name) }}
+                    <div class="input-group-btn">
+                        <button class="btn btn-default" type="button" id="current-filter-save">Save</button>
+                        <button type="button" class="btn btn-default dropdown-toggle"  id="filters-save-dropdown" data-toggle="dropdown">new</button>
+                        <ul class="dropdown-menu dropdown-menu-right">
+                            <div class="dropdown-content" style="width:400px">
+                                {{ form_start(filters_save_form, {'attr': {'id': 'filters-save-form-new','class':'form-inline'}}) }}
+                                {% form_theme filters_save_form ':Form:screenerFields.html.twig' %}
+                                {{ form_widget(filters_save_form) }}
+                                {{ form_end(filters_save_form) }}
+                            </div>
+                        </ul>
+                    </div>
+            </div>
+        </div>
+        <div class="col-md-8">
+
+        </div>
+    </div>
+
+
+</div>

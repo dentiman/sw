@@ -94,6 +94,7 @@ class ChartsController extends Controller
 
             return $this->redirectToRoute('presets_charts');
         }
+
         return $this->render('presets/charts/edit.html.twig',[
             'form'=>$form->createView()
             ]);
@@ -143,7 +144,7 @@ class ChartsController extends Controller
      */
     private function createDeleteForm($id)
     {
-        return $this->createFormBuilder()
+        return $this->createFormBuilder(null,array('attr' => array('data-confirmation' => '1')))
             ->setAction($this->generateUrl('presets_charts_delete', ['id' => $id]))
             ->setMethod('DELETE')
             ->getForm();
