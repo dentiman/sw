@@ -15,7 +15,7 @@ class MainFinvizData
     /**
      * @var string
      *
-     * @ORM\Column(name="ticker", type="string", length=5)
+     * @ORM\Column(name="ticker", type="string", length=10)
      * @ORM\Id
      *
      */
@@ -24,154 +24,154 @@ class MainFinvizData
     /**
      * @var float
      *
-     * @ORM\Column(name="mc", type="float")
+     * @ORM\Column(name="mc", type="float", nullable=true)
      */
     private $mc;
 
     /**
      * @var float
      *
-     * @ORM\Column(name="pe", type="float")
+     * @ORM\Column(name="pe", type="float", nullable=true)
      */
     private $pe;
 
     /**
      * @var float
      *
-     * @ORM\Column(name="fpe", type="float")
+     * @ORM\Column(name="fpe", type="float", nullable=true)
      */
     private $fpe;
 
     /**
      * @var float
      *
-     * @ORM\Column(name="epsf", type="float")
+     * @ORM\Column(name="epsf", type="float", nullable=true)
      */
     private $epsf;
 
     /**
      * @var float
      *
-     * @ORM\Column(name="aut", type="float")
+     * @ORM\Column(name="aut", type="float", nullable=true)
      */
     private $aut;
 
     /**
      * @var float
      *
-     * @ORM\Column(name="sfloat", type="float")
+     * @ORM\Column(name="sfloat", type="float", nullable=true)
      */
     private $sfloat;
 
     /**
      * @var float
      *
-     * @ORM\Column(name="insider", type="float")
+     * @ORM\Column(name="insider", type="float", nullable=true)
      */
     private $insider;
 
     /**
      * @var float
      *
-     * @ORM\Column(name="fshort", type="float")
+     * @ORM\Column(name="fshort", type="float", nullable=true)
      */
     private $fshort;
 
     /**
      * @var float
      *
-     * @ORM\Column(name="shratio", type="float")
+     * @ORM\Column(name="shratio", type="float", nullable=true)
      */
     private $shratio;
 
     /**
      * @var float
      *
-     * @ORM\Column(name="pw", type="float")
+     * @ORM\Column(name="pw", type="float", nullable=true)
      */
     private $pw;
 
     /**
      * @var float
      *
-     * @ORM\Column(name="pm", type="float")
+     * @ORM\Column(name="pm", type="float", nullable=true)
      */
     private $pm;
 
     /**
      * @var float
      *
-     * @ORM\Column(name="pq", type="float")
+     * @ORM\Column(name="pq", type="float", nullable=true)
      */
     private $pq;
 
     /**
      * @var float
      *
-     * @ORM\Column(name="ph", type="float")
+     * @ORM\Column(name="ph", type="float", nullable=true)
      */
     private $ph;
 
     /**
      * @var float
      *
-     * @ORM\Column(name="py", type="float")
+     * @ORM\Column(name="py", type="float", nullable=true)
      */
     private $py;
 
     /**
      * @var float
      *
-     * @ORM\Column(name="atr", type="float")
+     * @ORM\Column(name="atr", type="float", nullable=true)
      */
     private $atr;
 
     /**
      * @var float
      *
-     * @ORM\Column(name="sma20pc", type="float")
+     * @ORM\Column(name="sma20pc", type="float", nullable=true)
      */
     private $sma20pc;
 
     /**
      * @var float
      *
-     * @ORM\Column(name="sma50pc", type="float")
+     * @ORM\Column(name="sma50pc", type="float", nullable=true)
      */
     private $sma50pc;
 
     /**
      * @var float
      *
-     * @ORM\Column(name="sma200pc", type="float")
+     * @ORM\Column(name="sma200pc", type="float", nullable=true)
      */
     private $sma200pc;
 
     /**
      * @var float
      *
-     * @ORM\Column(name="hi50pc", type="float")
+     * @ORM\Column(name="hi50pc", type="float", nullable=true)
      */
     private $hi50pc;
 
     /**
      * @var float
      *
-     * @ORM\Column(name="lo50pc", type="float")
+     * @ORM\Column(name="lo50pc", type="float", nullable=true)
      */
     private $lo50pc;
 
     /**
      * @var float
      *
-     * @ORM\Column(name="hi52pc", type="float")
+     * @ORM\Column(name="hi52pc", type="float", nullable=true)
      */
     private $hi52pc;
 
     /**
      * @var float
      *
-     * @ORM\Column(name="lo52pc", type="float")
+     * @ORM\Column(name="lo52pc", type="float", nullable=true)
      */
     private $lo52pc;
 
@@ -180,7 +180,7 @@ class MainFinvizData
     /**
      * @var float
      *
-     * @ORM\Column(name="avvo", type="float")
+     * @ORM\Column(name="avvo", type="float", nullable=true)
      */
     private $avvo;
 

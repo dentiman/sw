@@ -15,7 +15,7 @@ class MainLevel1Delay
     /**
      * @var string
      *
-     * @ORM\Column(name="ticker", type="string", length=5)
+     * @ORM\Column(name="ticker", type="string", length=10)
      * @ORM\Id
      *
      */
@@ -24,91 +24,91 @@ class MainLevel1Delay
     /**
      * @var float
      *
-     * @ORM\Column(name="price", type="float")
+     * @ORM\Column(name="price", type="float", nullable=true)
      */
     private $price;
 
     /**
      * @var float
      *
-     * @ORM\Column(name="op", type="float")
+     * @ORM\Column(name="op", type="float", nullable=true)
      */
     private $op;
 
     /**
      * @var float
      *
-     * @ORM\Column(name="hi", type="float")
+     * @ORM\Column(name="hi", type="float", nullable=true)
      */
     private $hi;
 
     /**
      * @var float
      *
-     * @ORM\Column(name="lo", type="float")
+     * @ORM\Column(name="lo", type="float", nullable=true)
      */
     private $lo;
 
     /**
      * @var float
      *
-     * @ORM\Column(name="chp", type="float")
+     * @ORM\Column(name="chp", type="float", nullable=true)
      */
     private $chp;
 
     /**
      * @var float
      *
-     * @ORM\Column(name="ch", type="float")
+     * @ORM\Column(name="ch", type="float", nullable=true)
      */
     private $ch;
 
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="ttime", type="time")
+     * @ORM\Column(name="ttime", type="time", nullable=true)
      */
     private $ttime;
 
     /**
      * @var float
      *
-     * @ORM\Column(name="bid", type="float")
+     * @ORM\Column(name="bid", type="float", nullable=true)
      */
     private $bid;
 
     /**
      * @var float
      *
-     * @ORM\Column(name="ask", type="float")
+     * @ORM\Column(name="ask", type="float", nullable=true)
      */
     private $ask;
 
     /**
      * @var float
      *
-     * @ORM\Column(name="bidsize", type="float")
+     * @ORM\Column(name="bidsize", type="float", nullable=true)
      */
     private $bidsize;
 
     /**
      * @var float
      *
-     * @ORM\Column(name="asksize", type="float")
+     * @ORM\Column(name="asksize", type="float", nullable=true)
      */
     private $asksize;
 
     /**
      * @var int
      *
-     * @ORM\Column(name="tcount", type="integer")
+     * @ORM\Column(name="tcount", type="integer", nullable=true)
      */
     private $tcount;
 
     /**
      * @var int
      *
-     * @ORM\Column(name="vol", type="integer")
+     * @ORM\Column(name="vol", type="integer", nullable=true)
      */
     private $vol;
 

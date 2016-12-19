@@ -1,17 +1,18 @@
 <?php
 
-namespace AppBundle\Entity\Feed;
+namespace ConsoleBundle\Entity\Level1;
 
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * MainLevel1
+ * Sources
  *
- * @ORM\Table(name="feed_main_level1")
- * @ORM\Entity(repositoryClass="AppBundle\Repository\Feed\MainLevel1Repository")
+ * @ORM\Table(name="feed_level1_sources")
+ * @ORM\Entity(repositoryClass="ConsoleBundle\Repository\Level1\SourcesRepository")
  */
-class MainLevel1
+class Sources
 {
+
     /**
      * @var string
      *
@@ -112,7 +113,14 @@ class MainLevel1
      */
     private $vol;
 
-
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="source", type="string", length=255, nullable=true)
+     */
+    private $source;
+    
+    
     /**
      * Get ticker
      *
@@ -128,7 +136,7 @@ class MainLevel1
      *
      * @param string $ticker
      *
-     * @return MainLevel1
+     * @return Sources
      */
     public function setTicker($ticker)
     {
@@ -142,7 +150,7 @@ class MainLevel1
      *
      * @param float $price
      *
-     * @return MainLevel1
+     * @return Sources
      */
     public function setPrice($price)
     {
@@ -166,7 +174,7 @@ class MainLevel1
      *
      * @param float $op
      *
-     * @return MainLevel1
+     * @return Sources
      */
     public function setOp($op)
     {
@@ -190,7 +198,7 @@ class MainLevel1
      *
      * @param float $hi
      *
-     * @return MainLevel1
+     * @return Sources
      */
     public function setHi($hi)
     {
@@ -214,7 +222,7 @@ class MainLevel1
      *
      * @param float $lo
      *
-     * @return MainLevel1
+     * @return Sources
      */
     public function setLo($lo)
     {
@@ -238,7 +246,7 @@ class MainLevel1
      *
      * @param float $chp
      *
-     * @return MainLevel1
+     * @return Sources
      */
     public function setChp($chp)
     {
@@ -262,7 +270,7 @@ class MainLevel1
      *
      * @param float $ch
      *
-     * @return MainLevel1
+     * @return Sources
      */
     public function setCh($ch)
     {
@@ -286,7 +294,7 @@ class MainLevel1
      *
      * @param \DateTime $ttime
      *
-     * @return MainLevel1
+     * @return Sources
      */
     public function setTtime($ttime)
     {
@@ -310,7 +318,7 @@ class MainLevel1
      *
      * @param float $bid
      *
-     * @return MainLevel1
+     * @return Sources
      */
     public function setBid($bid)
     {
@@ -334,7 +342,7 @@ class MainLevel1
      *
      * @param float $ask
      *
-     * @return MainLevel1
+     * @return Sources
      */
     public function setAsk($ask)
     {
@@ -358,7 +366,7 @@ class MainLevel1
      *
      * @param float $bidsize
      *
-     * @return MainLevel1
+     * @return Sources
      */
     public function setBidsize($bidsize)
     {
@@ -382,7 +390,7 @@ class MainLevel1
      *
      * @param float $asksize
      *
-     * @return MainLevel1
+     * @return Sources
      */
     public function setAsksize($asksize)
     {
@@ -406,7 +414,7 @@ class MainLevel1
      *
      * @param integer $tcount
      *
-     * @return MainLevel1
+     * @return Sources
      */
     public function setTcount($tcount)
     {
@@ -430,7 +438,7 @@ class MainLevel1
      *
      * @param integer $vol
      *
-     * @return MainLevel1
+     * @return Sources
      */
     public function setVol($vol)
     {
@@ -447,6 +455,32 @@ class MainLevel1
     public function getVol()
     {
         return $this->vol;
+    }
+
+
+
+    /**
+     * Set source
+     *
+     * @param string $source
+     *
+     * @return Sources
+     */
+    public function setSource($source)
+    {
+        $this->source = $source;
+
+        return $this;
+    }
+
+    /**
+     * Get source
+     *
+     * @return string
+     */
+    public function getSource()
+    {
+        return $this->source;
     }
 }
 

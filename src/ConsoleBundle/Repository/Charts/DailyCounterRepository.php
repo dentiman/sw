@@ -1,6 +1,6 @@
 <?php
 
-namespace ConsoleBundle\Repository;
+namespace ConsoleBundle\Repository\Charts;
 
 /**
  * DailyCounterRepository

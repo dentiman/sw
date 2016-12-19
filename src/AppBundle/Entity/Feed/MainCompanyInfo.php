@@ -15,7 +15,7 @@ class MainCompanyInfo
     /**
      * @var string
      *
-     * @ORM\Column(name="ticker", type="string", length=5)
+     * @ORM\Column(name="ticker", type="string", length=10)
      * @ORM\Id
      *
      */
@@ -24,49 +24,49 @@ class MainCompanyInfo
     /**
      * @var string
      *
-     * @ORM\Column(name="name", type="string", length=255)
+     * @ORM\Column(name="name", type="string", length=255, nullable=true)
      */
     private $name;
 
     /**
      * @var int
      *
-     * @ORM\Column(name="e", type="integer")
+     * @ORM\Column(name="e", type="integer", nullable=true)
      */
     private $e;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="sec", type="string", length=255)
+     * @ORM\Column(name="sec", type="string", length=255, nullable=true)
      */
     private $sec;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="ind", type="string", length=255)
+     * @ORM\Column(name="ind", type="string", length=255, nullable=true)
      */
     private $ind;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="coun", type="string", length=255)
+     * @ORM\Column(name="coun", type="string", length=255, nullable=true)
      */
     private $coun;
 
     /**
      * @var int
      *
-     * @ORM\Column(name="i", type="integer")
+     * @ORM\Column(name="i", type="integer", nullable=true)
      */
     private $i;
 
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="ipo", type="date")
+     * @ORM\Column(name="ipo", type="date", nullable=true)
      */
     private $ipo;
 

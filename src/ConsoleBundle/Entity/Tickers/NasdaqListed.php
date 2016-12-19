@@ -15,7 +15,7 @@ class NasdaqListed
     /**
      * @var string
      *
-     * @ORM\Column(name="ticker", type="string", length=255)
+     * @ORM\Column(name="ticker", type="string", length=255, nullable=true)
      * @ORM\Id
      *
      */
@@ -24,49 +24,49 @@ class NasdaqListed
     /**
      * @var string
      *
-     * @ORM\Column(name="name", type="string", length=255)
+     * @ORM\Column(name="name", type="string", length=255, nullable=true)
      */
     private $name;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="marketCategory", type="string", length=255)
+     * @ORM\Column(name="marketCategory", type="string", length=255, nullable=true)
      */
     private $marketCategory;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="test", type="string", length=255)
+     * @ORM\Column(name="test", type="string", length=255, nullable=true)
      */
     private $test;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="financialStatus", type="string", length=255)
+     * @ORM\Column(name="financialStatus", type="string", length=255, nullable=true)
      */
     private $financialStatus;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="lotSize", type="string", length=255)
+     * @ORM\Column(name="lotSize", type="string", length=255, nullable=true)
      */
     private $lotSize;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="etf", type="string", length=255)
+     * @ORM\Column(name="etf", type="string", length=255, nullable=true)
      */
     private $etf;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="nextShares", type="string", length=255)
+     * @ORM\Column(name="nextShares", type="string", length=255, nullable=true)
      */
     private $nextShares;
 

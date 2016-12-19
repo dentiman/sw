@@ -15,7 +15,7 @@ class MainEarnings
     /**
      * @var string
      *
-     * @ORM\Column(name="ticker", type="string", length=5)
+     * @ORM\Column(name="ticker", type="string", length=10)
      * @ORM\Id
      *
      */
@@ -24,42 +24,42 @@ class MainEarnings
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="earn", type="date")
+     * @ORM\Column(name="earn", type="date", nullable=true)
      */
     private $earn;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="earn_time", type="string", length=255)
+     * @ORM\Column(name="earn_time", type="string", length=255, nullable=true)
      */
     private $earnTime;
 
     /**
      * @var float
      *
-     * @ORM\Column(name="eps", type="float")
+     * @ORM\Column(name="eps", type="float", nullable=true)
      */
     private $eps;
 
     /**
      * @var float
      *
-     * @ORM\Column(name="eps_est", type="float")
+     * @ORM\Column(name="eps_est", type="float", nullable=true)
      */
     private $epsEst;
 
     /**
      * @var float
      *
-     * @ORM\Column(name="eps_surprise", type="float")
+     * @ORM\Column(name="eps_surprise", type="float", nullable=true)
      */
     private $epsSurprise;
 
     /**
      * @var float
      *
-     * @ORM\Column(name="eps_surprise_percent", type="float")
+     * @ORM\Column(name="eps_surprise_percent", type="float", nullable=true)
      */
     private $epsSurprisePercent;
 

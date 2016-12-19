@@ -2,10 +2,9 @@
 namespace ConsoleBundle\Command;
 
 use ConsoleBundle\Components\CustomContainerAwareCommand;
-use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
-use Symfony\Bundle\FrameworkBundle\Command\ContainerAwareCommand;
+
 
 class UpdateTickersCommand extends CustomContainerAwareCommand
 {
@@ -67,14 +66,14 @@ class UpdateTickersCommand extends CustomContainerAwareCommand
         $this->dbQuery("UPDATE `feed_tickers_nasdaq_listed` SET `name` = REPLACE( name, ' - Common Stock', '' ) ;");
         $this->dbQuery("UPDATE `feed_tickers_nasdaq_listed` SET `name` = REPLACE( name, ' - Common Shares', '' ) ;");
 
-        $this->dbQuery("REPLACE INTO  `feed_tickers_all_listed` (SELECT ticker,2 as 'exchange',name,etf  FROM `feed_tickers_nasdaq_listed`) UNION ALL (SELECT ticker,exchange,name,etf FROM `feed_tickers_other_listed`) ORDER BY ticker;");
+        $this->dbQuery("REPLACE INTO  `feed_basic_tickers` (SELECT ticker,2 as 'exchange',name,etf  FROM `feed_tickers_nasdaq_listed`) UNION ALL (SELECT ticker,exchange,name,etf FROM `feed_tickers_other_listed`) ORDER BY ticker;");
 
-        $this->dbQuery("DELETE  FROM `feed_tickers_all_listed` WHERE `ticker` REGEXP '[^A-Za-z]'");
+        $this->dbQuery("DELETE  FROM `feed_basic_tickers` WHERE `ticker` REGEXP '[^A-Za-z]'");
 
-        $this->dbQuery("UPDATE `feed_tickers_all_listed` SET `etf` = '1' WHERE `etf`=  'Y'");
-        $this->dbQuery("UPDATE `feed_tickers_all_listed` SET `etf` = '0' WHERE `etf`=  'N'");
+        $this->dbQuery("UPDATE `feed_basic_tickers` SET `etf` = '1' WHERE `etf`=  'Y'");
+        $this->dbQuery("UPDATE `feed_basic_tickers` SET `etf` = '0' WHERE `etf`=  'N'");
 
-       // $this->dbQuery("DELETE FROM `feed_tickers_all_listed` WHERE LENGTH(ticker) = 5");
+       // $this->dbQuery("DELETE FROM `feed_basic_tickers` WHERE LENGTH(ticker) = 5");
 
     }
 

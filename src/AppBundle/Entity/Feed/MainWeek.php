@@ -24,140 +24,140 @@ class MainWeek
     /**
      * @var float
      *
-     * @ORM\Column(name="cl1", type="float")
+     * @ORM\Column(name="cl1", type="float", nullable=true)
      */
     private $cl1;
 
     /**
      * @var float
      *
-     * @ORM\Column(name="op1", type="float")
+     * @ORM\Column(name="op1", type="float", nullable=true)
      */
     private $op1;
 
     /**
      * @var float
      *
-     * @ORM\Column(name="hi1", type="float")
+     * @ORM\Column(name="hi1", type="float", nullable=true)
      */
     private $hi1;
 
     /**
      * @var float
      *
-     * @ORM\Column(name="lo1", type="float")
+     * @ORM\Column(name="lo1", type="float", nullable=true)
      */
     private $lo1;
 
     /**
      * @var int
      *
-     * @ORM\Column(name="vol1", type="integer")
+     * @ORM\Column(name="vol1", type="integer", nullable=true)
      */
     private $vol1;
 
     /**
      * @var float
      *
-     * @ORM\Column(name="cl2", type="float")
+     * @ORM\Column(name="cl2", type="float", nullable=true)
      */
     private $cl2;
 
     /**
      * @var float
      *
-     * @ORM\Column(name="op2", type="float")
+     * @ORM\Column(name="op2", type="float", nullable=true)
      */
     private $op2;
 
     /**
      * @var float
      *
-     * @ORM\Column(name="hi2", type="float")
+     * @ORM\Column(name="hi2", type="float", nullable=true)
      */
     private $hi2;
 
     /**
      * @var float
      *
-     * @ORM\Column(name="lo2", type="float")
+     * @ORM\Column(name="lo2", type="float", nullable=true)
      */
     private $lo2;
 
     /**
      * @var int
      *
-     * @ORM\Column(name="vol2", type="integer")
+     * @ORM\Column(name="vol2", type="integer", nullable=true)
      */
     private $vol2;
 
     /**
      * @var float
      *
-     * @ORM\Column(name="cl3", type="float")
+     * @ORM\Column(name="cl3", type="float", nullable=true)
      */
     private $cl3;
 
     /**
      * @var float
      *
-     * @ORM\Column(name="op3", type="float")
+     * @ORM\Column(name="op3", type="float", nullable=true)
      */
     private $op3;
 
     /**
      * @var float
      *
-     * @ORM\Column(name="hi3", type="float")
+     * @ORM\Column(name="hi3", type="float", nullable=true)
      */
     private $hi3;
 
     /**
      * @var float
      *
-     * @ORM\Column(name="lo3", type="float")
+     * @ORM\Column(name="lo3", type="float", nullable=true)
      */
     private $lo3;
 
     /**
      * @var int
      *
-     * @ORM\Column(name="vol3", type="integer")
+     * @ORM\Column(name="vol3", type="integer", nullable=true)
      */
     private $vol3;
 
     /**
      * @var float
      *
-     * @ORM\Column(name="cl4", type="float")
+     * @ORM\Column(name="cl4", type="float", nullable=true)
      */
     private $cl4;
 
     /**
      * @var float
      *
-     * @ORM\Column(name="op4", type="float")
+     * @ORM\Column(name="op4", type="float", nullable=true)
      */
     private $op4;
 
     /**
      * @var float
      *
-     * @ORM\Column(name="hi4", type="float")
+     * @ORM\Column(name="hi4", type="float", nullable=true)
      */
     private $hi4;
 
     /**
      * @var float
      *
-     * @ORM\Column(name="lo4", type="float")
+     * @ORM\Column(name="lo4", type="float", nullable=true)
      */
     private $lo4;
 
     /**
      * @var int
      *
-     * @ORM\Column(name="vol4", type="integer")
+     * @ORM\Column(name="vol4", type="integer", nullable=true)
      */
     private $vol4;
 

@@ -1,39 +1,27 @@
 <?php
 
-namespace AppBundle\Entity\Feed;
+namespace ConsoleBundle\Entity\Basic;
 
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * MainBasicData
+ * Finviz
  *
- * @ORM\Table(name="feed_main_basic_data")
- * @ORM\Entity(repositoryClass="AppBundle\Repository\Feed\MainBasicDataRepository")
+ * @ORM\Table(name="feed_basic_finviz")
+ * @ORM\Entity(repositoryClass="ConsoleBundle\Repository\Basic\FinvizRepository")
+ *
  */
-class MainBasicData
+class Finviz
 {
     /**
      * @var string
      *
-     * @ORM\Column(name="ticker", type="string", length=10)
+     * @ORM\Column(name="ticker", type="string", length=10, nullable=true)
      * @ORM\Id
      *
      */
     private $ticker;
 
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="name", type="string", length=255, nullable=true)
-     */
-    private $name;
-
-    /**
-     * @var int
-     *
-     * @ORM\Column(name="e", type="integer", nullable=true)
-     */
-    private $e;
 
     /**
      * @var string
@@ -55,20 +43,6 @@ class MainBasicData
      * @ORM\Column(name="coun", type="string", length=255, nullable=true)
      */
     private $coun;
-
-    /**
-     * @var int
-     *
-     * @ORM\Column(name="i", type="integer", nullable=true)
-     */
-    private $i;
-
-    /**
-     * @var \DateTime
-     *
-     * @ORM\Column(name="ipo", type="date", nullable=true)
-     */
-    private $ipo;
 
 
     /**
@@ -235,7 +209,12 @@ class MainBasicData
     private $avvo;
 
 
-
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="i", type="integer", nullable=true)
+     */
+    private $i;
 
     /**
      * Get ticker
@@ -252,7 +231,7 @@ class MainBasicData
      *
      * @param string $ticker
      *
-     * @return MainBasicData
+     * @return Finviz
      */
     public function setTicker($ticker)
     {
@@ -263,59 +242,11 @@ class MainBasicData
 
 
     /**
-     * Set name
-     *
-     * @param string $name
-     *
-     * @return MainBasicData
-     */
-    public function setName($name)
-    {
-        $this->name = $name;
-
-        return $this;
-    }
-
-    /**
-     * Get name
-     *
-     * @return string
-     */
-    public function getName()
-    {
-        return $this->name;
-    }
-
-    /**
-     * Set e
-     *
-     * @param integer $e
-     *
-     * @return MainBasicData
-     */
-    public function setE($e)
-    {
-        $this->e = $e;
-
-        return $this;
-    }
-
-    /**
-     * Get e
-     *
-     * @return int
-     */
-    public function getE()
-    {
-        return $this->e;
-    }
-
-    /**
      * Set sec
      *
      * @param string $sec
      *
-     * @return MainBasicData
+     * @return Finviz
      */
     public function setSec($sec)
     {
@@ -339,7 +270,7 @@ class MainBasicData
      *
      * @param string $ind
      *
-     * @return MainBasicData
+     * @return Finviz
      */
     public function setInd($ind)
     {
@@ -363,7 +294,7 @@ class MainBasicData
      *
      * @param string $coun
      *
-     * @return MainBasicData
+     * @return Finviz
      */
     public function setCoun($coun)
     {
@@ -387,7 +318,7 @@ class MainBasicData
      *
      * @param integer $i
      *
-     * @return MainBasicData
+     * @return Finviz
      */
     public function setI($i)
     {
@@ -407,36 +338,11 @@ class MainBasicData
     }
 
     /**
-     * Set ipo
-     *
-     * @param \DateTime $ipo
-     *
-     * @return MainBasicData
-     */
-    public function setIpo($ipo)
-    {
-        $this->ipo = $ipo;
-
-        return $this;
-    }
-
-    /**
-     * Get ipo
-     *
-     * @return \DateTime
-     */
-    public function getIpo()
-    {
-        return $this->ipo;
-    }
-
-
-    /**
      * Set mc
      *
      * @param float $mc
      *
-     * @return MainBasicData
+     * @return Finviz
      */
     public function setMc($mc)
     {
@@ -460,7 +366,7 @@ class MainBasicData
      *
      * @param float $pe
      *
-     * @return MainBasicData
+     * @return Finviz
      */
     public function setPe($pe)
     {
@@ -484,7 +390,7 @@ class MainBasicData
      *
      * @param float $fpe
      *
-     * @return MainBasicData
+     * @return Finviz
      */
     public function setFpe($fpe)
     {
@@ -508,7 +414,7 @@ class MainBasicData
      *
      * @param float $epsf
      *
-     * @return MainBasicData
+     * @return Finviz
      */
     public function setEpsf($epsf)
     {
@@ -532,7 +438,7 @@ class MainBasicData
      *
      * @param float $aut
      *
-     * @return MainBasicData
+     * @return Finviz
      */
     public function setAut($aut)
     {
@@ -556,7 +462,7 @@ class MainBasicData
      *
      * @param float $sfloat
      *
-     * @return MainBasicData
+     * @return Finviz
      */
     public function setSfloat($sfloat)
     {
@@ -580,7 +486,7 @@ class MainBasicData
      *
      * @param float $insider
      *
-     * @return MainBasicData
+     * @return Finviz
      */
     public function setInsider($insider)
     {
@@ -604,7 +510,7 @@ class MainBasicData
      *
      * @param float $fshort
      *
-     * @return MainBasicData
+     * @return Finviz
      */
     public function setFshort($fshort)
     {
@@ -628,7 +534,7 @@ class MainBasicData
      *
      * @param float $shratio
      *
-     * @return MainBasicData
+     * @return Finviz
      */
     public function setShratio($shratio)
     {
@@ -652,7 +558,7 @@ class MainBasicData
      *
      * @param float $pw
      *
-     * @return MainBasicData
+     * @return Finviz
      */
     public function setPw($pw)
     {
@@ -676,7 +582,7 @@ class MainBasicData
      *
      * @param float $pm
      *
-     * @return MainBasicData
+     * @return Finviz
      */
     public function setPm($pm)
     {
@@ -700,7 +606,7 @@ class MainBasicData
      *
      * @param float $pq
      *
-     * @return MainBasicData
+     * @return Finviz
      */
     public function setPq($pq)
     {
@@ -724,7 +630,7 @@ class MainBasicData
      *
      * @param float $ph
      *
-     * @return MainBasicData
+     * @return Finviz
      */
     public function setPh($ph)
     {
@@ -748,7 +654,7 @@ class MainBasicData
      *
      * @param float $py
      *
-     * @return MainBasicData
+     * @return Finviz
      */
     public function setPy($py)
     {
@@ -772,7 +678,7 @@ class MainBasicData
      *
      * @param float $atr
      *
-     * @return MainBasicData
+     * @return Finviz
      */
     public function setAtr($atr)
     {
@@ -796,7 +702,7 @@ class MainBasicData
      *
      * @param float $sma20pc
      *
-     * @return MainBasicData
+     * @return Finviz
      */
     public function setSma20pc($sma20pc)
     {
@@ -820,7 +726,7 @@ class MainBasicData
      *
      * @param float $sma50pc
      *
-     * @return MainBasicData
+     * @return Finviz
      */
     public function setSma50pc($sma50pc)
     {
@@ -844,7 +750,7 @@ class MainBasicData
      *
      * @param float $sma200pc
      *
-     * @return MainBasicData
+     * @return Finviz
      */
     public function setSma200pc($sma200pc)
     {
@@ -869,7 +775,7 @@ class MainBasicData
      *
      * @param float $hi52pc
      *
-     * @return MainBasicData
+     * @return Finviz
      */
     public function setHi52pc($hi52pc)
     {
@@ -893,7 +799,7 @@ class MainBasicData
      *
      * @param float $lo52pc
      *
-     * @return MainBasicData
+     * @return Finviz
      */
     public function setLo52pc($lo52pc)
     {
@@ -918,7 +824,7 @@ class MainBasicData
      *
      * @param float $hi50pc
      *
-     * @return MainBasicData
+     * @return Finviz
      */
     public function setHi50pc($hi50pc)
     {
@@ -942,7 +848,7 @@ class MainBasicData
      *
      * @param float $lo50pc
      *
-     * @return MainBasicData
+     * @return Finviz
      */
     public function setLo50pc($lo50pc)
     {
@@ -966,7 +872,7 @@ class MainBasicData
      *
      * @param float $avvo
      *
-     * @return MainBasicData
+     * @return Finviz
      */
     public function setAvvo($avvo)
     {

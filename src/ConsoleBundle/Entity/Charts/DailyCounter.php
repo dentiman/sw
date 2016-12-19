@@ -1,14 +1,14 @@
 <?php
 
-namespace ConsoleBundle\Entity;
+namespace ConsoleBundle\Entity\Charts;
 
 use Doctrine\ORM\Mapping as ORM;
 
 /**
  * DailyCounter
  *
- * @ORM\Table(name="feed_history_daily_counter")
- * @ORM\Entity(repositoryClass="ConsoleBundle\Repository\DailyCounterRepository")
+ * @ORM\Table(name="feed_charts_daily_counter")
+ * @ORM\Entity(repositoryClass="ConsoleBundle\Repository\Charts\DailyCounterRepository")
  * @ORM\HasLifecycleCallbacks
  */
 class DailyCounter
@@ -17,7 +17,7 @@ class DailyCounter
     /**
      * @var string
      *
-     * @ORM\Column(name="ticker", type="string", length=5)
+     * @ORM\Column(name="ticker", type="string", length=10)
      * @ORM\Id
      *
      */
@@ -47,14 +47,14 @@ class DailyCounter
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="updated_at", type="datetime")
+     * @ORM\Column(name="updated_at", type="datetime", nullable=true)
      */
     private $updatedAt;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="source", type="string", length=255)
+     * @ORM\Column(name="source", type="string", length=255, nullable=true)
      */
     private $source;
 

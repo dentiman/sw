@@ -5,17 +5,17 @@ namespace ConsoleBundle\Entity\Tickers;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * AllListed
+ * Tickers
  *
- * @ORM\Table(name="feed_tickers_all_listed")
- * @ORM\Entity(repositoryClass="ConsoleBundle\Repository\Tickers\AllListedRepository")
+ * @ORM\Table(name="feed_basic_tickers")
+ * @ORM\Entity(repositoryClass="ConsoleBundle\Repository\Basic\TickersRepository")
  */
-class AllListed
+class Tickers
 {
     /**
      * @var string
      *
-     * @ORM\Column(name="ticker", type="string", length=255)
+     * @ORM\Column(name="ticker", type="string", length=10, nullable=true)
      * @ORM\Id
      *
      */
@@ -24,21 +24,21 @@ class AllListed
     /**
      * @var int
      *
-     * @ORM\Column(name="exchange", type="integer")
+     * @ORM\Column(name="exchange", type="integer", nullable=true)
      */
     private $exchange;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="name", type="string", length=255)
+     * @ORM\Column(name="name", type="string", length=255, nullable=true)
      */
     private $name;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="etf", type="string", length=255)
+     * @ORM\Column(name="etf", type="string", length=255, nullable=true)
      */
     private $etf;
 
@@ -58,7 +58,7 @@ class AllListed
      *
      * @param string $ticker
      *
-     * @return AllListed
+     * @return Tickers
      */
     public function setTicker($ticker)
     {
@@ -72,7 +72,7 @@ class AllListed
      *
      * @param integer $exchange
      *
-     * @return AllListed
+     * @return Tickers
      */
     public function setExchange($exchange)
     {
@@ -96,7 +96,7 @@ class AllListed
      *
      * @param string $name
      *
-     * @return AllListed
+     * @return Tickers
      */
     public function setName($name)
     {
@@ -120,7 +120,7 @@ class AllListed
      *
      * @param string $etf
      *
-     * @return AllListed
+     * @return Tickers
      */
     public function setEtf($etf)
     {

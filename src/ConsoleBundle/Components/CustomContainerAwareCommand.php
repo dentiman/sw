@@ -55,6 +55,16 @@ class CustomContainerAwareCommand extends ContainerAwareCommand
 
         $options = array_merge($options_default, $options);
 
+
+        //add NULL data for success import
+        $options['data'] = str_replace(",,",",NULL,",$options['data']);
+        $options['data'] = str_replace(",,",",NULL,",$options['data']);
+        $options['data'] = str_replace(
+            ",".$options['lines_terminated'],
+            ",NULL".$options['lines_terminated'],
+            $options['data']);
+
+
         $filedir = "/var/lib/mysql/sw/";
         $filename = "loadData.csv";
         $file = fopen($filedir . $filename, "w");

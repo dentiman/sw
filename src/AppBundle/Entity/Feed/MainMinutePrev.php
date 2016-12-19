@@ -15,7 +15,7 @@ class MainMinutePrev
     /**
      * @var string
      *
-     * @ORM\Column(name="ticker", type="string", length=5)
+     * @ORM\Column(name="ticker", type="string", length=10)
      * @ORM\Id
      *
      */
@@ -24,84 +24,84 @@ class MainMinutePrev
     /**
      * @var float
      *
-     * @ORM\Column(name="price1m", type="float")
+     * @ORM\Column(name="price1m", type="float", nullable=true)
      */
     private $price1m;
 
     /**
      * @var int
      *
-     * @ORM\Column(name="vol1m", type="integer")
+     * @ORM\Column(name="vol1m", type="integer", nullable=true)
      */
     private $vol1m;
 
     /**
      * @var int
      *
-     * @ORM\Column(name="tcount1m", type="integer")
+     * @ORM\Column(name="tcount1m", type="integer", nullable=true)
      */
     private $tcount1m;
 
     /**
      * @var float
      *
-     * @ORM\Column(name="price5m", type="float")
+     * @ORM\Column(name="price5m", type="float", nullable=true)
      */
     private $price5m;
 
     /**
      * @var int
      *
-     * @ORM\Column(name="vol5m", type="integer")
+     * @ORM\Column(name="vol5m", type="integer", nullable=true)
      */
     private $vol5m;
 
     /**
      * @var int
      *
-     * @ORM\Column(name="tcount5m", type="integer")
+     * @ORM\Column(name="tcount5m", type="integer", nullable=true)
      */
     private $tcount5m;
 
     /**
      * @var float
      *
-     * @ORM\Column(name="price10m", type="float")
+     * @ORM\Column(name="price10m", type="float", nullable=true)
      */
     private $price10m;
 
     /**
      * @var int
      *
-     * @ORM\Column(name="vol10m", type="integer")
+     * @ORM\Column(name="vol10m", type="integer", nullable=true)
      */
     private $vol10m;
 
     /**
      * @var int
      *
-     * @ORM\Column(name="tcount10m", type="integer")
+     * @ORM\Column(name="tcount10m", type="integer", nullable=true)
      */
     private $tcount10m;
 
     /**
      * @var float
      *
-     * @ORM\Column(name="price15m", type="float")
+     * @ORM\Column(name="price15m", type="float", nullable=true)
      */
     private $price15m;
 
     /**
      * @var int
      *
-     * @ORM\Column(name="vol15m", type="integer")
+     * @ORM\Column(name="vol15m", type="integer", nullable=true)
      */
     private $vol15m;
 
     /**
      * @var int
      *
-     * @ORM\Column(name="tcount15m", type="integer")
+     * @ORM\Column(name="tcount15m", type="integer", nullable=true)
      */
     private $tcount15m;
 

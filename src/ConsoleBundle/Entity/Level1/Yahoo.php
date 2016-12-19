@@ -1,16 +1,16 @@
 <?php
 
-namespace AppBundle\Entity\Feed;
+namespace ConsoleBundle\Entity\Level1;
 
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * MainLevel1
+ * Yahoo
  *
- * @ORM\Table(name="feed_main_level1")
- * @ORM\Entity(repositoryClass="AppBundle\Repository\Feed\MainLevel1Repository")
+ * @ORM\Table(name="feed_level1_yahoo")
+ * @ORM\Entity(repositoryClass="ConsoleBundle\Repository\Level1\YahooRepository")
  */
-class MainLevel1
+class Yahoo
 {
     /**
      * @var string
@@ -64,9 +64,9 @@ class MainLevel1
     private $ch;
 
     /**
-     * @var \DateTime
+     * @var string
      *
-     * @ORM\Column(name="ttime", type="time", nullable=true)
+     * @ORM\Column(name="ttime", type="string", length=20, nullable=true)
      */
     private $ttime;
 
@@ -112,10 +112,7 @@ class MainLevel1
      */
     private $vol;
 
-
     /**
-     * Get ticker
-     *
      * @return string
      */
     public function getTicker()
@@ -124,36 +121,14 @@ class MainLevel1
     }
 
     /**
-     * Set ticker
-     *
      * @param string $ticker
-     *
-     * @return MainLevel1
      */
     public function setTicker($ticker)
     {
         $this->ticker = $ticker;
-
-        return $this;
     }
 
     /**
-     * Set price
-     *
-     * @param float $price
-     *
-     * @return MainLevel1
-     */
-    public function setPrice($price)
-    {
-        $this->price = $price;
-
-        return $this;
-    }
-
-    /**
-     * Get price
-     *
      * @return float
      */
     public function getPrice()
@@ -162,22 +137,14 @@ class MainLevel1
     }
 
     /**
-     * Set op
-     *
-     * @param float $op
-     *
-     * @return MainLevel1
+     * @param float $price
      */
-    public function setOp($op)
+    public function setPrice($price)
     {
-        $this->op = $op;
-
-        return $this;
+        $this->price = $price;
     }
 
     /**
-     * Get op
-     *
      * @return float
      */
     public function getOp()
@@ -186,22 +153,14 @@ class MainLevel1
     }
 
     /**
-     * Set hi
-     *
-     * @param float $hi
-     *
-     * @return MainLevel1
+     * @param float $op
      */
-    public function setHi($hi)
+    public function setOp($op)
     {
-        $this->hi = $hi;
-
-        return $this;
+        $this->op = $op;
     }
 
     /**
-     * Get hi
-     *
      * @return float
      */
     public function getHi()
@@ -210,22 +169,14 @@ class MainLevel1
     }
 
     /**
-     * Set lo
-     *
-     * @param float $lo
-     *
-     * @return MainLevel1
+     * @param float $hi
      */
-    public function setLo($lo)
+    public function setHi($hi)
     {
-        $this->lo = $lo;
-
-        return $this;
+        $this->hi = $hi;
     }
 
     /**
-     * Get lo
-     *
      * @return float
      */
     public function getLo()
@@ -234,22 +185,14 @@ class MainLevel1
     }
 
     /**
-     * Set chp
-     *
-     * @param float $chp
-     *
-     * @return MainLevel1
+     * @param float $lo
      */
-    public function setChp($chp)
+    public function setLo($lo)
     {
-        $this->chp = $chp;
-
-        return $this;
+        $this->lo = $lo;
     }
 
     /**
-     * Get chp
-     *
      * @return float
      */
     public function getChp()
@@ -258,22 +201,14 @@ class MainLevel1
     }
 
     /**
-     * Set ch
-     *
-     * @param float $ch
-     *
-     * @return MainLevel1
+     * @param float $chp
      */
-    public function setCh($ch)
+    public function setChp($chp)
     {
-        $this->ch = $ch;
-
-        return $this;
+        $this->chp = $chp;
     }
 
     /**
-     * Get ch
-     *
      * @return float
      */
     public function getCh()
@@ -282,23 +217,15 @@ class MainLevel1
     }
 
     /**
-     * Set ttime
-     *
-     * @param \DateTime $ttime
-     *
-     * @return MainLevel1
+     * @param float $ch
      */
-    public function setTtime($ttime)
+    public function setCh($ch)
     {
-        $this->ttime = $ttime;
-
-        return $this;
+        $this->ch = $ch;
     }
 
     /**
-     * Get ttime
-     *
-     * @return \DateTime
+     * @return string
      */
     public function getTtime()
     {
@@ -306,22 +233,14 @@ class MainLevel1
     }
 
     /**
-     * Set bid
-     *
-     * @param float $bid
-     *
-     * @return MainLevel1
+     * @param string $ttime
      */
-    public function setBid($bid)
+    public function setTtime($ttime)
     {
-        $this->bid = $bid;
-
-        return $this;
+        $this->ttime = $ttime;
     }
 
     /**
-     * Get bid
-     *
      * @return float
      */
     public function getBid()
@@ -330,22 +249,14 @@ class MainLevel1
     }
 
     /**
-     * Set ask
-     *
-     * @param float $ask
-     *
-     * @return MainLevel1
+     * @param float $bid
      */
-    public function setAsk($ask)
+    public function setBid($bid)
     {
-        $this->ask = $ask;
-
-        return $this;
+        $this->bid = $bid;
     }
 
     /**
-     * Get ask
-     *
      * @return float
      */
     public function getAsk()
@@ -354,22 +265,14 @@ class MainLevel1
     }
 
     /**
-     * Set bidsize
-     *
-     * @param float $bidsize
-     *
-     * @return MainLevel1
+     * @param float $ask
      */
-    public function setBidsize($bidsize)
+    public function setAsk($ask)
     {
-        $this->bidsize = $bidsize;
-
-        return $this;
+        $this->ask = $ask;
     }
 
     /**
-     * Get bidsize
-     *
      * @return float
      */
     public function getBidsize()
@@ -378,22 +281,14 @@ class MainLevel1
     }
 
     /**
-     * Set asksize
-     *
-     * @param float $asksize
-     *
-     * @return MainLevel1
+     * @param float $bidsize
      */
-    public function setAsksize($asksize)
+    public function setBidsize($bidsize)
     {
-        $this->asksize = $asksize;
-
-        return $this;
+        $this->bidsize = $bidsize;
     }
 
     /**
-     * Get asksize
-     *
      * @return float
      */
     public function getAsksize()
@@ -402,22 +297,14 @@ class MainLevel1
     }
 
     /**
-     * Set tcount
-     *
-     * @param integer $tcount
-     *
-     * @return MainLevel1
+     * @param float $asksize
      */
-    public function setTcount($tcount)
+    public function setAsksize($asksize)
     {
-        $this->tcount = $tcount;
-
-        return $this;
+        $this->asksize = $asksize;
     }
 
     /**
-     * Get tcount
-     *
      * @return int
      */
     public function getTcount()
@@ -426,27 +313,27 @@ class MainLevel1
     }
 
     /**
-     * Set vol
-     *
-     * @param integer $vol
-     *
-     * @return MainLevel1
+     * @param int $tcount
      */
-    public function setVol($vol)
+    public function setTcount($tcount)
     {
-        $this->vol = $vol;
-
-        return $this;
+        $this->tcount = $tcount;
     }
 
     /**
-     * Get vol
-     *
      * @return int
      */
     public function getVol()
     {
         return $this->vol;
+    }
+
+    /**
+     * @param int $vol
+     */
+    public function setVol($vol)
+    {
+        $this->vol = $vol;
     }
 }
 

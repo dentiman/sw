@@ -1,39 +1,25 @@
 <?php
 
-namespace AppBundle\Entity\Feed;
+namespace ConsoleBundle\Entity\Premarket;
 
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * MainPremarket
+ * Google
  *
- * @ORM\Table(name="feed_main_premarket")
- * @ORM\Entity(repositoryClass="AppBundle\Repository\Feed\MainPremarketRepository")
+ * @ORM\Table(name="feed_premarket_google")
+ * @ORM\Entity(repositoryClass="ConsoleBundle\Repository\Premarket\GoogleRepository")
  */
-class MainPremarket
+class Google
 {
     /**
      * @var string
      *
-     * @ORM\Column(name="ticker", type="string", length=10, nullable=true)
+     * @ORM\Column(name="ticker", type="string", length=10)
      * @ORM\Id
      *
      */
     private $ticker;
-
-    /**
-     * @var int
-     *
-     * @ORM\Column(name="pvol", type="integer", nullable=true)
-     */
-    private $pvol;
-
-    /**
-     * @var int
-     *
-     * @ORM\Column(name="ptcount", type="integer", nullable=true)
-     */
-    private $ptcount;
 
     /**
      * @var float
@@ -58,8 +44,6 @@ class MainPremarket
 
 
     /**
-     * Get ticker
-     *
      * @return string
      */
     public function getTicker()
@@ -68,65 +52,11 @@ class MainPremarket
     }
 
     /**
-     * Set ticker
-     *
      * @param string $ticker
-     *
-     * @return MainPremarket
      */
     public function setTicker($ticker)
     {
         $this->ticker = $ticker;
-
-        return $this;
-    }
-
-    /**
-     * Set pvol
-     *
-     * @param integer $pvol
-     *
-     * @return MainPremarket
-     */
-    public function setPvol($pvol)
-    {
-        $this->pvol = $pvol;
-
-        return $this;
-    }
-
-    /**
-     * Get pvol
-     *
-     * @return int
-     */
-    public function getPvol()
-    {
-        return $this->pvol;
-    }
-
-    /**
-     * Set ptcount
-     *
-     * @param integer $ptcount
-     *
-     * @return MainPremarket
-     */
-    public function setPtcount($ptcount)
-    {
-        $this->ptcount = $ptcount;
-
-        return $this;
-    }
-
-    /**
-     * Get ptcount
-     *
-     * @return int
-     */
-    public function getPtcount()
-    {
-        return $this->ptcount;
     }
 
     /**
@@ -134,7 +64,7 @@ class MainPremarket
      *
      * @param float $pprice
      *
-     * @return MainPremarket
+     * @return Google
      */
     public function setPprice($pprice)
     {
@@ -158,7 +88,7 @@ class MainPremarket
      *
      * @param float $pchp
      *
-     * @return MainPremarket
+     * @return Google
      */
     public function setPchp($pchp)
     {
@@ -182,7 +112,7 @@ class MainPremarket
      *
      * @param float $pch
      *
-     * @return MainPremarket
+     * @return Google
      */
     public function setPch($pch)
     {
