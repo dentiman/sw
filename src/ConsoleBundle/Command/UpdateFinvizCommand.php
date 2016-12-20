@@ -9,7 +9,7 @@
 namespace ConsoleBundle\Command;
 
 use ConsoleBundle\Components\CustomContainerAwareCommand;
-use ChartsApp\RemoteServerConnector;
+use DataFeedApp\RemoteServerConnector;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 

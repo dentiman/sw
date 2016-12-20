@@ -1,0 +1,1329 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataSource name="MySQL - sw@localhost">
+  <database-model serializer="dbm" rdbms="MYSQL" format-version="2.6">
+    <schema id="1" name="sw">
+      <visible>1</visible>
+    </schema>
+    <schema id="2" name="information_schema"/>
+    <schema id="3" name="mysql"/>
+    <schema id="4" name="performance_schema"/>
+    <schema id="5" name="phpmyadmin"/>
+    <schema id="6" name="sonata"/>
+    <schema id="7" name="sw2"/>
+    <schema id="8" name="sys"/>
+    <schema id="9" name="b"/>
+    <table id="10" parent="1" name="feed_main_basic_data"/>
+    <table id="11" parent="1" name="feed_main_company_info"/>
+    <table id="12" parent="1" name="feed_main_earnings"/>
+    <table id="13" parent="1" name="feed_main_finviz_data"/>
+    <table id="14" parent="1" name="feed_main_level1"/>
+    <table id="15" parent="1" name="feed_main_level1_delay"/>
+    <table id="16" parent="1" name="feed_main_minute_prev"/>
+    <table id="17" parent="1" name="feed_main_premarket"/>
+    <table id="18" parent="1" name="feed_main_week"/>
+    <table id="19" parent="1" name="filters"/>
+    <table id="20" parent="1" name="fos_user"/>
+    <table id="21" parent="1" name="presets_charts"/>
+    <table id="22" parent="1" name="presets_columns"/>
+    <table id="23" parent="1" name="presets_user_charts"/>
+    <table id="24" parent="1" name="presets_user_columns"/>
+    <table id="25" parent="1" name="presets_user_filters"/>
+    <table id="26" parent="1" name="presets_users_filters"/>
+    <table id="27" parent="1" name="presets_filters"/>
+    <table id="28" parent="1" name="feed_tickers_nasdaq_listed"/>
+    <table id="29" parent="1" name="feed_tickers_other_listed"/>
+    <table id="30" parent="1" name="feed_basic_finviz"/>
+    <table id="31" parent="1" name="feed_basic_ipo_date"/>
+    <table id="32" parent="1" name="feed_basic_tickers"/>
+    <table id="33" parent="1" name="feed_level1_finviz"/>
+    <table id="34" parent="1" name="feed_level1_google"/>
+    <table id="35" parent="1" name="feed_level1_sources"/>
+    <table id="36" parent="1" name="feed_level1_yahoo"/>
+    <table id="37" parent="1" name="feed_premarket_google"/>
+    <table id="38" parent="1" name="feed_premarket_iqfeed"/>
+    <table id="39" parent="1" name="feed_premarket_yahoo"/>
+    <table id="40" parent="1" name="feed_charts_daily_counter"/>
+    <table id="41" parent="1" name="feed_charts_daily_history"/>
+    <column id="42" parent="10" name="ticker">
+      <mandatory>1</mandatory>
+      <data-type>varchar(10)|0</data-type>
+    </column>
+    <column id="43" parent="10" name="name">
+      <data-type>varchar(255)|0</data-type>
+    </column>
+    <column id="44" parent="10" name="e">
+      <data-type>int(11)|0</data-type>
+    </column>
+    <column id="45" parent="10" name="sec">
+      <data-type>varchar(255)|0</data-type>
+    </column>
+    <column id="46" parent="10" name="ind">
+      <data-type>varchar(255)|0</data-type>
+    </column>
+    <column id="47" parent="10" name="coun">
+      <data-type>varchar(255)|0</data-type>
+    </column>
+    <column id="48" parent="10" name="i">
+      <data-type>int(11)|0</data-type>
+    </column>
+    <column id="49" parent="10" name="ipo">
+      <data-type>date|0</data-type>
+    </column>
+    <column id="50" parent="10" name="mc">
+      <data-type>double|0</data-type>
+    </column>
+    <column id="51" parent="10" name="pe">
+      <data-type>double|0</data-type>
+    </column>
+    <column id="52" parent="10" name="fpe">
+      <data-type>double|0</data-type>
+    </column>
+    <column id="53" parent="10" name="epsf">
+      <data-type>double|0</data-type>
+    </column>
+    <column id="54" parent="10" name="aut">
+      <data-type>double|0</data-type>
+    </column>
+    <column id="55" parent="10" name="sfloat">
+      <data-type>double|0</data-type>
+    </column>
+    <column id="56" parent="10" name="insider">
+      <data-type>double|0</data-type>
+    </column>
+    <column id="57" parent="10" name="fshort">
+      <data-type>double|0</data-type>
+    </column>
+    <column id="58" parent="10" name="shratio">
+      <data-type>double|0</data-type>
+    </column>
+    <column id="59" parent="10" name="pw">
+      <data-type>double|0</data-type>
+    </column>
+    <column id="60" parent="10" name="pm">
+      <data-type>double|0</data-type>
+    </column>
+    <column id="61" parent="10" name="pq">
+      <data-type>double|0</data-type>
+    </column>
+    <column id="62" parent="10" name="ph">
+      <data-type>double|0</data-type>
+    </column>
+    <column id="63" parent="10" name="py">
+      <data-type>double|0</data-type>
+    </column>
+    <column id="64" parent="10" name="atr">
+      <data-type>double|0</data-type>
+    </column>
+    <column id="65" parent="10" name="sma20pc">
+      <data-type>double|0</data-type>
+    </column>
+    <column id="66" parent="10" name="sma50pc">
+      <data-type>double|0</data-type>
+    </column>
+    <column id="67" parent="10" name="sma200pc">
+      <data-type>double|0</data-type>
+    </column>
+    <column id="68" parent="10" name="hi50pc">
+      <data-type>double|0</data-type>
+    </column>
+    <column id="69" parent="10" name="lo50pc">
+      <data-type>double|0</data-type>
+    </column>
+    <column id="70" parent="10" name="hi52pc">
+      <data-type>double|0</data-type>
+    </column>
+    <column id="71" parent="10" name="lo52pc">
+      <data-type>double|0</data-type>
+    </column>
+    <column id="72" parent="10" name="avvo">
+      <data-type>double|0</data-type>
+    </column>
+    <key id="73" parent="10" name="PRIMARY">
+      <columns>ticker</columns>
+      <primary>1</primary>
+    </key>
+    <column id="74" parent="11" name="ticker">
+      <mandatory>1</mandatory>
+      <data-type>varchar(10)|0</data-type>
+    </column>
+    <column id="75" parent="11" name="name">
+      <data-type>varchar(255)|0</data-type>
+    </column>
+    <column id="76" parent="11" name="e">
+      <data-type>int(11)|0</data-type>
+    </column>
+    <column id="77" parent="11" name="sec">
+      <data-type>varchar(255)|0</data-type>
+    </column>
+    <column id="78" parent="11" name="ind">
+      <data-type>varchar(255)|0</data-type>
+    </column>
+    <column id="79" parent="11" name="coun">
+      <data-type>varchar(255)|0</data-type>
+    </column>
+    <column id="80" parent="11" name="i">
+      <data-type>int(11)|0</data-type>
+    </column>
+    <column id="81" parent="11" name="ipo">
+      <data-type>date|0</data-type>
+    </column>
+    <key id="82" parent="11" name="PRIMARY">
+      <columns>ticker</columns>
+      <primary>1</primary>
+    </key>
+    <column id="83" parent="12" name="ticker">
+      <mandatory>1</mandatory>
+      <data-type>varchar(10)|0</data-type>
+    </column>
+    <column id="84" parent="12" name="earn">
+      <data-type>date|0</data-type>
+    </column>
+    <column id="85" parent="12" name="earn_time">
+      <data-type>varchar(255)|0</data-type>
+    </column>
+    <column id="86" parent="12" name="eps">
+      <data-type>double|0</data-type>
+    </column>
+    <column id="87" parent="12" name="eps_est">
+      <data-type>double|0</data-type>
+    </column>
+    <column id="88" parent="12" name="eps_surprise">
+      <data-type>double|0</data-type>
+    </column>
+    <column id="89" parent="12" name="eps_surprise_percent">
+      <data-type>double|0</data-type>
+    </column>
+    <key id="90" parent="12" name="PRIMARY">
+      <columns>ticker</columns>
+      <primary>1</primary>
+    </key>
+    <column id="91" parent="13" name="ticker">
+      <mandatory>1</mandatory>
+      <data-type>varchar(10)|0</data-type>
+    </column>
+    <column id="92" parent="13" name="mc">
+      <data-type>double|0</data-type>
+    </column>
+    <column id="93" parent="13" name="pe">
+      <data-type>double|0</data-type>
+    </column>
+    <column id="94" parent="13" name="fpe">
+      <data-type>double|0</data-type>
+    </column>
+    <column id="95" parent="13" name="epsf">
+      <data-type>double|0</data-type>
+    </column>
+    <column id="96" parent="13" name="aut">
+      <data-type>double|0</data-type>
+    </column>
+    <column id="97" parent="13" name="sfloat">
+      <data-type>double|0</data-type>
+    </column>
+    <column id="98" parent="13" name="insider">
+      <data-type>double|0</data-type>
+    </column>
+    <column id="99" parent="13" name="fshort">
+      <data-type>double|0</data-type>
+    </column>
+    <column id="100" parent="13" name="shratio">
+      <data-type>double|0</data-type>
+    </column>
+    <column id="101" parent="13" name="pw">
+      <data-type>double|0</data-type>
+    </column>
+    <column id="102" parent="13" name="pm">
+      <data-type>double|0</data-type>
+    </column>
+    <column id="103" parent="13" name="pq">
+      <data-type>double|0</data-type>
+    </column>
+    <column id="104" parent="13" name="ph">
+      <data-type>double|0</data-type>
+    </column>
+    <column id="105" parent="13" name="py">
+      <data-type>double|0</data-type>
+    </column>
+    <column id="106" parent="13" name="atr">
+      <data-type>double|0</data-type>
+    </column>
+    <column id="107" parent="13" name="sma20pc">
+      <data-type>double|0</data-type>
+    </column>
+    <column id="108" parent="13" name="sma50pc">
+      <data-type>double|0</data-type>
+    </column>
+    <column id="109" parent="13" name="sma200pc">
+      <data-type>double|0</data-type>
+    </column>
+    <column id="110" parent="13" name="hi50pc">
+      <data-type>double|0</data-type>
+    </column>
+    <column id="111" parent="13" name="lo50pc">
+      <data-type>double|0</data-type>
+    </column>
+    <column id="112" parent="13" name="hi52pc">
+      <data-type>double|0</data-type>
+    </column>
+    <column id="113" parent="13" name="lo52pc">
+      <data-type>double|0</data-type>
+    </column>
+    <column id="114" parent="13" name="avvo">
+      <data-type>double|0</data-type>
+    </column>
+    <key id="115" parent="13" name="PRIMARY">
+      <columns>ticker</columns>
+      <primary>1</primary>
+    </key>
+    <column id="116" parent="14" name="ticker">
+      <mandatory>1</mandatory>
+      <data-type>varchar(10)|0</data-type>
+    </column>
+    <column id="117" parent="14" name="price">
+      <data-type>double|0</data-type>
+    </column>
+    <column id="118" parent="14" name="op">
+      <data-type>double|0</data-type>
+    </column>
+    <column id="119" parent="14" name="hi">
+      <data-type>double|0</data-type>
+    </column>
+    <column id="120" parent="14" name="lo">
+      <data-type>double|0</data-type>
+    </column>
+    <column id="121" parent="14" name="chp">
+      <data-type>double|0</data-type>
+    </column>
+    <column id="122" parent="14" name="ch">
+      <data-type>double|0</data-type>
+    </column>
+    <column id="123" parent="14" name="ttime">
+      <data-type>time|0</data-type>
+    </column>
+    <column id="124" parent="14" name="bid">
+      <data-type>double|0</data-type>
+    </column>
+    <column id="125" parent="14" name="ask">
+      <data-type>double|0</data-type>
+    </column>
+    <column id="126" parent="14" name="bidsize">
+      <data-type>double|0</data-type>
+    </column>
+    <column id="127" parent="14" name="asksize">
+      <data-type>double|0</data-type>
+    </column>
+    <column id="128" parent="14" name="tcount">
+      <data-type>int(11)|0</data-type>
+    </column>
+    <column id="129" parent="14" name="vol">
+      <data-type>int(11)|0</data-type>
+    </column>
+    <key id="130" parent="14" name="PRIMARY">
+      <columns>ticker</columns>
+      <primary>1</primary>
+    </key>
+    <column id="131" parent="15" name="ticker">
+      <mandatory>1</mandatory>
+      <data-type>varchar(10)|0</data-type>
+    </column>
+    <column id="132" parent="15" name="price">
+      <data-type>double|0</data-type>
+    </column>
+    <column id="133" parent="15" name="op">
+      <data-type>double|0</data-type>
+    </column>
+    <column id="134" parent="15" name="hi">
+      <data-type>double|0</data-type>
+    </column>
+    <column id="135" parent="15" name="lo">
+      <data-type>double|0</data-type>
+    </column>
+    <column id="136" parent="15" name="chp">
+      <data-type>double|0</data-type>
+    </column>
+    <column id="137" parent="15" name="ch">
+      <data-type>double|0</data-type>
+    </column>
+    <column id="138" parent="15" name="ttime">
+      <data-type>time|0</data-type>
+    </column>
+    <column id="139" parent="15" name="bid">
+      <data-type>double|0</data-type>
+    </column>
+    <column id="140" parent="15" name="ask">
+      <data-type>double|0</data-type>
+    </column>
+    <column id="141" parent="15" name="bidsize">
+      <data-type>double|0</data-type>
+    </column>
+    <column id="142" parent="15" name="asksize">
+      <data-type>double|0</data-type>
+    </column>
+    <column id="143" parent="15" name="tcount">
+      <data-type>int(11)|0</data-type>
+    </column>
+    <column id="144" parent="15" name="vol">
+      <data-type>int(11)|0</data-type>
+    </column>
+    <key id="145" parent="15" name="PRIMARY">
+      <columns>ticker</columns>
+      <primary>1</primary>
+    </key>
+    <column id="146" parent="16" name="ticker">
+      <mandatory>1</mandatory>
+      <data-type>varchar(10)|0</data-type>
+    </column>
+    <column id="147" parent="16" name="price1m">
+      <data-type>double|0</data-type>
+    </column>
+    <column id="148" parent="16" name="vol1m">
+      <data-type>int(11)|0</data-type>
+    </column>
+    <column id="149" parent="16" name="tcount1m">
+      <data-type>int(11)|0</data-type>
+    </column>
+    <column id="150" parent="16" name="price5m">
+      <data-type>double|0</data-type>
+    </column>
+    <column id="151" parent="16" name="vol5m">
+      <data-type>int(11)|0</data-type>
+    </column>
+    <column id="152" parent="16" name="tcount5m">
+      <data-type>int(11)|0</data-type>
+    </column>
+    <column id="153" parent="16" name="price10m">
+      <data-type>double|0</data-type>
+    </column>
+    <column id="154" parent="16" name="vol10m">
+      <data-type>int(11)|0</data-type>
+    </column>
+    <column id="155" parent="16" name="tcount10m">
+      <data-type>int(11)|0</data-type>
+    </column>
+    <column id="156" parent="16" name="price15m">
+      <data-type>double|0</data-type>
+    </column>
+    <column id="157" parent="16" name="vol15m">
+      <data-type>int(11)|0</data-type>
+    </column>
+    <column id="158" parent="16" name="tcount15m">
+      <data-type>int(11)|0</data-type>
+    </column>
+    <key id="159" parent="16" name="PRIMARY">
+      <columns>ticker</columns>
+      <primary>1</primary>
+    </key>
+    <column id="160" parent="17" name="ticker">
+      <mandatory>1</mandatory>
+      <data-type>varchar(10)|0</data-type>
+    </column>
+    <column id="161" parent="17" name="pvol">
+      <data-type>int(11)|0</data-type>
+    </column>
+    <column id="162" parent="17" name="ptcount">
+      <data-type>int(11)|0</data-type>
+    </column>
+    <column id="163" parent="17" name="pprice">
+      <data-type>double|0</data-type>
+    </column>
+    <column id="164" parent="17" name="pchp">
+      <data-type>double|0</data-type>
+    </column>
+    <column id="165" parent="17" name="pch">
+      <data-type>double|0</data-type>
+    </column>
+    <key id="166" parent="17" name="PRIMARY">
+      <columns>ticker</columns>
+      <primary>1</primary>
+    </key>
+    <column id="167" parent="18" name="ticker">
+      <mandatory>1</mandatory>
+      <data-type>varchar(5)|0</data-type>
+    </column>
+    <column id="168" parent="18" name="cl1">
+      <data-type>double|0</data-type>
+    </column>
+    <column id="169" parent="18" name="op1">
+      <data-type>double|0</data-type>
+    </column>
+    <column id="170" parent="18" name="hi1">
+      <data-type>double|0</data-type>
+    </column>
+    <column id="171" parent="18" name="lo1">
+      <data-type>double|0</data-type>
+    </column>
+    <column id="172" parent="18" name="vol1">
+      <data-type>int(11)|0</data-type>
+    </column>
+    <column id="173" parent="18" name="cl2">
+      <data-type>double|0</data-type>
+    </column>
+    <column id="174" parent="18" name="op2">
+      <data-type>double|0</data-type>
+    </column>
+    <column id="175" parent="18" name="hi2">
+      <data-type>double|0</data-type>
+    </column>
+    <column id="176" parent="18" name="lo2">
+      <data-type>double|0</data-type>
+    </column>
+    <column id="177" parent="18" name="vol2">
+      <data-type>int(11)|0</data-type>
+    </column>
+    <column id="178" parent="18" name="cl3">
+      <data-type>double|0</data-type>
+    </column>
+    <column id="179" parent="18" name="op3">
+      <data-type>double|0</data-type>
+    </column>
+    <column id="180" parent="18" name="hi3">
+      <data-type>double|0</data-type>
+    </column>
+    <column id="181" parent="18" name="lo3">
+      <data-type>double|0</data-type>
+    </column>
+    <column id="182" parent="18" name="vol3">
+      <data-type>int(11)|0</data-type>
+    </column>
+    <column id="183" parent="18" name="cl4">
+      <data-type>double|0</data-type>
+    </column>
+    <column id="184" parent="18" name="op4">
+      <data-type>double|0</data-type>
+    </column>
+    <column id="185" parent="18" name="hi4">
+      <data-type>double|0</data-type>
+    </column>
+    <column id="186" parent="18" name="lo4">
+      <data-type>double|0</data-type>
+    </column>
+    <column id="187" parent="18" name="vol4">
+      <data-type>int(11)|0</data-type>
+    </column>
+    <key id="188" parent="18" name="PRIMARY">
+      <columns>ticker</columns>
+      <primary>1</primary>
+    </key>
+    <column id="189" parent="19" name="id">
+      <mandatory>1</mandatory>
+      <data-type>varchar(255)|0</data-type>
+    </column>
+    <column id="190" parent="19" name="filter_group">
+      <mandatory>1</mandatory>
+      <data-type>int(11)|0</data-type>
+    </column>
+    <column id="191" parent="19" name="filter_type">
+      <mandatory>1</mandatory>
+      <data-type>int(11)|0</data-type>
+    </column>
+    <column id="192" parent="19" name="formula">
+      <mandatory>1</mandatory>
+      <data-type>varchar(255)|0</data-type>
+    </column>
+    <column id="193" parent="19" name="operator">
+      <mandatory>1</mandatory>
+      <data-type>int(11)|0</data-type>
+    </column>
+    <column id="194" parent="19" name="value_type">
+      <mandatory>1</mandatory>
+      <data-type>varchar(255)|0</data-type>
+    </column>
+    <column id="195" parent="19" name="order1">
+      <mandatory>1</mandatory>
+      <data-type>int(11)|0</data-type>
+    </column>
+    <column id="196" parent="19" name="choices">
+      <mandatory>1</mandatory>
+      <data-type>varchar(255)|0</data-type>
+    </column>
+    <column id="197" parent="19" name="entity">
+      <mandatory>1</mandatory>
+      <data-type>varchar(255)|0</data-type>
+    </column>
+    <index id="198" parent="19" name="UNIQ_7877678DBF396750">
+      <columns>id</columns>
+      <desc-columns></desc-columns>
+      <unique>1</unique>
+    </index>
+    <key id="199" parent="19" name="PRIMARY">
+      <columns>id</columns>
+      <primary>1</primary>
+    </key>
+    <key id="200" parent="19" name="UNIQ_7877678DBF396750">
+      <columns>id</columns>
+      <underlying-index>UNIQ_7877678DBF396750</underlying-index>
+    </key>
+    <column id="201" parent="20" name="id">
+      <mandatory>1</mandatory>
+      <data-type>int(11)|0</data-type>
+      <sequence-identity>1</sequence-identity>
+    </column>
+    <column id="202" parent="20" name="username">
+      <mandatory>1</mandatory>
+      <data-type>varchar(180)|0</data-type>
+    </column>
+    <column id="203" parent="20" name="username_canonical">
+      <mandatory>1</mandatory>
+      <data-type>varchar(180)|0</data-type>
+    </column>
+    <column id="204" parent="20" name="email">
+      <mandatory>1</mandatory>
+      <data-type>varchar(180)|0</data-type>
+    </column>
+    <column id="205" parent="20" name="email_canonical">
+      <mandatory>1</mandatory>
+      <data-type>varchar(180)|0</data-type>
+    </column>
+    <column id="206" parent="20" name="enabled">
+      <mandatory>1</mandatory>
+      <data-type>tinyint(1)|0</data-type>
+    </column>
+    <column id="207" parent="20" name="salt">
+      <mandatory>1</mandatory>
+      <data-type>varchar(255)|0</data-type>
+    </column>
+    <column id="208" parent="20" name="password">
+      <mandatory>1</mandatory>
+      <data-type>varchar(255)|0</data-type>
+    </column>
+    <column id="209" parent="20" name="last_login">
+      <data-type>datetime|0</data-type>
+    </column>
+    <column id="210" parent="20" name="locked">
+      <mandatory>1</mandatory>
+      <data-type>tinyint(1)|0</data-type>
+    </column>
+    <column id="211" parent="20" name="expires_at">
+      <data-type>datetime|0</data-type>
+    </column>
+    <column id="212" parent="20" name="confirmation_token">
+      <data-type>varchar(180)|0</data-type>
+    </column>
+    <column id="213" parent="20" name="password_requested_at">
+      <data-type>datetime|0</data-type>
+    </column>
+    <column id="214" parent="20" name="roles">
+      <comment>(DC2Type:array)</comment>
+      <mandatory>1</mandatory>
+      <data-type>longtext|0</data-type>
+    </column>
+    <column id="215" parent="20" name="credentials_expire_at">
+      <data-type>datetime|0</data-type>
+    </column>
+    <column id="216" parent="20" name="premium_expire_at">
+      <data-type>datetime|0</data-type>
+    </column>
+    <column id="217" parent="20" name="columns_id">
+      <mandatory>1</mandatory>
+      <data-type>int(11)|0</data-type>
+    </column>
+    <column id="218" parent="20" name="charts_id">
+      <mandatory>1</mandatory>
+      <data-type>int(11)|0</data-type>
+    </column>
+    <index id="219" parent="20" name="UNIQ_957A647992FC23A8">
+      <columns>username_canonical</columns>
+      <desc-columns></desc-columns>
+      <unique>1</unique>
+    </index>
+    <index id="220" parent="20" name="UNIQ_957A6479A0D96FBF">
+      <columns>email_canonical</columns>
+      <desc-columns></desc-columns>
+      <unique>1</unique>
+    </index>
+    <index id="221" parent="20" name="UNIQ_957A6479C05FB297">
+      <columns>confirmation_token</columns>
+      <desc-columns></desc-columns>
+      <unique>1</unique>
+    </index>
+    <key id="222" parent="20" name="PRIMARY">
+      <columns>id</columns>
+      <primary>1</primary>
+    </key>
+    <key id="223" parent="20" name="UNIQ_957A647992FC23A8">
+      <columns>username_canonical</columns>
+      <underlying-index>UNIQ_957A647992FC23A8</underlying-index>
+    </key>
+    <key id="224" parent="20" name="UNIQ_957A6479A0D96FBF">
+      <columns>email_canonical</columns>
+      <underlying-index>UNIQ_957A6479A0D96FBF</underlying-index>
+    </key>
+    <key id="225" parent="20" name="UNIQ_957A6479C05FB297">
+      <columns>confirmation_token</columns>
+      <underlying-index>UNIQ_957A6479C05FB297</underlying-index>
+    </key>
+    <column id="226" parent="21" name="id">
+      <mandatory>1</mandatory>
+      <data-type>int(11)|0</data-type>
+      <sequence-identity>1</sequence-identity>
+    </column>
+    <column id="227" parent="21" name="user_id">
+      <mandatory>1</mandatory>
+      <data-type>int(11)|0</data-type>
+    </column>
+    <column id="228" parent="21" name="name">
+      <mandatory>1</mandatory>
+      <data-type>varchar(255)|0</data-type>
+    </column>
+    <column id="229" parent="21" name="tf1">
+      <mandatory>1</mandatory>
+      <data-type>varchar(255)|0</data-type>
+    </column>
+    <column id="230" parent="21" name="tf2">
+      <mandatory>1</mandatory>
+      <data-type>varchar(255)|0</data-type>
+    </column>
+    <column id="231" parent="21" name="tf3">
+      <mandatory>1</mandatory>
+      <data-type>varchar(255)|0</data-type>
+    </column>
+    <column id="232" parent="21" name="chart1">
+      <comment>(DC2Type:array)</comment>
+      <mandatory>1</mandatory>
+      <data-type>longtext|0</data-type>
+    </column>
+    <column id="233" parent="21" name="chart2">
+      <comment>(DC2Type:array)</comment>
+      <mandatory>1</mandatory>
+      <data-type>longtext|0</data-type>
+    </column>
+    <column id="234" parent="21" name="chart3">
+      <comment>(DC2Type:array)</comment>
+      <mandatory>1</mandatory>
+      <data-type>longtext|0</data-type>
+    </column>
+    <column id="235" parent="21" name="created_at">
+      <mandatory>1</mandatory>
+      <data-type>datetime|0</data-type>
+    </column>
+    <column id="236" parent="21" name="display_columns">
+      <comment>(DC2Type:array)</comment>
+      <mandatory>1</mandatory>
+      <data-type>longtext|0</data-type>
+    </column>
+    <key id="237" parent="21" name="PRIMARY">
+      <columns>id</columns>
+      <primary>1</primary>
+    </key>
+    <column id="238" parent="22" name="id">
+      <mandatory>1</mandatory>
+      <data-type>int(11)|0</data-type>
+      <sequence-identity>1</sequence-identity>
+    </column>
+    <column id="239" parent="22" name="user_id">
+      <mandatory>1</mandatory>
+      <data-type>int(11)|0</data-type>
+    </column>
+    <column id="240" parent="22" name="name">
+      <mandatory>1</mandatory>
+      <data-type>varchar(255)|0</data-type>
+    </column>
+    <column id="241" parent="22" name="data">
+      <comment>(DC2Type:array)</comment>
+      <mandatory>1</mandatory>
+      <data-type>longtext|0</data-type>
+    </column>
+    <column id="242" parent="22" name="created_at">
+      <mandatory>1</mandatory>
+      <data-type>datetime|0</data-type>
+    </column>
+    <key id="243" parent="22" name="PRIMARY">
+      <columns>id</columns>
+      <primary>1</primary>
+    </key>
+    <column id="244" parent="23" name="id">
+      <mandatory>1</mandatory>
+      <data-type>int(11)|0</data-type>
+      <sequence-identity>1</sequence-identity>
+    </column>
+    <column id="245" parent="23" name="user">
+      <mandatory>1</mandatory>
+      <data-type>int(11)|0</data-type>
+    </column>
+    <column id="246" parent="23" name="name">
+      <mandatory>1</mandatory>
+      <data-type>varchar(255)|0</data-type>
+    </column>
+    <column id="247" parent="23" name="tf1">
+      <mandatory>1</mandatory>
+      <data-type>varchar(255)|0</data-type>
+    </column>
+    <column id="248" parent="23" name="tf2">
+      <mandatory>1</mandatory>
+      <data-type>varchar(255)|0</data-type>
+    </column>
+    <column id="249" parent="23" name="tf3">
+      <mandatory>1</mandatory>
+      <data-type>varchar(255)|0</data-type>
+    </column>
+    <column id="250" parent="23" name="chart1">
+      <comment>(DC2Type:array)</comment>
+      <mandatory>1</mandatory>
+      <data-type>longtext|0</data-type>
+    </column>
+    <column id="251" parent="23" name="chart2">
+      <comment>(DC2Type:array)</comment>
+      <mandatory>1</mandatory>
+      <data-type>longtext|0</data-type>
+    </column>
+    <column id="252" parent="23" name="chart3">
+      <comment>(DC2Type:array)</comment>
+      <mandatory>1</mandatory>
+      <data-type>longtext|0</data-type>
+    </column>
+    <key id="253" parent="23" name="PRIMARY">
+      <columns>id</columns>
+      <primary>1</primary>
+    </key>
+    <column id="254" parent="24" name="id">
+      <mandatory>1</mandatory>
+      <data-type>int(11)|0</data-type>
+      <sequence-identity>1</sequence-identity>
+    </column>
+    <column id="255" parent="24" name="user">
+      <mandatory>1</mandatory>
+      <data-type>int(11)|0</data-type>
+    </column>
+    <column id="256" parent="24" name="name">
+      <mandatory>1</mandatory>
+      <data-type>varchar(255)|0</data-type>
+    </column>
+    <column id="257" parent="24" name="data">
+      <comment>(DC2Type:array)</comment>
+      <mandatory>1</mandatory>
+      <data-type>longtext|0</data-type>
+    </column>
+    <key id="258" parent="24" name="PRIMARY">
+      <columns>id</columns>
+      <primary>1</primary>
+    </key>
+    <column id="259" parent="25" name="id">
+      <mandatory>1</mandatory>
+      <data-type>int(11)|0</data-type>
+      <sequence-identity>1</sequence-identity>
+    </column>
+    <column id="260" parent="25" name="user_id">
+      <mandatory>1</mandatory>
+      <data-type>int(11)|0</data-type>
+    </column>
+    <column id="261" parent="25" name="name">
+      <mandatory>1</mandatory>
+      <data-type>varchar(255)|0</data-type>
+    </column>
+    <column id="262" parent="25" name="data">
+      <comment>(DC2Type:array)</comment>
+      <mandatory>1</mandatory>
+      <data-type>longtext|0</data-type>
+    </column>
+    <column id="263" parent="25" name="forder">
+      <mandatory>1</mandatory>
+      <data-type>int(11)|0</data-type>
+    </column>
+    <column id="264" parent="25" name="color">
+      <mandatory>1</mandatory>
+      <data-type>varchar(255)|0</data-type>
+    </column>
+    <key id="265" parent="25" name="PRIMARY">
+      <columns>id</columns>
+      <primary>1</primary>
+    </key>
+    <column id="266" parent="26" name="id">
+      <mandatory>1</mandatory>
+      <data-type>int(11)|0</data-type>
+      <sequence-identity>1</sequence-identity>
+    </column>
+    <column id="267" parent="26" name="user">
+      <mandatory>1</mandatory>
+      <data-type>int(11)|0</data-type>
+    </column>
+    <column id="268" parent="26" name="name">
+      <mandatory>1</mandatory>
+      <data-type>varchar(255)|0</data-type>
+    </column>
+    <column id="269" parent="26" name="data">
+      <comment>(DC2Type:array)</comment>
+      <mandatory>1</mandatory>
+      <data-type>longtext|0</data-type>
+    </column>
+    <column id="270" parent="26" name="forder">
+      <mandatory>1</mandatory>
+      <data-type>int(11)|0</data-type>
+    </column>
+    <column id="271" parent="26" name="color">
+      <mandatory>1</mandatory>
+      <data-type>varchar(255)|0</data-type>
+    </column>
+    <key id="272" parent="26" name="PRIMARY">
+      <columns>id</columns>
+      <primary>1</primary>
+    </key>
+    <column id="273" parent="27" name="id">
+      <mandatory>1</mandatory>
+      <data-type>int(11)|0</data-type>
+      <sequence-identity>1</sequence-identity>
+    </column>
+    <column id="274" parent="27" name="user_id">
+      <mandatory>1</mandatory>
+      <data-type>int(11)|0</data-type>
+    </column>
+    <column id="275" parent="27" name="name">
+      <mandatory>1</mandatory>
+      <data-type>varchar(255)|0</data-type>
+    </column>
+    <column id="276" parent="27" name="filters_data">
+      <comment>(DC2Type:array)</comment>
+      <mandatory>1</mandatory>
+      <data-type>longtext|0</data-type>
+    </column>
+    <column id="277" parent="27" name="created_at">
+      <mandatory>1</mandatory>
+      <data-type>datetime|0</data-type>
+    </column>
+    <column id="278" parent="27" name="slug">
+      <mandatory>1</mandatory>
+      <data-type>varchar(255)|0</data-type>
+    </column>
+    <index id="279" parent="27" name="UNIQ_E4942DFB989D9B62">
+      <columns>slug</columns>
+      <desc-columns></desc-columns>
+      <unique>1</unique>
+    </index>
+    <key id="280" parent="27" name="PRIMARY">
+      <columns>id</columns>
+      <primary>1</primary>
+    </key>
+    <key id="281" parent="27" name="UNIQ_E4942DFB989D9B62">
+      <columns>slug</columns>
+      <underlying-index>UNIQ_E4942DFB989D9B62</underlying-index>
+    </key>
+    <column id="282" parent="28" name="ticker">
+      <mandatory>1</mandatory>
+      <data-type>varchar(255)|0</data-type>
+    </column>
+    <column id="283" parent="28" name="name">
+      <data-type>varchar(255)|0</data-type>
+    </column>
+    <column id="284" parent="28" name="marketCategory">
+      <data-type>varchar(255)|0</data-type>
+    </column>
+    <column id="285" parent="28" name="test">
+      <data-type>varchar(255)|0</data-type>
+    </column>
+    <column id="286" parent="28" name="financialStatus">
+      <data-type>varchar(255)|0</data-type>
+    </column>
+    <column id="287" parent="28" name="lotSize">
+      <data-type>varchar(255)|0</data-type>
+    </column>
+    <column id="288" parent="28" name="etf">
+      <data-type>varchar(255)|0</data-type>
+    </column>
+    <column id="289" parent="28" name="nextShares">
+      <data-type>varchar(255)|0</data-type>
+    </column>
+    <key id="290" parent="28" name="PRIMARY">
+      <columns>ticker</columns>
+      <primary>1</primary>
+    </key>
+    <column id="291" parent="29" name="ticker">
+      <mandatory>1</mandatory>
+      <data-type>varchar(255)|0</data-type>
+    </column>
+    <column id="292" parent="29" name="name">
+      <data-type>varchar(255)|0</data-type>
+    </column>
+    <column id="293" parent="29" name="exchange">
+      <data-type>varchar(255)|0</data-type>
+    </column>
+    <column id="294" parent="29" name="cqs_symbol">
+      <data-type>varchar(255)|0</data-type>
+    </column>
+    <column id="295" parent="29" name="etf">
+      <data-type>varchar(255)|0</data-type>
+    </column>
+    <column id="296" parent="29" name="lotSize">
+      <data-type>varchar(255)|0</data-type>
+    </column>
+    <column id="297" parent="29" name="test">
+      <data-type>varchar(255)|0</data-type>
+    </column>
+    <column id="298" parent="29" name="Symbol">
+      <data-type>varchar(255)|0</data-type>
+    </column>
+    <key id="299" parent="29" name="PRIMARY">
+      <columns>ticker</columns>
+      <primary>1</primary>
+    </key>
+    <column id="300" parent="30" name="ticker">
+      <mandatory>1</mandatory>
+      <data-type>varchar(10)|0</data-type>
+    </column>
+    <column id="301" parent="30" name="sec">
+      <data-type>varchar(255)|0</data-type>
+    </column>
+    <column id="302" parent="30" name="ind">
+      <data-type>varchar(255)|0</data-type>
+    </column>
+    <column id="303" parent="30" name="coun">
+      <data-type>varchar(255)|0</data-type>
+    </column>
+    <column id="304" parent="30" name="mc">
+      <data-type>double|0</data-type>
+    </column>
+    <column id="305" parent="30" name="pe">
+      <data-type>double|0</data-type>
+    </column>
+    <column id="306" parent="30" name="fpe">
+      <data-type>double|0</data-type>
+    </column>
+    <column id="307" parent="30" name="epsf">
+      <data-type>double|0</data-type>
+    </column>
+    <column id="308" parent="30" name="aut">
+      <data-type>double|0</data-type>
+    </column>
+    <column id="309" parent="30" name="sfloat">
+      <data-type>double|0</data-type>
+    </column>
+    <column id="310" parent="30" name="insider">
+      <data-type>double|0</data-type>
+    </column>
+    <column id="311" parent="30" name="fshort">
+      <data-type>double|0</data-type>
+    </column>
+    <column id="312" parent="30" name="shratio">
+      <data-type>double|0</data-type>
+    </column>
+    <column id="313" parent="30" name="pw">
+      <data-type>double|0</data-type>
+    </column>
+    <column id="314" parent="30" name="pm">
+      <data-type>double|0</data-type>
+    </column>
+    <column id="315" parent="30" name="pq">
+      <data-type>double|0</data-type>
+    </column>
+    <column id="316" parent="30" name="ph">
+      <data-type>double|0</data-type>
+    </column>
+    <column id="317" parent="30" name="py">
+      <data-type>double|0</data-type>
+    </column>
+    <column id="318" parent="30" name="atr">
+      <data-type>double|0</data-type>
+    </column>
+    <column id="319" parent="30" name="sma20pc">
+      <data-type>double|0</data-type>
+    </column>
+    <column id="320" parent="30" name="sma50pc">
+      <data-type>double|0</data-type>
+    </column>
+    <column id="321" parent="30" name="sma200pc">
+      <data-type>double|0</data-type>
+    </column>
+    <column id="322" parent="30" name="hi50pc">
+      <data-type>double|0</data-type>
+    </column>
+    <column id="323" parent="30" name="lo50pc">
+      <data-type>double|0</data-type>
+    </column>
+    <column id="324" parent="30" name="hi52pc">
+      <data-type>double|0</data-type>
+    </column>
+    <column id="325" parent="30" name="lo52pc">
+      <data-type>double|0</data-type>
+    </column>
+    <column id="326" parent="30" name="avvo">
+      <data-type>double|0</data-type>
+    </column>
+    <column id="327" parent="30" name="i">
+      <data-type>int(11)|0</data-type>
+    </column>
+    <key id="328" parent="30" name="PRIMARY">
+      <columns>ticker</columns>
+      <primary>1</primary>
+    </key>
+    <column id="329" parent="31" name="ticker">
+      <mandatory>1</mandatory>
+      <data-type>varchar(10)|0</data-type>
+    </column>
+    <column id="330" parent="31" name="ipo">
+      <data-type>date|0</data-type>
+    </column>
+    <key id="331" parent="31" name="PRIMARY">
+      <columns>ticker</columns>
+      <primary>1</primary>
+    </key>
+    <column id="332" parent="32" name="ticker">
+      <mandatory>1</mandatory>
+      <data-type>varchar(10)|0</data-type>
+    </column>
+    <column id="333" parent="32" name="exchange">
+      <data-type>int(11)|0</data-type>
+    </column>
+    <column id="334" parent="32" name="name">
+      <data-type>varchar(255)|0</data-type>
+    </column>
+    <column id="335" parent="32" name="etf">
+      <data-type>varchar(255)|0</data-type>
+    </column>
+    <key id="336" parent="32" name="PRIMARY">
+      <columns>ticker</columns>
+      <primary>1</primary>
+    </key>
+    <column id="337" parent="33" name="ticker">
+      <mandatory>1</mandatory>
+      <data-type>varchar(10)|0</data-type>
+    </column>
+    <column id="338" parent="33" name="price">
+      <data-type>double|0</data-type>
+    </column>
+    <column id="339" parent="33" name="chp">
+      <data-type>double|0</data-type>
+    </column>
+    <column id="340" parent="33" name="vol">
+      <data-type>int(11)|0</data-type>
+    </column>
+    <key id="341" parent="33" name="PRIMARY">
+      <columns>ticker</columns>
+      <primary>1</primary>
+    </key>
+    <column id="342" parent="34" name="ticker">
+      <mandatory>1</mandatory>
+      <data-type>varchar(10)|0</data-type>
+    </column>
+    <column id="343" parent="34" name="price">
+      <data-type>double|0</data-type>
+    </column>
+    <column id="344" parent="34" name="op">
+      <data-type>double|0</data-type>
+    </column>
+    <column id="345" parent="34" name="hi">
+      <data-type>double|0</data-type>
+    </column>
+    <column id="346" parent="34" name="lo">
+      <data-type>double|0</data-type>
+    </column>
+    <column id="347" parent="34" name="chp">
+      <data-type>double|0</data-type>
+    </column>
+    <column id="348" parent="34" name="ch">
+      <data-type>double|0</data-type>
+    </column>
+    <column id="349" parent="34" name="ttime">
+      <data-type>time|0</data-type>
+    </column>
+    <key id="350" parent="34" name="PRIMARY">
+      <columns>ticker</columns>
+      <primary>1</primary>
+    </key>
+    <column id="351" parent="35" name="ticker">
+      <mandatory>1</mandatory>
+      <data-type>varchar(10)|0</data-type>
+    </column>
+    <column id="352" parent="35" name="price">
+      <data-type>double|0</data-type>
+    </column>
+    <column id="353" parent="35" name="op">
+      <data-type>double|0</data-type>
+    </column>
+    <column id="354" parent="35" name="hi">
+      <data-type>double|0</data-type>
+    </column>
+    <column id="355" parent="35" name="lo">
+      <data-type>double|0</data-type>
+    </column>
+    <column id="356" parent="35" name="chp">
+      <data-type>double|0</data-type>
+    </column>
+    <column id="357" parent="35" name="ch">
+      <data-type>double|0</data-type>
+    </column>
+    <column id="358" parent="35" name="ttime">
+      <data-type>time|0</data-type>
+    </column>
+    <column id="359" parent="35" name="bid">
+      <data-type>double|0</data-type>
+    </column>
+    <column id="360" parent="35" name="ask">
+      <data-type>double|0</data-type>
+    </column>
+    <column id="361" parent="35" name="bidsize">
+      <data-type>double|0</data-type>
+    </column>
+    <column id="362" parent="35" name="asksize">
+      <data-type>double|0</data-type>
+    </column>
+    <column id="363" parent="35" name="tcount">
+      <data-type>int(11)|0</data-type>
+    </column>
+    <column id="364" parent="35" name="vol">
+      <data-type>int(11)|0</data-type>
+    </column>
+    <column id="365" parent="35" name="source">
+      <data-type>varchar(255)|0</data-type>
+    </column>
+    <key id="366" parent="35" name="PRIMARY">
+      <columns>ticker</columns>
+      <primary>1</primary>
+    </key>
+    <column id="367" parent="36" name="ticker">
+      <mandatory>1</mandatory>
+      <data-type>varchar(10)|0</data-type>
+    </column>
+    <column id="368" parent="36" name="price">
+      <data-type>double|0</data-type>
+    </column>
+    <column id="369" parent="36" name="op">
+      <data-type>double|0</data-type>
+    </column>
+    <column id="370" parent="36" name="hi">
+      <data-type>double|0</data-type>
+    </column>
+    <column id="371" parent="36" name="lo">
+      <data-type>double|0</data-type>
+    </column>
+    <column id="372" parent="36" name="chp">
+      <data-type>double|0</data-type>
+    </column>
+    <column id="373" parent="36" name="ch">
+      <data-type>double|0</data-type>
+    </column>
+    <column id="374" parent="36" name="ttime">
+      <data-type>varchar(20)|0</data-type>
+    </column>
+    <column id="375" parent="36" name="bid">
+      <data-type>double|0</data-type>
+    </column>
+    <column id="376" parent="36" name="ask">
+      <data-type>double|0</data-type>
+    </column>
+    <column id="377" parent="36" name="bidsize">
+      <data-type>double|0</data-type>
+    </column>
+    <column id="378" parent="36" name="asksize">
+      <data-type>double|0</data-type>
+    </column>
+    <column id="379" parent="36" name="tcount">
+      <data-type>int(11)|0</data-type>
+    </column>
+    <column id="380" parent="36" name="vol">
+      <data-type>int(11)|0</data-type>
+    </column>
+    <key id="381" parent="36" name="PRIMARY">
+      <columns>ticker</columns>
+      <primary>1</primary>
+    </key>
+    <column id="382" parent="37" name="ticker">
+      <mandatory>1</mandatory>
+      <data-type>varchar(10)|0</data-type>
+    </column>
+    <column id="383" parent="37" name="pprice">
+      <data-type>double|0</data-type>
+    </column>
+    <column id="384" parent="37" name="pchp">
+      <data-type>double|0</data-type>
+    </column>
+    <column id="385" parent="37" name="pch">
+      <data-type>double|0</data-type>
+    </column>
+    <key id="386" parent="37" name="PRIMARY">
+      <columns>ticker</columns>
+      <primary>1</primary>
+    </key>
+    <column id="387" parent="38" name="ticker">
+      <mandatory>1</mandatory>
+      <data-type>varchar(10)|0</data-type>
+    </column>
+    <column id="388" parent="38" name="pvol">
+      <data-type>int(11)|0</data-type>
+    </column>
+    <column id="389" parent="38" name="ptcount">
+      <data-type>int(11)|0</data-type>
+    </column>
+    <key id="390" parent="38" name="PRIMARY">
+      <columns>ticker</columns>
+      <primary>1</primary>
+    </key>
+    <column id="391" parent="39" name="ticker">
+      <mandatory>1</mandatory>
+      <data-type>varchar(10)|0</data-type>
+    </column>
+    <column id="392" parent="39" name="pprice">
+      <data-type>double|0</data-type>
+    </column>
+    <column id="393" parent="39" name="pchp">
+      <data-type>double|0</data-type>
+    </column>
+    <column id="394" parent="39" name="pch">
+      <data-type>double|0</data-type>
+    </column>
+    <column id="395" parent="39" name="pvol">
+      <data-type>int(11)|0</data-type>
+    </column>
+    <key id="396" parent="39" name="PRIMARY">
+      <columns>ticker</columns>
+      <primary>1</primary>
+    </key>
+    <column id="397" parent="40" name="ticker">
+      <mandatory>1</mandatory>
+      <data-type>varchar(10)|0</data-type>
+    </column>
+    <column id="398" parent="40" name="exchange">
+      <mandatory>1</mandatory>
+      <data-type>int(11)|0</data-type>
+    </column>
+    <column id="399" parent="40" name="done">
+      <mandatory>1</mandatory>
+      <data-type>tinyint(1)|0</data-type>
+    </column>
+    <column id="400" parent="40" name="writen">
+      <mandatory>1</mandatory>
+      <data-type>tinyint(1)|0</data-type>
+    </column>
+    <column id="401" parent="40" name="updated_at">
+      <data-type>datetime|0</data-type>
+    </column>
+    <column id="402" parent="40" name="source">
+      <data-type>varchar(255)|0</data-type>
+    </column>
+    <key id="403" parent="40" name="PRIMARY">
+      <columns>ticker</columns>
+      <primary>1</primary>
+    </key>
+    <column id="404" parent="41" name="id">
+      <mandatory>1</mandatory>
+      <data-type>varchar(10)|0</data-type>
+    </column>
+    <column id="405" parent="41" name="date">
+      <mandatory>1</mandatory>
+      <data-type>date|0</data-type>
+    </column>
+    <column id="406" parent="41" name="op">
+      <data-type>double|0</data-type>
+    </column>
+    <column id="407" parent="41" name="hi">
+      <data-type>double|0</data-type>
+    </column>
+    <column id="408" parent="41" name="lo">
+      <mandatory>1</mandatory>
+      <data-type>double|0</data-type>
+    </column>
+    <column id="409" parent="41" name="cl">
+      <data-type>double|0</data-type>
+    </column>
+    <column id="410" parent="41" name="vol">
+      <data-type>int(11)|0</data-type>
+    </column>
+    <column id="411" parent="41" name="n">
+      <data-type>int(11)|0</data-type>
+    </column>
+    <column id="412" parent="41" name="ticker">
+      <mandatory>1</mandatory>
+      <data-type>varchar(255)|0</data-type>
+    </column>
+    <key id="413" parent="41" name="PRIMARY">
+      <columns>id</columns>
+      <primary>1</primary>
+    </key>
+  </database-model>
+</dataSource>

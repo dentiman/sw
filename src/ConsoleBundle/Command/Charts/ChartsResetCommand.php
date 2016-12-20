@@ -6,10 +6,10 @@
  * Time: 15:37
  */
 
-namespace ConsoleBundle\Command;
+namespace ConsoleBundle\Command\Charts;
 
 use ConsoleBundle\Components\CustomContainerAwareCommand;
-use ChartsApp\RemoteServerConnector;
+use DataFeedApp\RemoteServerConnector;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
@@ -29,6 +29,7 @@ class ChartsResetCommand extends CustomContainerAwareCommand
     protected function execute(InputInterface $input, OutputInterface $output)
     {
         $this->dbQuery('TRUNCATE `feed_charts_daily_counter`');
+        $this->dbQuery('TRUNCATE `feed_charts_daily_history`');
         $this->dbQuery("REPLACE INTO  `feed_charts_daily_counter` SELECT ticker,e,FALSE,FALSE,now(),NULL FROM `feed_main_basic_data`");
 
     }

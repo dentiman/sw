@@ -14,6 +14,5 @@
 !var/SymfonyRequirements.php
 /vendor/
 /web/bundles/
-/.idea/
-/src/ChartsApp/Datafeed/d/*
-/src/ChartsApp/Datafeed/5/*
+/src/DataFeedApp/Filefeed/5/
+/src/DataFeedApp/Filefeed/d/

@@ -6,7 +6,7 @@
  * Time: 18:29
  */
 
-namespace ChartsApp;
+namespace DataFeedApp;
 
 
 class RemoteServerConnector
@@ -15,9 +15,31 @@ class RemoteServerConnector
 
     protected $server2 ='78.46.199.135';
 
+    protected $currentIP;
+
+    public function __construct(){
+        $this->currentIP = $this->server1;
+    }
+
     public  function getContent($url){
 
         return @file_get_contents('http://'.$this->server2.$url);
+    }
+
+    /**
+     * @return string
+     */
+    public function getIP()
+    {
+        return $this->currentIP;
+    }
+
+    /**
+     * @param string $currentIP
+     */
+    public function setIP($currentIP)
+    {
+        $this->currentIP = $currentIP;
     }
 
 
@@ -56,5 +78,19 @@ class RemoteServerConnector
 
         return $csv;
 
+    }
+
+    public function getIqFeedBars($ticker,$tf,$start,$finish){
+
+
+        $urle = 'http://'.$this->currentIP.'/iqfeed/bar_feed_tw.php?s=' . $ticker . '&tf=' . $tf . '&b=' . $start . '&f=' . $finish;
+
+        $ctx = stream_context_create(array('http'=>
+            array(
+                'timeout' => 2,
+            )
+        ));
+
+        return @file_get_contents($urle, false, $ctx);
     }
 }
