@@ -2,33 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2cb14150-19e6-4154-b140-414f900849c8" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/dataSources/1fd361f9-7443-434d-942f-371c38fb10d4.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/sqldialects.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/symfony2.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ConsoleBundle/Command/Charts/ChartsDownloadCommand.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ConsoleBundle/Command/Charts/DailyChartsCommand.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ConsoleBundle/Entity/Charts/DailyHistory.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ConsoleBundle/Repository/Charts/DailyHistoryRepository.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/DataFeedApp/ChartsDownloader/Sources/BaseFeed.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/DataFeedApp/ChartsDownloader/Sources/FileFeed.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/DataFeedApp/ChartsDownloader/Sources/Google.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/DataFeedApp/ChartsDownloader/Sources/IqFeed.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/DataFeedApp/ChartsDownloader/Sources/SourcesDataFeedInterface.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/DataFeedApp/ChartsDownloader/Sources/Yahoo.php" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/ConsoleBundle/Command/ChartsDownloadCommand.php" afterPath="" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/ChartsApp/RemoteServerConnector.php" afterPath="$PROJECT_DIR$/src/DataFeedApp/RemoteServerConnector.php" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/ConsoleBundle/Command/ChartsResetCommand.php" afterPath="$PROJECT_DIR$/src/ConsoleBundle/Command/Charts/ChartsResetCommand.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gitignore" afterPath="$PROJECT_DIR$/.gitignore" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/w.iml" afterPath="$PROJECT_DIR$/.idea/w.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ConsoleBundle/Command/UpdateEarningsCommand.php" afterPath="$PROJECT_DIR$/src/ConsoleBundle/Command/UpdateEarningsCommand.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ConsoleBundle/Command/UpdateFinvizCommand.php" afterPath="$PROJECT_DIR$/src/ConsoleBundle/Command/UpdateFinvizCommand.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ConsoleBundle/Command/UpdateLevel1Command.php" afterPath="$PROJECT_DIR$/src/ConsoleBundle/Command/UpdateLevel1Command.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ConsoleBundle/Command/UpdatePremarketCommand.php" afterPath="$PROJECT_DIR$/src/ConsoleBundle/Command/UpdatePremarketCommand.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ConsoleBundle/Command/Charts/IntradayChartsCommand.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ConsoleBundle/Entity/Charts/IntradayCounter.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ConsoleBundle/Repository/Charts/IntradayCounterRepository.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/DataFeedApp/ChartBuilder/ChartBuilder.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web_charts/chart.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dataSources/1fd361f9-7443-434d-942f-371c38fb10d4.xml" afterPath="$PROJECT_DIR$/.idea/dataSources/1fd361f9-7443-434d-942f-371c38fb10d4.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AppBundle/Entity/Presets/Charts.php" afterPath="$PROJECT_DIR$/src/AppBundle/Entity/Presets/Charts.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ConsoleBundle/Command/Charts/ChartsResetCommand.php" afterPath="$PROJECT_DIR$/src/ConsoleBundle/Command/Charts/ChartsResetCommand.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/chart.php" afterPath="$PROJECT_DIR$/web/chart.php" />
     </list>
     <ignored path="w.iws" />
@@ -61,6 +43,20 @@
         <option name="myItemType" value="com.intellij.database.view.DbNodeDescriptor" />
       </PATH_ELEMENT>
     </PATH>
+    <PATH>
+      <PATH_ELEMENT>
+        <option name="myItemId" />
+        <option name="myItemType" value="com.intellij.database.view.DatabaseStructure$Root" />
+      </PATH_ELEMENT>
+      <PATH_ELEMENT>
+        <option name="myItemId" value="MySQL - sw@localhost" />
+        <option name="myItemType" value="com.intellij.database.view.DbNodeDescriptor" />
+      </PATH_ELEMENT>
+      <PATH_ELEMENT>
+        <option name="myItemId" value="feed_charts_intraday_counter" />
+        <option name="myItemType" value="com.intellij.database.view.DbNodeDescriptor" />
+      </PATH_ELEMENT>
+    </PATH>
   </component>
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FavoritesManager">
@@ -68,74 +64,57 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="DailyChartsCommand.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/ConsoleBundle/Command/Charts/DailyChartsCommand.php">
+      <file leaf-file-name="chart.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/web_charts/chart.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="84">
-              <caret line="9" column="0" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
-              <folding>
-                <element signature="e#128#185#0#PHP" expanded="true" />
-                <element signature="e#3074#3716#0#PHP" expanded="false" />
-                <marker date="1482261852973" expanded="true" signature="1972:2069" ph="UPDATE `feed... " />
-                <marker date="1482261852973" expanded="true" signature="2199:2267" ph="..." />
-                <marker date="1482261852973" expanded="true" signature="2312:2407" ph="UPDATE `feed... " />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name=".gitignore" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/.gitignore">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="357">
-              <caret line="17" column="28" selection-start-line="17" selection-start-column="28" selection-end-line="17" selection-end-column="28" />
+            <state relative-caret-position="126">
+              <caret line="6" column="0" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ChartsResetCommand.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/ConsoleBundle/Command/Charts/ChartsResetCommand.php">
+      <file leaf-file-name="ChartBuilder.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/DataFeedApp/ChartBuilder/ChartBuilder.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="273">
-              <caret line="18" column="1" selection-start-line="18" selection-start-column="1" selection-end-line="18" selection-end-column="1" />
+            <state relative-caret-position="1973">
+              <caret line="99" column="33" selection-start-line="99" selection-start-column="33" selection-end-line="99" selection-end-column="33" />
               <folding>
-                <element signature="e#128#185#0#PHP" expanded="true" />
-                <marker date="1482259923234" expanded="true" signature="992:1100" ph="REPLACE INTO... feed_charts_daily_counter" />
-                <marker date="1482259923234" expanded="true" signature="1034:1100" ph="SELECT ticke... feed_main_basic_data" />
+                <element signature="e#2811#3056#0#PHP" expanded="false" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="IqFeed.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/DataFeedApp/ChartsDownloader/Sources/IqFeed.php">
+      <file leaf-file-name="ScreenerController.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/AppBundle/Controller/ScreenerController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="168">
-              <caret line="13" column="29" selection-start-line="13" selection-start-column="29" selection-end-line="13" selection-end-column="29" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="FileFeed.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/DataFeedApp/ChartsDownloader/Sources/FileFeed.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="147">
-              <caret line="12" column="1" selection-start-line="12" selection-start-column="1" selection-end-line="12" selection-end-column="1" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Google.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/DataFeedApp/ChartsDownloader/Sources/Google.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="147">
-              <caret line="12" column="1" selection-start-line="12" selection-start-column="1" selection-end-line="12" selection-end-column="1" />
+            <state relative-caret-position="1726">
+              <caret line="151" column="54" selection-start-line="151" selection-start-column="54" selection-end-line="151" selection-end-column="54" />
               <folding>
-                <element signature="e#6#85#0#PHP" expanded="false" />
+                <element signature="e#4152#4186#0#PHP" expanded="true" />
+                <element signature="e#4696#4730#0#PHP" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Researcher.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/AppBundle/Service/Researcher.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="463">
+              <caret line="140" column="50" selection-start-line="140" selection-start-column="50" selection-end-line="140" selection-end-column="50" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ChartsLayoutsType.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/AppBundle/Form/ChartsLayoutsType.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-945">
+              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -156,12 +135,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/ConsoleBundle/Utils/EarningParsers/ZackParser.php" />
-        <option value="$PROJECT_DIR$/src/ConsoleBundle/Utils/EarningParsers/ChameleonParser.php" />
-        <option value="$PROJECT_DIR$/src/ConsoleBundle/Utils/EarningParsers/BaseParser.php" />
-        <option value="$PROJECT_DIR$/src/ConsoleBundle/Utils/Level1Parsers/Level1Parser.php" />
-        <option value="$PROJECT_DIR$/src/ConsoleBundle/Utils/Level1Parsers/IQFeedParser.php" />
-        <option value="$PROJECT_DIR$/src/ConsoleBundle/Utils/Level1Parsers/GoogleFinvizParser.php" />
         <option value="$PROJECT_DIR$/src/ConsoleBundle/Utils/Level1Parsers/FinvizParser.php" />
         <option value="$PROJECT_DIR$/src/ConsoleBundle/Entity/Level1/Finviz.php" />
         <option value="$PROJECT_DIR$/src/ConsoleBundle/Entity/Level1/Google.php" />
@@ -198,15 +171,21 @@
         <option value="$PROJECT_DIR$/src/ConsoleBundle/Entity/Charts/DailyHistory.php" />
         <option value="$PROJECT_DIR$/src/ConsoleBundle/Command/ChartsDownloadCommand.php" />
         <option value="$PROJECT_DIR$/src/ConsoleBundle/Command/Charts/ChartsDownloadCommand.php" />
-        <option value="$PROJECT_DIR$/web/chart.php" />
         <option value="$PROJECT_DIR$/src/ConsoleBundle/Command/UpdateTickersCommand.php" />
-        <option value="$PROJECT_DIR$/src/DataFeedApp/ChartsDownloader/Sources/Google.php" />
         <option value="$PROJECT_DIR$/src/DataFeedApp/ChartsDownloader/Sources/FileFeed.php" />
         <option value="$PROJECT_DIR$/src/DataFeedApp/ChartsDownloader/Sources/Yahoo.php" />
         <option value="$PROJECT_DIR$/src/DataFeedApp/ChartsDownloader/Sources/IqFeed.php" />
-        <option value="$PROJECT_DIR$/src/ConsoleBundle/Command/Charts/ChartsResetCommand.php" />
         <option value="$PROJECT_DIR$/src/ConsoleBundle/Command/Charts/DailyChartsCommand.php" />
         <option value="$PROJECT_DIR$/.gitignore" />
+        <option value="$PROJECT_DIR$/src/ConsoleBundle/Entity/Charts/IntradayCounter.php" />
+        <option value="$PROJECT_DIR$/src/ConsoleBundle/Repository/Charts/IntradayCounterRepository.php" />
+        <option value="$PROJECT_DIR$/src/ConsoleBundle/Command/Charts/ChartsResetCommand.php" />
+        <option value="$PROJECT_DIR$/src/ConsoleBundle/Command/Charts/IntradayChartsCommand.php" />
+        <option value="$PROJECT_DIR$/src/DataFeedApp/ChartsDownloader/Sources/Google.php" />
+        <option value="$PROJECT_DIR$/src/AppBundle/Entity/Presets/Charts.php" />
+        <option value="$PROJECT_DIR$/web/chart.php" />
+        <option value="$PROJECT_DIR$/src/DataFeedApp/ChartBuilder/Builder.php" />
+        <option value="$PROJECT_DIR$/web_charts/chart.php" />
       </list>
     </option>
   </component>
@@ -237,7 +216,7 @@
     <OptionsSetting value="true" id="Update" />
     <OptionsSetting value="true" id="Status" />
     <OptionsSetting value="true" id="Edit" />
-    <ConfirmationsSetting value="0" id="Add" />
+    <ConfirmationsSetting value="2" id="Add" />
     <ConfirmationsSetting value="0" id="Remove" />
   </component>
   <component name="ProjectView">
@@ -255,6 +234,10 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope">
+        <subPane subId="Changed Files" />
+        <subPane subId="Project Files" />
+      </pane>
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -283,7 +266,7 @@
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="web" />
+              <option name="myItemId" value="web_charts" />
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
           </PATH>
@@ -333,6 +316,28 @@
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="DataFeedApp" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ChartBuilder" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="w" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="w" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="AppBundle" />
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
@@ -355,23 +360,41 @@
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="Entity" />
+              <option name="myItemId" value="Form" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="w" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="w" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="AppBundle" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Controller" />
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
       <pane id="Scratches" />
-      <pane id="Scope">
-        <subPane subId="Changed Files" />
-        <subPane subId="Project Files" />
-      </pane>
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="true" />
     <property name="js-jscs-nodeInterpreter" value="/usr/bin/node" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/bin/console" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/web_charts" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="com.intellij.database.dataSource.DataSourceTemplate" value="MySQL" />
     <property name="WebServerToolWindowPanel.toolwindow.show.size" value="false" />
@@ -384,19 +407,19 @@
     <property name="settings.editor.splitter.proportion" value="0.2" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/web_charts" />
+      <recent name="$PROJECT_DIR$/src/ConsoleBundle/Repository/Charts" />
+      <recent name="$PROJECT_DIR$/src/ConsoleBundle/Entity/Charts" />
+      <recent name="$PROJECT_DIR$/src/ConsoleBundle/Command/Charts" />
+      <recent name="$PROJECT_DIR$/src/DataFeedApp/ChartsDownloader/Sources" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/ConsoleBundle/Command/Charts" />
       <recent name="$PROJECT_DIR$/src/ConsoleBundle/Repository/Charts" />
       <recent name="$PROJECT_DIR$/src/ConsoleBundle/Entity/Charts" />
       <recent name="$PROJECT_DIR$/src/ConsoleBundle/Repository/Basic" />
       <recent name="$PROJECT_DIR$/src/ConsoleBundle/Entity/Basic" />
-    </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/src/DataFeedApp/ChartsDownloader/Sources" />
-      <recent name="$PROJECT_DIR$/src/ConsoleBundle/Command/Charts" />
-      <recent name="$PROJECT_DIR$/src/ConsoleBundle/Command" />
-      <recent name="$PROJECT_DIR$/src/ConsoleBundle/Utils/Level1Parsers" />
-      <recent name="$PROJECT_DIR$/src/ConsoleBundle/Utils/EarningParsers" />
     </key>
   </component>
   <component name="RunManager" selected="PHP Script.console">
@@ -452,7 +475,7 @@
     <configuration default="false" name="Ch" type="PhpLocalRunConfigurationType" factoryName="PHP Console" path="$PROJECT_DIR$/src/ConsoleBundle/Command/Charts/DailyChartsCommand.php">
       <method />
     </configuration>
-    <configuration default="false" name="console" type="PhpLocalRunConfigurationType" factoryName="PHP Console" path="$PROJECT_DIR$/bin/console" scriptParameters="feed:charts:daily">
+    <configuration default="false" name="console" type="PhpLocalRunConfigurationType" factoryName="PHP Console" path="$PROJECT_DIR$/bin/console" scriptParameters="feed:charts:intraday">
       <method />
     </configuration>
     <configuration default="false" name="tickers" type="PhpLocalRunConfigurationType" factoryName="PHP Console" path="$PROJECT_DIR$/src/ConsoleBundle/Command/UpdateTickersCommand.php">
@@ -531,7 +554,8 @@
       <workItem from="1482132035247" duration="29667000" />
       <workItem from="1482178209658" duration="1889000" />
       <workItem from="1482226949991" duration="20188000" />
-      <workItem from="1482263107758" duration="1149000" />
+      <workItem from="1482263107758" duration="1824000" />
+      <workItem from="1482319223610" duration="16931000" />
     </task>
     <task id="LOCAL-00001" summary="init commit">
       <created>1479042159203</created>
@@ -575,11 +599,18 @@
       <option name="project" value="LOCAL" />
       <updated>1482132424173</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="add ChartsDownloader Classes(DataFeedApp), DailyChartsCommand">
+      <created>1482264443604</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1482264443604</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="549366000" />
+    <option name="totallyTimeSpent" value="566972000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -595,24 +626,24 @@
     <editor active="false" />
     <layout>
       <window_info id="Remote Host" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32977587" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.15421557" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.15581644" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3295583" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.45526615" sideWeight="0.50213444" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.12059765" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.09284952" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.30690828" sideWeight="0.49786553" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3295583" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2497332" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.29218572" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.42921856" sideWeight="0.49786553" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3295583" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Database Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4416761" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="3" side_tool="false" content_ui="combo" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.78369194" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.42921856" sideWeight="0.49786553" order="3" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -653,165 +684,22 @@
     <MESSAGE value="Screener, Charts setting" />
     <MESSAGE value="ConsoleBundle" />
     <MESSAGE value="Update level1 commands" />
-    <option name="LAST_COMMIT_MESSAGE" value="Update level1 commands" />
+    <MESSAGE value="add ChartsDownloader Classes(DataFeedApp), DailyChartsCommand" />
+    <option name="LAST_COMMIT_MESSAGE" value="add ChartsDownloader Classes(DataFeedApp), DailyChartsCommand" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="66" />
+      <option name="time" value="77" />
     </breakpoint-manager>
-    <watches-manager>
-      <configuration name="PhpLocalRunConfigurationType">
-        <watch expression="$pr" language="PHP" />
-      </configuration>
-    </watches-manager>
+    <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/AppBundle/Entity/Feed/MainWeek.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3087">
-          <caret line="159" column="61" selection-start-line="159" selection-start-column="61" selection-end-line="159" selection-end-column="61" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/AppBundle/Entity/Feed/MainMinutePrev.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="903">
-          <caret line="103" column="66" selection-start-line="103" selection-start-column="66" selection-end-line="103" selection-end-column="66" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/AppBundle/Entity/Feed/MainPremarket.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="336">
-          <caret line="52" column="17" selection-start-line="52" selection-start-column="17" selection-end-line="52" selection-end-column="17" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ConsoleBundle/Entity/Level1/Finviz.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="273">
-          <caret line="27" column="7" selection-start-line="27" selection-start-column="7" selection-end-line="27" selection-end-column="7" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ConsoleBundle/Entity/Premarket/Iqfeed.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="441">
-          <caret line="54" column="5" selection-start-line="38" selection-start-column="3" selection-end-line="54" selection-end-column="5" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ConsoleBundle/Entity/Premarket/Yahoo.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="273">
-          <caret line="13" column="1" selection-start-line="13" selection-start-column="1" selection-end-line="13" selection-end-column="1" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="dbDummy://dbtable:/9af76eeb/1fd361f9-7443-434d-942f-371c38fb10d4/sw.feed_premarket_yahoo">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
-      <provider editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="dbDummy://dbtable:/9af76eeb/1fd361f9-7443-434d-942f-371c38fb10d4/sw.feed_main_premarket">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
-      <provider editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="dbDummy://dbtable:/9af76eeb/1fd361f9-7443-434d-942f-371c38fb10d4/sw.feed_premarket_iqfeed">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
-      <provider editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="dbDummy://dbtable:/9af76eeb/1fd361f9-7443-434d-942f-371c38fb10d4/sw.feed_premarket_google">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
-      <provider editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ConsoleBundle/Repository/Charts/DailyCounterRepository.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="63">
-          <caret line="3" column="0" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Resources/views/screener/result_ticker.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/AppBundle/Controller/ScreenerController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="445">
-          <caret line="132" column="47" selection-start-line="132" selection-start-column="47" selection-end-line="132" selection-end-column="47" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/AppBundle/Service/Researcher.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="504">
-          <caret line="87" column="5" selection-start-line="87" selection-start-column="5" selection-end-line="87" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/vendor/symfony/symfony/src/Symfony/Component/Console/Command/Command.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="284">
-          <caret line="160" column="23" selection-start-line="160" selection-start-column="23" selection-end-line="160" selection-end-column="23" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/ConsoleBundle/Command/test.txt" />
     <entry file="file://$PROJECT_DIR$/src/ChartsApp/Downloader.php" />
     <entry file="file://$PROJECT_DIR$/src/ConsoleBundle/Entity/Basic/Finviz.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="378">
           <caret line="18" column="58" selection-start-line="18" selection-start-column="58" selection-end-line="18" selection-end-column="73" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ConsoleBundle/Entity/Charts/DailyCounter.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="21">
-          <caret line="14" column="1" selection-start-line="14" selection-start-column="1" selection-end-line="14" selection-end-column="1" />
           <folding />
         </state>
       </provider>
@@ -904,14 +792,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web/app.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="147">
-          <caret line="7" column="0" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/ConsoleBundle/Command/UpdateTickersCommand.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="189">
@@ -949,25 +829,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web/chart.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="231">
-          <caret line="11" column="0" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/vendor/symfony/symfony/src/Symfony/Component/Console/Application.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="148">
           <caret line="838" column="0" selection-start-line="838" selection-start-column="0" selection-end-line="838" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/bin/console">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="189">
-          <caret line="11" column="0" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
         </state>
       </provider>
     </entry>
@@ -979,52 +844,93 @@
         </state>
       </provider>
     </entry>
+    <entry file="dbDummy://dbtable:/9af76eeb/1fd361f9-7443-434d-942f-371c38fb10d4/sw.feed_charts_daily_counter">
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="168">
+          <caret line="8" column="11" selection-start-line="8" selection-start-column="11" selection-end-line="8" selection-end-column="11" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/ConsoleBundle/Command/Charts/ChartsDownloadCommand.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="336">
+        <state relative-caret-position="-357">
           <caret line="45" column="35" selection-start-line="45" selection-start-column="35" selection-end-line="45" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="dbDummy://dbtable:/9af76eeb/1fd361f9-7443-434d-942f-371c38fb10d4/sw.feed_charts_daily_history">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
-      <provider editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="dbDummy://dbtable:/9af76eeb/1fd361f9-7443-434d-942f-371c38fb10d4/sw.feed_charts_daily_counter">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
-      <provider editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/DataFeedApp/ChartsDownloader/Sources/Google.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="147">
-          <caret line="12" column="1" selection-start-line="12" selection-start-column="1" selection-end-line="12" selection-end-column="1" />
           <folding>
-            <element signature="e#6#85#0#PHP" expanded="false" />
+            <marker date="1482177361919" expanded="true" signature="1656:1749" ph="UPDATE `feed... " />
+            <marker date="1482177361919" expanded="true" signature="2488:2579" ph="UPDATE `feed... " />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/DataFeedApp/ChartsDownloader/Sources/IqFeed.php">
+    <entry file="file://$PROJECT_DIR$/src/ConsoleBundle/Repository/Charts/IntradayCounterRepository.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="252">
+          <caret line="12" column="1" selection-start-line="12" selection-start-column="1" selection-end-line="12" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="dbDummy://dbtable:/9af76eeb/1fd361f9-7443-434d-942f-371c38fb10d4/sw.feed_charts_daily_history">
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ConsoleBundle/Repository/Charts/DailyCounterRepository.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="63">
+          <caret line="3" column="0" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ConsoleBundle/Entity/Charts/IntradayCounter.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="168">
-          <caret line="13" column="29" selection-start-line="13" selection-start-column="29" selection-end-line="13" selection-end-column="29" />
+          <caret line="8" column="2" selection-start-line="8" selection-start-column="2" selection-end-line="8" selection-end-column="2" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ConsoleBundle/Entity/Charts/DailyCounter.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="14" column="1" selection-start-line="14" selection-start-column="1" selection-end-line="14" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ConsoleBundle/Command/Charts/DailyChartsCommand.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="399">
+          <caret line="24" column="5" selection-start-line="24" selection-start-column="5" selection-end-line="24" selection-end-column="5" />
+          <folding>
+            <element signature="e#128#185#0#PHP" expanded="true" />
+            <element signature="e#3074#3716#0#PHP" expanded="false" />
+            <marker date="1482261852973" expanded="true" signature="1972:2069" ph="UPDATE `feed... " />
+            <marker date="1482261852973" expanded="true" signature="2199:2267" ph="..." />
+            <marker date="1482261852973" expanded="true" signature="2312:2407" ph="UPDATE `feed... " />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1036,37 +942,169 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/ConsoleBundle/Command/Charts/DailyChartsCommand.php">
+    <entry file="dbDummy://dbtable:/9af76eeb/1fd361f9-7443-434d-942f-371c38fb10d4/sw.feed_charts_intraday_counter">
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/DataFeedApp/ChartsDownloader/Sources/Google.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="84">
-          <caret line="9" column="0" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
-          <folding>
-            <element signature="e#128#185#0#PHP" expanded="true" />
-            <element signature="e#3074#3716#0#PHP" expanded="false" />
-            <marker date="1482261852973" expanded="true" signature="1972:2069" ph="UPDATE `feed... " />
-            <marker date="1482261852973" expanded="true" signature="2199:2267" ph="..." />
-            <marker date="1482261852973" expanded="true" signature="2312:2407" ph="UPDATE `feed... " />
-          </folding>
+        <state relative-caret-position="841">
+          <caret line="48" column="40" selection-start-line="48" selection-start-column="40" selection-end-line="48" selection-end-column="40" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bin/console">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="189">
+          <caret line="11" column="0" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/ConsoleBundle/Command/Charts/ChartsResetCommand.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="273">
-          <caret line="18" column="1" selection-start-line="18" selection-start-column="1" selection-end-line="18" selection-end-column="1" />
+        <state relative-caret-position="84">
+          <caret line="9" column="0" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
           <folding>
             <element signature="e#128#185#0#PHP" expanded="true" />
-            <marker date="1482259923234" expanded="true" signature="992:1100" ph="REPLACE INTO... feed_charts_daily_counter" />
-            <marker date="1482259923234" expanded="true" signature="1034:1100" ph="SELECT ticke... feed_main_basic_data" />
+            <marker date="1482320579773" expanded="true" signature="1059:1167" ph="REPLACE INTO... feed_charts_daily_counter" />
+            <marker date="1482320579773" expanded="true" signature="1101:1167" ph="SELECT ticke... feed_main_basic_data" />
+            <marker date="1482320579773" expanded="true" signature="1195:1306" ph="REPLACE INTO... feed_charts_intraday_counter" />
+            <marker date="1482320579773" expanded="true" signature="1240:1306" ph="SELECT ticke... feed_main_basic_data" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/.gitignore">
+    <entry file="file://$PROJECT_DIR$/src/ConsoleBundle/Command/Charts/IntradayChartsCommand.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="17" column="28" selection-start-line="17" selection-start-column="28" selection-end-line="17" selection-end-column="28" />
+        <state relative-caret-position="256">
+          <caret line="22" column="1" selection-start-line="22" selection-start-column="1" selection-end-line="22" selection-end-column="1" />
+          <folding>
+            <element signature="e#128#185#0#PHP" expanded="true" />
+            <marker date="1482325825286" expanded="true" signature="2013:2113" ph="UPDATE `feed... " />
+            <marker date="1482325825286" expanded="true" signature="2221:2319" ph="UPDATE `feed... " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/config.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-777">
+          <caret line="19" column="5" selection-start-line="19" selection-start-column="5" selection-end-line="19" selection-end-column="5" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vendor/autoload.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/app.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="231">
+          <caret line="11" column="0" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Resources/views/screener/chart.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="987">
+          <caret line="65" column="123" selection-start-line="65" selection-start-column="123" selection-end-line="65" selection-end-column="123" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AppBundle/Controller/ScreenerController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1726">
+          <caret line="151" column="54" selection-start-line="151" selection-start-column="54" selection-end-line="151" selection-end-column="54" />
+          <folding>
+            <element signature="e#4152#4186#0#PHP" expanded="true" />
+            <element signature="e#4696#4730#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Resources/views/screener/result_charts.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="84">
+          <caret line="4" column="40" selection-start-line="4" selection-start-column="40" selection-end-line="4" selection-end-column="40" />
+          <folding>
+            <element signature="e#12#44#0#Twig" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AppBundle/Form/ChartsLayoutsType.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-945">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/DataFeedApp/ChartsDownloader/Sources/IqFeed.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="441">
+          <caret line="26" column="20" selection-start-line="26" selection-start-column="20" selection-end-line="26" selection-end-column="20" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/chart.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="5" column="0" selection-start-line="5" selection-start-column="0" selection-end-line="9" selection-end-column="28" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AppBundle/Entity/Presets/Charts.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2455">
+          <caret line="405" column="33" selection-start-line="405" selection-start-column="33" selection-end-line="405" selection-end-column="33" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AppBundle/Service/Researcher.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="463">
+          <caret line="140" column="50" selection-start-line="140" selection-start-column="50" selection-end-line="140" selection-end-column="50" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web_charts/chart.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="126">
+          <caret line="6" column="0" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/DataFeedApp/ChartBuilder/ChartBuilder.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1973">
+          <caret line="99" column="33" selection-start-line="99" selection-start-column="33" selection-end-line="99" selection-end-column="33" />
+          <folding>
+            <element signature="e#2811#3056#0#PHP" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>

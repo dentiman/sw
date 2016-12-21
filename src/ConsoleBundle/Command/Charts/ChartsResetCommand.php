@@ -29,8 +29,10 @@ class ChartsResetCommand extends CustomContainerAwareCommand
     protected function execute(InputInterface $input, OutputInterface $output)
     {
         $this->dbQuery('TRUNCATE `feed_charts_daily_counter`');
+        $this->dbQuery('TRUNCATE `feed_charts_intraday_counter`');
         $this->dbQuery('TRUNCATE `feed_charts_daily_history`');
         $this->dbQuery("REPLACE INTO  `feed_charts_daily_counter` SELECT ticker,e,FALSE,FALSE,now(),NULL FROM `feed_main_basic_data`");
+        $this->dbQuery("REPLACE INTO  `feed_charts_intraday_counter` SELECT ticker,e,FALSE,FALSE,now(),NULL FROM `feed_main_basic_data`");
 
     }
 

@@ -397,7 +397,7 @@ class Charts
         if($this->tf1 !='') {
             $A['charts'][] = [
                 'tf'=>$this->tf1,
-                'src'=>$this->chartSerialize($this->chart1)
+                'src'=>http_build_query($this->chart1)
             ];
         }
 
