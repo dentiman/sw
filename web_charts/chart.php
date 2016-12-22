@@ -10,6 +10,9 @@ use DataFeedApp\ChartBuilder\ChartBuilder;
 
 $r= new ChartBuilder();
 
-//var_dump($r->getImageColor('rgb(255,255,255)'));
+//var_dump($r->getFeed()->l);
+echo $r->getFeed()->price_range." ";
+echo $r->getFeed()->min_price." ";
+echo $r->getFeed()->max_price." ";
 
-$r->output();
+//$r->output();

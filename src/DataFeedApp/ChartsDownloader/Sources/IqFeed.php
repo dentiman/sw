@@ -61,6 +61,7 @@ class IqFeed extends BaseFeed
 
                     }
                 }
+                $B['source'] = 'i';
                 return $B;
             }
         }
