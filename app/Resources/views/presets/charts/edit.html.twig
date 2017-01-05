@@ -9,14 +9,78 @@
             {{ form_widget(form) }}
             {{ form_end(form) }}
         </div>
-
     </div>
+{% endblock %}
 
-    {#{{ include('presets/_form.html.twig', {#}
-        {#form: delete_form,#}
-        {#button_label: 'action.delete_post'|trans,#}
-        {#button_css: 'btn btn-lg btn-block btn-danger',#}
-        {#show_confirmation: true,#}
-    {#}, with_context = false) }}#}
+{% block preview_content %}
+    <div id="search-content"></div>
+{% endblock %}
 
+{% block javascripts %}
+    <script>
+
+        $(document).ready(function () {
+            chartReload();
+
+            $('#charts-layout-form .colorpicker-element').colorpicker().on('hidePicker', function(ev){
+                chartReload();
+            });
+
+            $('#charts_layouts_tabs_gr2').prepend('<a class="btn btn-default" onclick="copyFromChart1(2)">copy from chart 1</a>');
+            $('#charts_layouts_tabs_gr3').prepend('<a class="btn btn-default" onclick="copyFromChart1(3)">copy from chart 1</a>');
+        });
+
+        function chartReload() {
+            $.ajax({
+                method: "POST",
+                url: '{{ path('presets_charts_preview') }}',
+                data: $('#charts-layout-form').serialize(),
+                success: function (data) {
+                    $('#search-content').html(data);
+                }
+            });
+        }
+
+        $('#charts-layout-form select, input[type=checkbox]').change(function (event) {
+            chartReload();
+        });
+
+
+        // копируем значения из полей для графика1 в  поля для графика "chart"
+        function copyFromChart1(chart) {
+
+            $('#charts_layouts_tabs_gr1 select').each(function () {
+                var id = $(this).attr('id');
+                var val = $(this).val();
+                $('#'+id.replace('gr1_chart1','gr'+chart+'_chart'+chart)).val(val);
+
+            });
+
+            $('#charts_layouts_tabs_gr1 input[type=checkbox]').each(function () {
+
+                var id = $(this).attr('id').replace('gr1_chart1','gr'+chart+'_chart'+chart);
+
+                if (
+                        ($(this).is(':checked') && $('#'+id).is(':checked') == false) ||
+                        ($(this).is(':checked') == false && $('#'+id).is(':checked'))
+                ) {
+                   $('label[for='+id.replace('gr1_chart1','gr'+chart+'_chart'+chart)+']').trigger( "click" );
+                }
+
+            });
+
+            $('#charts_layouts_tabs_gr1 .colorpicker-element').each(function () {
+                var id = $(this).attr('id').replace('gr1_chart1','gr'+chart+'_chart'+chart);
+
+                var color = $(this).data('colorpicker').color.toHex();
+                $('#'+id).colorpicker('setValue', color);
+
+            });
+
+            chartReload();
+
+
+        }
+
+    </script>
 {% endblock %}

@@ -13,22 +13,24 @@ class ChartBuilder
 {
     protected $img;
     protected $settings = [
-       't' => 'WINS',
+        't' => 'WINS',
         'tf' => 'd',
         'w' => '700',
+        'aw' => '655',
         'h' => '300',
         'vol_wdt' => '40',
         'bgcolor' => 'rgb(255,255,255)',
-        'setka' => 'rgb(227,227,227)',
-        'prem' => '1',
-        'voll' => '1',
+        'setka' => 'rgb(153,153,153)', //цвет шкалы цены и подписей оси
+        'grid_color' => 'rgba(227,227,227,50)',// цвет ценовой сетки
+        'prem' => '0',
+        'voll' => '0',
         'spy_on' =>
             [
-                'check' => '1',
+                'check' => '0',
                 'color' => 'rgb(0,0,0)'
             ],
         'type' => 'candle',
-        'barw' => 4,
+        'barw' => 6,
         'thick' => '0',
         'kontur' => '1',
         'vol_b_w' => '4',
@@ -95,13 +97,16 @@ class ChartBuilder
                 'color' => 'rgb(209,96,32)'
             ],
         'lines_d' => '1',
+        'premarket_color' => 'rgba(99,99,99,95)'
     ];
 
     protected $colors = [
         'black_color' => 'rgb(0,0,0)',
+        'green_color' => 'rgb(0,255,0)',
+        'red_color' => 'rgb(255,0,0)',
     ];
 
-    protected $right_padding =40;//px
+    protected $right_padding =50;//px
 
     protected $bottom_padding =40;//px
 
@@ -115,6 +120,10 @@ class ChartBuilder
 
     protected $bars_count;
 
+    protected $dotted_line_styles;
+
+
+
     public function __construct()
     {
         parse_str($_SERVER['QUERY_STRING'],$settings);
@@ -122,7 +131,44 @@ class ChartBuilder
 
         $this->img =  imagecreatetruecolor($this->settings['w'], $this->settings['h']);
 
+        $this->reformatColors();
+
+        $this->setBackground();
+
+        $this->setCalculation();
+
+        $this->feed = new ChartDataFeeder();
+
+        $this->feed->loadData($this->settings,$this->bars_count);
+
+
+        if($this->feed->source == false) {
+            $this->addNoData();
+        } else {
+
+            $this->addGrid();
+
+            $this->addAxis();
+
+            $this->addLines();
+
+            $this->addBars();
+
+
+        }
+
+
+
+    }
+
+    /**
+     * Преобразует цвета в массиве настроек в формат PHP GD
+     */
+    protected function  reformatColors()
+    {
         // reformat colors to img format
+        $this->settings['grid_color'] = $this->TransparentColor($this->settings['setka']);
+
         foreach ($this->settings as $key => $value) {
 
             if( is_array($value)) {
@@ -136,18 +182,23 @@ class ChartBuilder
                 $this->settings[$key] = $this->getImageColor($value);
             }
         }
-
-        $this->setCalculation();
-
-        $this->feed = new ChartDataFeeder();
-
-        $this->feed->loadData($this->settings['t'],$this->settings['tf']);
-
-        //  $this->setBackground();
-        //   $this->addChart();
-
-
     }
+
+
+    /** Реформат цвета rgb в полупрозрачный int
+     * @param $rgb
+     * @return bool|int
+     */
+    public function TransparentColor($rgb){
+
+        $rgb = explode(',',str_replace(['rgb(',')','rgba('],'',$rgb));
+
+        if(count($rgb)==3){
+            return  imagecolorallocatealpha($this->img, $rgb[0], $rgb[1],$rgb[2],50);
+        }
+        return false;
+    }
+
 
     /**
      * @param $rgb
@@ -155,16 +206,18 @@ class ChartBuilder
      */
     public function getImageColor($rgb){
 
-        $rgb = explode(',',str_replace(['rgb(',')'],'',$rgb));
+        $rgb = explode(',',str_replace(['rgb(',')','rgba('],'',$rgb));
 
         if(count($rgb)==3){
             return  imagecolorallocate($this->img, $rgb[0], $rgb[1],$rgb[2]);
+        } elseif (count($rgb)==4){
+            return  imagecolorallocatealpha($this->img, $rgb[0], $rgb[1],$rgb[2],$rgb[3]);
         }
         return false;
     }
 
     /**
-     * расчет основных покзателей на основании входящих параметров (настроек графика)
+     * расчет основных покзателей на основании входящих параметров $settings (настроек графика)
      */
     protected function setCalculation(){
 
@@ -176,32 +229,74 @@ class ChartBuilder
         //<editor-fold desc="+set price area height">
         if ($this->settings['h'] <= 200) {
 
-           $this->price_area_height = $this->settings['h'] - 30 + $this->volume_area_height + ($this->bottom_padding - 20);
+            $this->price_area_height = $this->settings['h'] - (30 + $this->volume_area_height + ($this->bottom_padding - 20));
         }
         elseif ($this->settings['h'] > 200 && $this->settings['h'] < 300) {
 
-            $this->price_area_height = $this->settings['h'] - 35 + $this->volume_area_height + ($this->bottom_padding - 20);
+            $this->price_area_height = $this->settings['h'] - (35 + $this->volume_area_height + ($this->bottom_padding - 20));
         }
         elseif ($this->settings['h'] >= 300 && $this->settings['h'] < 400) {
 
-            $this->price_area_height = $this->settings['h'] - 40 + $this->volume_area_height + ($this->bottom_padding - 20);
+            $this->price_area_height = $this->settings['h'] - (40 + $this->volume_area_height + ($this->bottom_padding - 20));
         }
         else {
-            $this->price_area_height = $this->settings['h']- 50 + $this->volume_area_height + ($this->bottom_padding - 20);
+            $this->price_area_height = $this->settings['h']- (50 + $this->volume_area_height + ($this->bottom_padding - 20));
         }
         //</editor-fold>
 
-        $this->bars_count = ceil(($this->settings['w']*1 - 40) / $this->settings['barw']);
+        $this->settings['aw'] = $this->settings['w']*1 - $this->right_padding;
+
+        $this->settings['ah'] = $this->settings['h']*1 - $this->bottom_padding;
+
+        $this->bars_count = ceil(($this->settings['aw']) / $this->settings['barw']);
+
+
+        $this->dotted_line_styles = [
+            [
+                $this->settings['setka'],
+                IMG_COLOR_TRANSPARENT,
+                IMG_COLOR_TRANSPARENT,
+                IMG_COLOR_TRANSPARENT
+            ],
+            [
+                $this->settings['setka'],
+                IMG_COLOR_TRANSPARENT,
+                IMG_COLOR_TRANSPARENT,
+                IMG_COLOR_TRANSPARENT,
+                IMG_COLOR_TRANSPARENT,
+                IMG_COLOR_TRANSPARENT,
+                IMG_COLOR_TRANSPARENT,
+                IMG_COLOR_TRANSPARENT,
+                IMG_COLOR_TRANSPARENT
+            ]
+        ];
+
+        //Исправляем ошибочное значение
+        if ($this->settings['kontur'] == 15) {
+            $this->settings['kontur'] = 2;
+        }
 
     }
 
+    /**
+     *
+     */
     protected function setBackground(){
+
         $transparent = imagecolorallocate($this->img, 196, 196, 196);
 
-        //$trans = imagecolortransparent($this->img, $transparent);
+        $trans = imagecolortransparent($this->img, $transparent);
         imagefill($this->img, 0, 0, $transparent);
-    }
 
+        imagefilledrectangle(
+            $this->img,
+            1,
+            1,
+            $this->settings['aw'],
+            $this->settings['ah'],
+            $this->settings['bgcolor']
+        );
+    }
 
     /**
      * Расчет значения на оси У для текущей цены $price
@@ -210,33 +305,44 @@ class ChartBuilder
      */
     protected function getY($price) {
 
-     return ceil(($this->price_area_height)*($this->feed->max_price-1*$price)/$this->feed->price_range);
+        return ceil(($this->price_area_height)*($this->feed->max_price-1*$price)/$this->feed->price_range);
 
     }
 
-
+    /** Ценовой 5-угольник на оси Х
+     * @param $price
+     * @param $text
+     * @param $color
+     */
     protected function drawPolygon($price, $text, $color)
     {
-        $price_y = 0;// get_y($price);
+        $price_y = $this->getY($price);
         $pol_values = array(
-            $this->settings['w'] - 43, $price_y,  // Point 1 (x, y)
-            $this->settings['w'] - 34, $price_y + 3, // Point 2 (x, y)
-            $this->settings['w'], $price_y + 3,  // Point 3 (x, y)
-            $this->settings['w'], $price_y - 4,  // Point 4 (x, y)
-            $this->settings['w'] - 34, $price_y - 4
+            $this->settings['aw'] , $price_y,  // Point 1 (x, y)
+            $this->settings['aw'] + 8, $price_y + 6, // Point 2 (x, y)
+            $this->settings['w'], $price_y + 6,  // Point 3 (x, y)
+            $this->settings['w'], $price_y - 5,  // Point 4 (x, y)
+            $this->settings['aw'] + 8, $price_y - 5
         );
 
         imagefilledpolygon($this->img, $pol_values, 5, $color);
-        imagestring($this->img, 1, $this->settings['w'] - 34, $price_y - 4, $text, $this->settings['black_color']);
+        imagestring($this->img, 2, $this->settings['aw'] +10, $price_y - 6, $text, $this->settings['black_color']);
     }
 
+
+    /** Отрисовка Скользящих средних по цене
+     * @param $price
+     * @param $price2
+     * @param $x
+     * @param $color
+     */
     protected function drawMA($price, $price2, $x, $color)
     {
 
         $y_sma = $this->getY($price);
         $y_sma2 = $this->getY($price2);
 
-        if ($y_sma < $this->settings['h'] - $this->bottom_padding && $y_sma > 5) {
+        if ($y_sma < $this->settings['ah'] && $y_sma > 5) {
 
             imageline($this->img, $x - $this->settings['barw'] + 1, $y_sma, $x, $y_sma2, $color);
 
@@ -247,24 +353,50 @@ class ChartBuilder
 
     }
 
-    function drawVolume($vol, $x, $color)
+    /** Отрисовка одного бара объема
+     * @param int $vol
+     * @param int $x
+     * @param int $color
+     */
+    protected function drawVolume($vol, $x, $color)
     {
-        $volume = ($this->settings['h'] - $this->bottom_padding) - ceil($vol / ($this->feed->max_volume / $this->settings['vol_wdt']));
+        $volume = ($this->settings['ah']) - ceil($vol / ($this->feed->max_volume / $this->settings['vol_wdt']));
 
         imagefilledrectangle(
             $this->img, $x - ($this->settings['vol_b_w'] - 1) / 2,
             $volume, $x + ($this->settings['vol_b_w'] - 1) / 2,
-            $this->settings['h'] - $this->bottom_padding, $color
+            $this->settings['ah'],
+            $color
         );
     }
 
-    function draw_bar($o, $h, $l, $c, $x, $color_arr)
-    {                                                                        // ф-я отрисовки БАРОВ
+    /** Отрисовка свечи
+     * @param float $o
+     * @param float $h
+     * @param float $l
+     * @param float $c
+     * @param int $x
+     */
+    protected function drawBar($o, $h, $l, $c, $x)
+    {
         //расчет координат бара(свечки) на оси Y
         $hight = $this->getY($h);
         $close = $this->getY($c);
         $open = $this->getY($o);
         $low = $this->getY($l);
+
+
+        if ($this->settings['thick'] == 1 && $this->settings['kontur'] == 2) {
+            $pixel = 1;
+        } else {
+            $pixel = 0;
+        }
+
+        if ($this->settings['barw'] >= 6) {
+            $plus = 2;
+        } else {
+            $plus = 1;
+        }
 
 
         $topleft = min($open, $close);
@@ -274,79 +406,290 @@ class ChartBuilder
 
         if ($open >= $close) {
             imageline($this->img, $x, $low, $x, $hight, $this->settings['fcolorup']);
-            $color = $color_arr['bar']['telo']['up'];
-            $ccolor = $color_arr['bar']['fit']['up'];
+            $color = $this->settings['colorup'];
+            $ccolor = $this->settings['fcolorup'];
         } //  рисуем стержень свечки
-        else if ($open < $close) {
+        else {
             imageline($this->img, $x, $low, $x, $hight,$this->settings['fcolord']);
-            $color = $color_arr['bar']['telo']['d'];
-            $ccolor = $color_arr['bar']['fit']['d'];
+            $color = $this->settings['colordown'];
+            $ccolor = $this->settings['fcolord'];
         }
         imagesetthickness($this->img, 1);
 
-        if ($type == 'candle') {
+        if ($this->settings['type'] == 'candle') {
             if ($butright - $topleft >= 1) {
-                imagerectangle($this->img, $x - $kontur, $topleft, $x + $kontur - $pixel, $butright, $ccolor);
+                imagerectangle($this->img, $x - $this->settings['kontur'], $topleft, $x + $this->settings['kontur'] - $pixel, $butright, $ccolor);
             } // рисуем контур тела свечи
             else if ($butright - $topleft < 1) {
-                imagerectangle($this->img, $x - $kontur, $topleft - 1, $x + $kontur - $pixel, $butright + 1, $ccolor);
+                imagerectangle($this->img, $x - $this->settings['kontur'], $topleft - 1, $x + $this->settings['kontur'] - $pixel, $butright + 1, $ccolor);
             }
 
             if ($butright - $topleft > 1) {
-                imagefilledrectangle($this->img, $x - ($kontur - 1), $topleft + 1, $x + ($kontur - 1 - $pixel), $butright - 1, $color);
+                imagefilledrectangle($this->img, $x - ($this->settings['kontur'] - 1), $topleft + 1, $x + ($this->settings['kontur'] - 1 - $pixel), $butright - 1, $color);
             } // рисуем тело свечи
             if ($butright - $topleft < 1) {
-                imagefilledrectangle($this->img, $x - ($kontur - 1), $topleft, $x + ($kontur - 1 - $pixel), $butright, $color);
+                imagefilledrectangle($this->img, $x - ($this->settings['kontur'] - 1), $topleft, $x + ($this->settings['kontur'] - 1 - $pixel), $butright, $color);
             }
         }// Закрашенный прямоугольник
 
 
-        if ($type == 'bar') {
+        if ($this->settings['type'] == 'bar') {
             if ($open >= $close) {
-                imageline($this->img, $x - $plus - 2, $open, $x, $open, $color_arr['bar']['fit']['up']);
-                imageline($this->img, $x, $close, $x + 2, $close, $color_arr['bar']['fit']['up']);
+                imageline($this->img, $x - $plus - 2, $open, $x, $open, $this->settings['fcolorup']);
+                imageline($this->img, $x, $close, $x + 2, $close,$this->settings['fcolorup']);
                 if ($this->settings['thick'] >= 1) {
-                    imageline($this->img, $x - $plus - 2, $open + 1, $x, $open + 1, $color_arr['bar']['fit']['up']);
-                    imageline($this->img, $x, $close + 1, $x + 2, $close + 1, $color_arr['bar']['fit']['up']);
+                    imageline($this->img, $x - $plus - 2, $open + 1, $x, $open + 1, $this->settings['fcolorup']);
+                    imageline($this->img, $x, $close + 1, $x + 2, $close + 1, $this->settings['fcolorup']);
                 }
-            }
-
-            if ($open < $close) {
-                imageline($this->img, $x - $plus - 2, $open, $x, $open, $color_arr['bar']['fit']['d']);
-                imageline($this->img, $x, $close, $x + 2, $close, $color_arr['bar']['fit']['d']);
+            } else  {
+                imageline($this->img, $x - $plus - 2, $open, $x, $open, $this->settings['fcolord']);
+                imageline($this->img, $x, $close, $x + 2, $close, $this->settings['fcolord']);
                 if ($this->settings['thick'] >= 1) {
-                    imageline($this->img, $x - $plus - 2, $open - 1, $x, $open - 1, $color_arr['bar']['fit']['d']);
-                    imageline($this->img, $x, $close - 1, $x + 2, $close - 1, $color_arr['bar']['fit']['d']);
+                    imageline($this->img, $x - $plus - 2, $open - 1, $x, $open - 1, $this->settings['fcolord']);
+                    imageline($this->img, $x, $close - 1, $x + 2, $close - 1, $this->settings['fcolord']);
                 }
             }
         }
     }
 
-    function draw_lines($price, $x, $color)
+    /** Отрисовка ценовой линии
+     * @param float $price
+     * @param int $x
+     * @param int $color
+     */
+    protected function drawLines($price, $x, $color)
     {
         $y_price = $this->getY($price);
-        if ($y_price < $this->settings['h'] - $this->bottom_padding && $y_price > 5) {
-            imageline($this->img, $x - $kontur + 1, $y_price, $w - 40, $y_price, $color);
-            //imagestring($img,1,$x-$kontur+1,$y_price-10,$price,$red );
+        if ($y_price < $this->settings['ah'] && $y_price > 5) {
+            imageline($this->img, ($this->settings['aw']-$x*$this->settings['barw']) - $this->settings['kontur'] - 2, $y_price, $this->settings['aw'], $y_price, $color);
+            //imagestring($img,1,$x-$this->settings['kontur']+1,$y_price-10,$price,$red );
 
         }
     }
 
+    /**
+     * Рисуем ценовую сетку и шкалу цены
+     */
+    protected function addGrid() {
 
-    public function addChart(){
-        //fon
-        imagefilledrectangle(
-            $this->img,
-            1,
-            1,
-            $this->settings['w'] - $this->right_padding,
-            $this->settings['h'] - $this->bottom_padding,
-            $this->settings['bgcolor']
+        $style = Array(
+            $this->settings['grid_color'],
+            IMG_COLOR_TRANSPARENT,
+            IMG_COLOR_TRANSPARENT,
+            IMG_COLOR_TRANSPARENT
         );
 
+        imagesetstyle($this->img, $style);
 
+        $style2 = Array(
+            $this->settings['grid_color'],
+            IMG_COLOR_TRANSPARENT,
+            IMG_COLOR_TRANSPARENT,
+            IMG_COLOR_TRANSPARENT,
+            IMG_COLOR_TRANSPARENT,
+            IMG_COLOR_TRANSPARENT,
+            IMG_COLOR_TRANSPARENT,
+            IMG_COLOR_TRANSPARENT,
+            IMG_COLOR_TRANSPARENT
+        );
+
+        //------ шаг сетки в доларах
+        $range = $this->feed->price_range;
+        if ($range <= 0.05) {
+            $step = 0.005;
+        } else if ($range <= 0.5) {
+            $step = 0.05;
+        } else if ($range <= 1.5) {
+            $step = 0.1;
+        } else if ($range <= 2.5) {
+            $step = 0.25;
+        } else if ($range <= 3) {
+            $step = 0.25;
+        } else if ($range <= 5) {
+            $step = 0.5;
+        } else if ($range <= 15) {
+            $step = 1;
+        } else if ($range <= 25) {
+            $step = 2;
+        } else if ($range <= 35) {
+            $step = 3;
+        } else if ($range <= 70) {
+            $step = 5;
+        } else if ($range <= 150) {
+            $step = 10;
+        } else if ($range <= 200) {
+            $step = 15;
+        } else if ($range <= 250) {
+            $step = 20;
+        } else if ($range <= 350) {
+            $step = 50;
+        } else if ($range <= 550) {
+            $step = 50;
+        } else {
+            $step = round(round($range, 1) / 10, 0);
+        }
+
+
+        $y0 = ceil(($this->price_area_height) * ($this->feed->max_price - 1 * ceil($this->feed->min_price)) / $range);// координата начала сетки - целое число от минимума
+
+        if ($range <= 0.2) {
+            $nextline = round($this->feed->min_price, 1);
+        } else if (1 * $this->feed->min_price >= 800) {
+            $nextline = ceil($this->feed->min_price / 10) * 10;
+        } else {
+            $nextline = ceil($this->feed->min_price);
+        }
+
+        // рисуем пунктирную линию через каждые $step выше целого числа от минимума
+        for ($l = 0; $l <= 30; $l++) {
+            $y0 = ceil(($this->price_area_height) * ($this->feed->max_price - 1 * $nextline) / $range);
+
+            if ($y0 < $this->settings['ah'] - $this->volume_area_height && $y0 > 5) {
+
+                imageline($this->img, 0, $y0, $this->settings['aw'], $y0, IMG_COLOR_STYLED);
+
+                imagestring($this->img, 2, $this->settings['w'] - 37, $y0 - 6, $nextline, $this->settings['setka']);
+            }
+
+            $nextline = $nextline + $step;
+        }
+
+
+        if ($range <= 0.2) {
+            $nextline = round($this->feed->min_price, 1);
+        } else if (1 * $this->feed->min_price >= 800) {
+            $nextline = ceil($this->feed->min_price / 10) * 10;
+        } else {
+            $nextline = ceil($this->feed->min_price);
+        }
+
+        $nextline = $nextline - $step;
+
+        for ($l = 0; $l <= 30; $l++) {
+            $y0 = ceil(($this->price_area_height) * ($this->feed->max_price - 1 * $nextline) / $range);
+            if ($y0 < $this->settings['ah'] - $this->volume_area_height && $y0 > 5) {
+                imageline($this->img, 0, $y0, $this->settings['aw'], $y0, IMG_COLOR_STYLED);
+
+                imagestring($this->img, 2, $this->settings['w'] - 37, $y0 - 6, $nextline, $this->settings['setka']);
+            }
+            $nextline = $nextline - $step;
+        } // рисуем линию через каждые $step ниже целого числа от минимума
+    }
+
+    /**
+     * Рисуем оси У и Х и шкалу объема
+     */
+    protected function addAxis(){
+
+        imageline($this->img, 0, 0, $this->settings['aw'], 0, IMG_COLOR_STYLED);  // ось Х вверху
+        imageline($this->img, 1, $this->settings['ah'], $this->settings['aw'], $this->settings['ah'], IMG_COLOR_STYLED);  // ось Х
+
+
+        if ($this->settings['voll'] == 1) {
+
+            imageline($this->img, 1, $this->settings['h'] - $this->settings['vol_wdt'] - 26 - ($this->bottom_padding - 20), $this->settings['aw'], $this->settings['h'] - $this->settings['vol_wdt'] - 26 - ($this->bottom_padding - 20), $this->settings['setka']);
+
+        }
+
+        imageline($this->img, $this->settings['aw'], 0, $this->settings['aw'], $this->settings['ah'], IMG_COLOR_STYLED);// ценовая ось
+        imageline($this->img, 0, 0, 0, $this->settings['ah'], IMG_COLOR_STYLED);// ценовая ось слева
+
+
+        // draw volume
+
+        $volume1 = ($this->settings['ah']) - ceil($this->settings['vol_wdt'] / 2);
+        $volume2 = ($this->settings['ah']) - $this->settings['vol_wdt']; //
+
+        imageline($this->img, 1, $volume1, 3, $volume1, $this->settings['setka']);
+        imageline($this->img, 1, $volume2, 3, $volume2, $this->settings['setka']);
+
+        if ($this->feed->max_volume >= 1000000) {
+            $stepvol = $this->feed->max_volume / 1000;
+            $km = 'm';
+        } else {
+            $km = 'k';
+            $stepvol = round($this->feed->max_volume  / 3 / 100000, 1) * 100000;
+        }
+        imagestring($this->img, 2, 5, $volume1 - 7, round($stepvol / 2000) . $km, $this->settings['setka']);
+        imagestring($this->img, 2, 5, $volume2 - 7, round($stepvol / 1000) . $km, $this->settings['setka']);
+
+
+        //надпись таймфрейма
+        imagestring($this->img, 2, 20, 0, $this->settings['tf'] . '  ' . date('M d, H:i', strtotime($this->feed->t[0])),$this->settings['setka']);
+    }
+
+    /**
+     * Рисуем свечи, объемы
+     */
+    protected function  addBars(){
+
+        $x = $this->settings['w'] - ($this->right_padding+5); // положение середины свечи на оси х - пиксель
+
+        foreach ($this->feed->t as $n => $ntime) {
+
+            //<editor-fold desc="Фон премаркета">
+            if ($this->settings['tf'] != 'd' && $this->settings['tf'] != 'w' && $this->settings['prem'] == 1) {
+
+                if (date('Hi', strtotime($ntime)) < 935 || date('Hi', strtotime($ntime)) > 1600) {
+
+                    imagefilledrectangle($this->img, $x - (ceil($this->settings['barw'] / 2) - 1), 1, $x + ($this->settings['barw'] - ceil($this->settings['barw'] / 2)), $this->settings['ah'], $this->settings['premarket_color']);
+                }
+            }
+            //</editor-fold>
+
+            //<editor-fold desc=" Подписи на оси Х ">
+            if ( isset($this->feed->labels[$n])) {
+                imagesetstyle($this->img, $this->dotted_line_styles[0]);
+                imageline($this->img, $x, 1, $x, $this->settings['h'] - 35, IMG_COLOR_STYLED);
+                //imagettftext($img, $fsize,0,$x,$h-6,$grey, $font,$A['labels'][$n]);
+                imagestring($this->img, 2, $x + 4, $this->settings['h'] - 16, $this->feed->labels[$n], $this->settings['setka']);
+            }
+
+
+            if (isset($this->feed->labels2[$n])) {
+                imagesetstyle($this->img, $this->dotted_line_styles[1]);
+                imagestring($this->img, 2, $x - (20 - $this->settings['tf']), $this->settings['h'] - 30, $this->feed->labels2[$n], $this->settings['setka']);
+                imageline($this->img, $x, 1, $x, $this->settings['ah'], IMG_COLOR_STYLED);
+            }
+            //</editor-fold>
+
+            //<editor-fold desc="Отрисовка объема">
+            if ($this->feed->c[$n] >= $this->feed->o[$n]) {
+                $this->drawVolume($this->feed->v[$n], $x, $this->settings['vol_c_u']);
+            } else {
+                $this->drawVolume($this->feed->v[$n], $x, $this->settings['vol_c_d']);
+            }
+            //</editor-fold>
+
+            $this->drawBar($this->feed->o[$n],$this->feed->h[$n],$this->feed->l[$n],$this->feed->c[$n],$x);
+            $x = $x - $this->settings['barw'];
+
+        }
+
+        if ($this->feed->c[0] >= $this->feed->o[0]) {
+            $this->drawPolygon($this->feed->c[0], round($this->feed->c[0], 2),$this->settings['green_color']);
+        } else {
+            $this->drawPolygon($this->feed->c[0], round($this->feed->c[0], 2),$this->settings['red_color']);
+        } // Рисуем Цену на графике
 
     }
+
+    /**
+     * рисуем горизонтальные ценовые уровни (op,hi,lo,close, last price)
+     */
+    protected function addLines(){
+
+        foreach ($this->feed->lines as $lines) {
+            $this->drawLines($lines['price'],$lines['x'],$this->settings['lines_'.$lines['type']]['color']);
+        }
+
+        if($this->settings['tf'] =='d' && $this->settings['lines_last']['check']) {
+            $y_price = $this->getY($this->feed->c[0]);
+            imageline($this->img, 0, $y_price, $this->settings['aw'], $y_price, $this->settings['lines_last']['color']);
+        }
+
+    }
+
     /**
      * @return array
      */
@@ -363,11 +706,21 @@ class ChartBuilder
         return $this->feed;
     }
 
+    /**
+     * если нет данных для отриоовки графика
+     */
+    public function addNoData()
+    {
+        imagestring($this->img, 8, $this->settings['w']/2 - 100,  $this->settings['h']/2, 'Chart data not available', $this->settings['setka']);
+    }
 
-
+    /**
+     * Вывод изображения
+     */
     public function output() {
         header("Content-Type: image/png");
         imagepng($this->img);
+        imagedestroy($this->img);
     }
 
 

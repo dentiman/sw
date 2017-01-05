@@ -9,7 +9,6 @@
 namespace AppBundle\Service;
 
 
-
 use AppBundle\Entity\Presets\Charts;
 
 use AppBundle\Entity\Presets\Columns;
@@ -82,9 +81,19 @@ class Researcher
 
     }
 
+
     public function getAllResult( $formData)
     {
         return  $this->fm->getScreenQuery($formData)->getQuery()->getResult();
+    }
+
+    /**
+     * @param $tickers
+     * @return array
+     */
+    public function getTickerResult($tickers)
+    {
+        return  $this->fm->getScreenQuery(null,$tickers)->getQuery()->getResult();
     }
 
 

@@ -87,7 +87,7 @@ class DailyChartsCommand extends CustomContainerAwareCommand
      */
     protected function downloadBars($ticker)
     {
-        $downloader = new Google();
+        $downloader = new IqFeed();
         $downloader->setTicker($ticker)
             ->setTf('d')
             ->setStartTime(time() - 60 * 60 * 365 * 24)

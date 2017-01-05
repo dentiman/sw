@@ -50,6 +50,7 @@ class ChartsController extends Controller
      * @Route("/presets/charts/new", name="presets_charts_new")
      * @Security("is_granted('IS_AUTHENTICATED_FULLY')")
      */
+
     public function EditAction(Request $request, Charts $charts=null)
     {
         $user = $this->getUser();
@@ -155,8 +156,8 @@ class ChartsController extends Controller
      * @Route("/presets/charts/setlayout", name="presets_set_chart_id")
      * @Security("is_granted('IS_AUTHENTICATED_FULLY')")
      */
-    public function setChartLayout(Request $request) {
-
+    public function setChartLayout(Request $request)
+    {
         if($layout = $request->query->getInt('chview', false)) {
             $em = $this->getDoctrine()->getManager();
             $user = $this->getUser();
@@ -167,8 +168,31 @@ class ChartsController extends Controller
                 $em->flush();
             }
         }
-
         return new JsonResponse(['status' => 'ok']);
+    }
+
+
+    /**
+     * @Route("/presets/charts/preview", name="presets_charts_preview")
+     * @Security("is_granted('IS_AUTHENTICATED_FULLY')")
+     */
+    public function chartPreview(Request $request)
+    {
+        $charts = new Charts();
+        $form = $this->createForm(
+            ChartsLayoutsType::class,
+            $charts,
+            ['filter_manager' => $this->container->get('app.service.filters_manager')]
+        );
+
+        $researcher = $this->container->get('app.service.researcher');
+
+        $form->handleRequest($request);
+
+        return $this->render('screener/result_single_quote.html.twig', array(
+            'rows' => $researcher->getTickerResult(['AAPL']),
+            'charts' => $form->getData()->getSerializeData(),
+        ));
     }
 
 }

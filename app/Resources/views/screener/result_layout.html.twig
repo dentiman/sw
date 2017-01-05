@@ -31,7 +31,7 @@
         <script>
             $('#total-result').html('total: {{ pagination.getTotalItemCount }}');
 
-            $('#top-pagination').prepend($('#top-pagination-from').html());
+            $('#top-pagination').html($('#top-pagination-from').html());
 
             $(document).ready(function () {
                 $('.pagination a').click(function (event) {

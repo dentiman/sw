@@ -1,0 +1,5 @@
+    <div id="screener-chart-container">
+        {% for row in rows %}
+            {% include 'screener/chart.html.twig' with row %}
+        {% endfor %}
+    </div>

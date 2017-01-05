@@ -71,11 +71,11 @@ class Google extends BaseFeed
                 }
 
                 $B['t'][] = $time;
-                $B['c'][] = $field[1];
-                $B['o'][] = $field[4];
-                $B['h'][] = $field[2];
-                $B['l'][] = $field[3];
-                $B['v'][] = $field[5];
+                $B['c'][] = $field[1]*1;
+                $B['o'][] = $field[4]*1;
+                $B['h'][] = $field[2]*1;
+                $B['l'][] = $field[3]*1;
+                $B['v'][] = $field[5]*1;
             }
         }
 

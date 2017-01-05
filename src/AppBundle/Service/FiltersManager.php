@@ -53,7 +53,7 @@ class FiltersManager
     /**
      * @var array
      */
-    protected $columnsForQuery = ['coun','price','chp','ch','vol','e','sec','ind'];
+    protected $columnsForQuery = ['coun','price','chp','ch','vol','e','sec','ind','avvo','atr'];
 
 
     /**
@@ -161,7 +161,7 @@ class FiltersManager
 
     }
 
-    public function getScreenQuery($formData, $columns = null)
+    public function getScreenQuery($formData = null, array $tickers = [])
     {
 
         $qb = $this->em->createQueryBuilder()->select('l.ticker');
@@ -177,15 +177,14 @@ class FiltersManager
             ->leftJoin('AppBundle:Feed\MainEarnings', 'e', 'WITH', 'l.ticker=e.ticker')
             ->leftJoin('AppBundle:Feed\MainMinutePrev', 'm', 'WITH', 'l.ticker=m.ticker')
             ->leftJoin('AppBundle:Feed\MainPremarket', 'p', 'WITH', 'l.ticker=p.ticker');
-        //    ->where('u.id = ?1')
+
 
 
         // set defaults -------------------
         $qb->orderBy('l.chp', 'DESC');
 
         //-------set WHERE -----------------------------------
-        if($formData !== null)
-        {
+        if($formData !== null) {
             foreach ($formData as $filterID => $value) {
 
             //Range----
@@ -403,6 +402,11 @@ class FiltersManager
 
             }
         }
+        }
+
+        if(count($tickers)) {
+            $qb->andWhere($qb->expr()->in($this->field('ticker'), ':ticker'))
+                ->setParameter('ticker', $tickers);
         }
 
         return $qb;

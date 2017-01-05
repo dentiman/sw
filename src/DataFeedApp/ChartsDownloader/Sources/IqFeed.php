@@ -35,7 +35,6 @@ class IqFeed extends BaseFeed
 
                     $field = explode(',', trim($row));
 
-
                     if ($this->tf == 'd' || $this->tf == 'w') {
 
                         $B['t'][] =  strtotime( $field[0]);

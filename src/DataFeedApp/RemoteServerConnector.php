@@ -87,7 +87,7 @@ class RemoteServerConnector
 
         $ctx = stream_context_create(array('http'=>
             array(
-                'timeout' => 2,
+                'timeout' => 3,
             )
         ));
 

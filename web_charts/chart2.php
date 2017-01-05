@@ -10,5 +10,9 @@ use DataFeedApp\ChartBuilder\ChartBuilder;
 
 $r= new ChartBuilder();
 
+//var_dump($r->getFeed()->labels2);
+//echo $r->getFeed()->price_range." ";
+//echo $r->getFeed()->min_price." ";
+//echo $r->getFeed()->max_price." ";
 
-$r->output();
+var_dump($r->getSettings());
