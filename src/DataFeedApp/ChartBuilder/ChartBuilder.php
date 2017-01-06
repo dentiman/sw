@@ -106,9 +106,9 @@ class ChartBuilder
         'red_color' => 'rgb(255,0,0)',
     ];
 
-    protected $right_padding =50;//px
+    protected $right_padding = 50;//px
 
-    protected $bottom_padding =40;//px
+    protected $bottom_padding = 40;//px
 
     protected $volume_bars_height = 40;//px
 
@@ -133,9 +133,9 @@ class ChartBuilder
 
         $this->reformatColors();
 
-        $this->setBackground();
-
         $this->setCalculation();
+
+        $this->setBackground();
 
         $this->feed = new ChartDataFeeder();
 
@@ -152,9 +152,9 @@ class ChartBuilder
 
             $this->addLines();
 
+            $this->addMA();
+
             $this->addBars();
-
-
         }
 
 
@@ -685,11 +685,34 @@ class ChartBuilder
 
         if($this->settings['tf'] =='d' && $this->settings['lines_last']['check']) {
             $y_price = $this->getY($this->feed->c[0]);
-            imageline($this->img, 0, $y_price, $this->settings['aw'], $y_price, $this->settings['lines_last']['color']);
+        //    imageline($this->img, 0, $y_price, $this->settings['aw'], $y_price, $this->settings['lines_last']['color']);
         }
 
     }
 
+    /**
+     * рисуем скользящие средние EMA SMA
+     */
+    protected function addMA()
+    {
+        //перебор подготовленых данных и отрисовка каждой скользящей средней
+        $y_sma_name = 15;
+        foreach ($this->feed->MA as $ma) {
+
+            $count = count($ma['data'])-1;
+
+            $x = $this->settings['aw'];
+            for($n = 0; $n<$count;$n++){
+
+                $this->drawMA($ma['data'][$n+1],$ma['data'][$n],$x,$ma['color']);
+                $x =  $x - $this->settings['barw'];
+            }
+
+            imagestring($this->img, 2, 20, $y_sma_name, $ma['name'], $ma['color']);
+            $y_sma_name =  $y_sma_name+12;
+
+        }
+    }
     /**
      * @return array
      */

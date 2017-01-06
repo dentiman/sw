@@ -42,10 +42,15 @@ class ChartDataFeeder
 
     public $lines;
 
+    public $MA = [];
+
+
+
 
 
     public function loadData($settings,$bars_count)
     {
+
         $downloader = new Google();
         $downloader->setTicker($settings['t'])
             ->setTf($settings['tf'])
@@ -56,8 +61,114 @@ class ChartDataFeeder
 
         if($data) {
 
-            $this->calculate($settings,$data);
+            $days = []; $key = 0;
+            foreach ($data['t'] as $timestamp) {
 
+                // группировка данных по дням для формирования точек линий (open,high,low,close)
+                $days[date('Ymd',$timestamp)]['datakey'][] = $key;
+                $days[date('Ymd',$timestamp)]['o'][] = $data['o'][$key];
+                $days[date('Ymd',$timestamp)]['h'][] = $data['h'][$key];
+                $days[date('Ymd',$timestamp)]['l'][] = $data['l'][$key];
+                $days[date('Ymd',$timestamp)]['c'][] = $data['c'][$key];
+
+                $prev_timestamp = $timestamp;
+                $key++;
+            }
+            //перебор дней со своими значениями для формирования масива точек линий
+            if($settings['tf'] !='d' && $settings['tf'] !='w') {
+
+                $key = 0; $lines =[];
+                foreach ($days as $date => $val) {
+
+                    $keys = [ //ключи нужных значений точек в текущем дне
+                        'h'=>array_keys($val['h'], max($val['h']))[0],
+                        'l'=> array_keys($val['l'], min($val['l']))[0],
+                        'o'=>  count($val['o'])-1,
+                        'c'=> 0
+                    ];
+
+                    //массив точек начала линий со значением цены (x - номер бара по счету с начала)
+                    if($settings['lines_hi']['check']) {
+                        $lines[] = ['type' => 'hi', 'price'=> $val['h'][$keys['h']],'x'=>$val['datakey'][$keys['h']]];
+                    }
+
+                    if($settings['lines_lo']['check']) {
+                        $lines[] = ['type' => 'lo','price'=> $val['l'][$keys['l']],'x'=>$val['datakey'][$keys['l']]];
+                    }
+
+                    if($settings['lines_op']['check']) {
+                        $lines[] = ['type' => 'oo','price'=> $val['o'][$keys['o']],'x'=>$val['datakey'][$keys['o']]];
+                    }
+
+                    if($settings['lines_cl']['check']) {
+                        $lines[] = ['type' => 'cl','price'=> $val['c'][$keys['c']],'x'=>$val['datakey'][$keys['c']]];
+                    }
+
+                    $key++;
+                    if($key == $settings['lines_d']) {
+                        break;
+                    }
+                }
+                $this->lines =  $lines;
+            }
+
+
+
+            if(isset($settings['sma1']['choice'])) {
+
+                $this->MA[] = [
+                    'name'=>'sma ' . $settings['sma1']['choice'],
+                    'data' => $this->getSMA($data['c'],$settings['sma1']['choice'],$bars_count),
+                    'color' => $settings['sma1']['color']
+                ];
+            }
+
+            if(isset($settings['sma2']['choice'])) {
+
+                $this->MA[] = [
+                    'name'=>'sma ' . $settings['sma2']['choice'],
+                    'data' => $this->getSMA($data['c'],$settings['sma2']['choice'],$bars_count),
+                    'color' => $settings['sma2']['color']
+                ];
+            }
+
+            if(isset($settings['sma3']['choice'])) {
+
+                $this->MA[] = [
+                    'name'=>'sma ' . $settings['sma3']['choice'],
+                    'data' => $this->getSMA($data['c'],$settings['sma3']['choice'],$bars_count),
+                    'color' => $settings['sma3']['color']
+                ];
+            }
+
+            if(isset($settings['ema1']['choice'])) {
+
+                $this->MA[] = [
+                    'name'=>'ema ' . $settings['ema1']['choice'],
+                    'data' => $this->getEMA($data['c'],$settings['ema1']['choice'],$bars_count),
+                    'color' => $settings['ema1']['color']
+                ];
+            }
+
+            if(isset($settings['ema2']['choice'])) {
+
+                $this->MA[] = [
+                    'name'=>'ema ' . $settings['ema1']['choice'],
+                    'data' => $this->getEMA($data['c'],$settings['ema1']['choice'],$bars_count),
+                    'color' => $settings['ema1']['color']
+                ];
+            }
+
+            if(isset($settings['ema3']['choice'])) {
+
+                $this->MA[] = [
+                    'name'=>'ema ' . $settings['ema3']['choice'],
+                    'data' => $this->getEMA($data['c'],$settings['ema3']['choice'],$bars_count),
+                    'color' => $settings['ema3']['color']
+                ];
+            }
+
+            //обрезка данных под график
             $data['t'] = array_slice($data['t'], 0, $bars_count);
             $data['o'] = array_slice($data['o'], 0, $bars_count);
             $data['h'] = array_slice($data['h'], 0, $bars_count);
@@ -84,60 +195,32 @@ class ChartDataFeeder
         }
     }
 
-    protected function calculate($settings,$data){
+    protected function calculate($settings,$data,$bars_count){
 
-        $days = []; $key = 0;
-        foreach ($data['t'] as $timestamp) {
 
-            // группировка данных по дням для формирования точек линий (open,high,low,close)
-            $days[date('Ymd',$timestamp)]['datakey'][] = $key;
-            $days[date('Ymd',$timestamp)]['o'][] = $data['o'][$key];
-            $days[date('Ymd',$timestamp)]['h'][] = $data['h'][$key];
-            $days[date('Ymd',$timestamp)]['l'][] = $data['l'][$key];
-            $days[date('Ymd',$timestamp)]['c'][] = $data['c'][$key];
 
-            $prev_timestamp = $timestamp;
-            $key++;
+    }
+
+
+    public function getSMA($data,$period,$bars_count) {
+        $A= [];
+        $count = count($data)-$period;
+        for ($i=0;$i<=$count;$i++) {
+            $A[] = round(array_sum(array_slice($data, $i, $period))/$period,2);
         }
+        return array_slice($A,0,$bars_count);
+    }
 
-        //перебор дней со своими значениями для формирования масива точек линий
-        if($settings['tf'] !='d' && $settings['tf'] !='w') {
-
-            $key = 0; $lines =[];
-            foreach ($days as $date => $val) {
-
-                $keys = [ //ключи нужных значений точек в текущем дне
-                    'h'=>array_keys($val['h'], max($val['h']))[0],
-                    'l'=> array_keys($val['l'], min($val['l']))[0],
-                    'o'=>  count($val['o'])-1,
-                    'c'=> 0
-                ];
-
-                //массив точек начала линий со значением цены (x - номер бара по счету с начала)
-                if($settings['lines_hi']['check']) {
-                    $lines[] = ['type' => 'hi', 'price'=> $val['h'][$keys['h']],'x'=>$val['datakey'][$keys['h']]];
-                }
-
-                if($settings['lines_lo']['check']) {
-                    $lines[] = ['type' => 'lo','price'=> $val['l'][$keys['l']],'x'=>$val['datakey'][$keys['l']]];
-                }
-
-                if($settings['lines_op']['check']) {
-                    $lines[] = ['type' => 'oo','price'=> $val['o'][$keys['o']],'x'=>$val['datakey'][$keys['o']]];
-                }
-
-                if($settings['lines_cl']['check']) {
-                    $lines[] = ['type' => 'cl','price'=> $val['c'][$keys['c']],'x'=>$val['datakey'][$keys['c']]];
-                }
-
-                $key++;
-                if($key == $settings['lines_d']) {
-                    break;
-                }
+    public function getEMA($data,$period,$bars_count) {
+        $A= [];
+        $data = array_reverse($data);
+        for ($i=0;$i<count($data);$i++) {
+            if($i==$period-1) {
+                $A[] = round(array_sum(array_slice($data,0, $period))/$period,2);
             }
-            $this->lines =  $lines;
+            else { $A[] = $data[$i]*2/($period+1)+end($A)*(1-2/($period+1));}
         }
-
+        return array_slice(array_reverse($A),0,$bars_count);
     }
 
 
@@ -188,8 +271,6 @@ class ChartDataFeeder
         }
 
     }
-
-
 
 
 }
