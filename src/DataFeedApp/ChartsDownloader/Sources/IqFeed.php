@@ -45,18 +45,22 @@ class IqFeed extends BaseFeed
                         $B['v'][] =  $field[5] * 1;
                     } else {
 
+                        $new_time = strtotime($field[0])-($this->tf*60);
+
                         if (
-                            $this->marketOpen == false &&
-                            (date('Hi',strtotime($field[0]))*1 >= $kine[$this->tf] ||
-                                date('Hi',strtotime($field[0]))*1 < $pocha[$this->tf])
+                            $this->premarket == false &&
+                            (   date('Hi',$new_time)*1 >= 1600 ||
+                                date('Hi',$new_time)*1 < 930 )
                         ) continue;
 
-                        $B['t'][] = strtotime( $field[0]);
+                        // $B['t'][] = strtotime( $field[0]);
+                         //  $B['t'][] = floor(strtotime($field[0])/100)*100;
+                        $B['t'][] = $new_time;
                         $B['c'][] =  $field[4] * 1;
                         $B['o'][] =  $field[3] * 1;
                         $B['h'][] =  $field[1] * 1;
                         $B['l'][] =  $field[2] * 1;
-                        $B['v'][] =  $field[5] * 1;
+                        $B['v'][] =  $field[6] * 1;
 
                     }
                 }

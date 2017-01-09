@@ -15,5 +15,6 @@ $r= new ChartBuilder();
 //echo $r->getFeed()->min_price." ";
 //echo $r->getFeed()->max_price." ";
 
-//var_dump($r->getSettings());
-var_dump($r->getFeed()->MA);
+//echo $r->getFeed()->test;
+
+var_dump($r->getFeed()->getTimes());

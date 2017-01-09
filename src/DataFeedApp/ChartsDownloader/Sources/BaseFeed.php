@@ -16,9 +16,9 @@ abstract class BaseFeed implements SourcesDataFeedInterface
 
     protected $marketOpen = false;
 
-    protected $startTime;
+    public $startTime;
 
-    protected $finishTime;
+    public $finishTime;
 
     protected $premarket = false;
 
@@ -66,6 +66,35 @@ abstract class BaseFeed implements SourcesDataFeedInterface
     }
 
     /**
+     * @return $this
+     */
+    public function setTimeRange()
+    {
+        //количество дней для выборки в зависимости от  таймфрейма
+        $timeRange = [
+            1 => 2,
+            2 => 4,
+            3 => 5,
+            5 => 15,
+            15 => 30,
+            30 => 30,
+            60 => 60,
+            'd' => 365,
+            'w' => 365*3,
+        ];
+        if (is_numeric($this->tf)) {
+
+            $this->finishTime =floor(time()/($this->tf*60))*($this->tf*60);
+            $this->startTime = floor((time()-($timeRange[$this->tf]*60*60*24))/($this->tf*60)) * ($this->tf*60);
+        } else {
+            $this->finishTime = time();
+            $this->startTime = time()-($timeRange[$this->tf]*60*60*24);
+        }
+
+        return $this;
+    }
+
+    /**
      * @param boolean $premarket
      * @return $this
      */
@@ -81,7 +110,12 @@ abstract class BaseFeed implements SourcesDataFeedInterface
      */
     public function setTf($tf)
     {
-        $this->tf = $tf;
+        if (is_numeric($tf)) {
+            $this->tf = $tf + 0;
+        } else {
+            $this->tf = $tf;
+        }
+
         return $this;
     }
 

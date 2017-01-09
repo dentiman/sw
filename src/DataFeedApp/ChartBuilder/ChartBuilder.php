@@ -112,7 +112,7 @@ class ChartBuilder
 
     protected $volume_bars_height = 40;//px
 
-    protected $volume_area_height =0;//px
+    protected $volume_area_height = 0;//px
 
     protected $price_area_height;//px
 
@@ -122,7 +122,13 @@ class ChartBuilder
 
     protected $dotted_line_styles;
 
+    public $labels;
 
+    public $labels2;
+
+    public $MA = [];
+
+    public $lines;
 
     public function __construct()
     {
@@ -146,6 +152,12 @@ class ChartBuilder
             $this->addNoData();
         } else {
 
+            $this->addLabels();
+
+            $this->calculateMA();
+
+            $this->feed->calculate($this->bars_count);
+
             $this->addGrid();
 
             $this->addAxis();
@@ -156,8 +168,6 @@ class ChartBuilder
 
             $this->addBars();
         }
-
-
 
     }
 
@@ -621,7 +631,8 @@ class ChartBuilder
     /**
      * Рисуем свечи, объемы
      */
-    protected function  addBars(){
+    protected function  addBars()
+    {
 
         $x = $this->settings['w'] - ($this->right_padding+5); // положение середины свечи на оси х - пиксель
 
@@ -630,7 +641,7 @@ class ChartBuilder
             //<editor-fold desc="Фон премаркета">
             if ($this->settings['tf'] != 'd' && $this->settings['tf'] != 'w' && $this->settings['prem'] == 1) {
 
-                if (date('Hi', strtotime($ntime)) < 935 || date('Hi', strtotime($ntime)) > 1600) {
+                if (date('Hi', $ntime) < 930 || date('Hi', $ntime) >= 1600) {
 
                     imagefilledrectangle($this->img, $x - (ceil($this->settings['barw'] / 2) - 1), 1, $x + ($this->settings['barw'] - ceil($this->settings['barw'] / 2)), $this->settings['ah'], $this->settings['premarket_color']);
                 }
@@ -638,17 +649,17 @@ class ChartBuilder
             //</editor-fold>
 
             //<editor-fold desc=" Подписи на оси Х ">
-            if ( isset($this->feed->labels[$n])) {
+            if ( isset($this->labels[$n])) {
                 imagesetstyle($this->img, $this->dotted_line_styles[0]);
                 imageline($this->img, $x, 1, $x, $this->settings['h'] - 35, IMG_COLOR_STYLED);
                 //imagettftext($img, $fsize,0,$x,$h-6,$grey, $font,$A['labels'][$n]);
-                imagestring($this->img, 2, $x + 4, $this->settings['h'] - 16, $this->feed->labels[$n], $this->settings['setka']);
+                imagestring($this->img, 2, $x + 4, $this->settings['h'] - 16, $this->labels[$n], $this->settings['setka']);
             }
 
 
-            if (isset($this->feed->labels2[$n])) {
+            if (isset($this->labels2[$n])) {
                 imagesetstyle($this->img, $this->dotted_line_styles[1]);
-                imagestring($this->img, 2, $x - (20 - $this->settings['tf']), $this->settings['h'] - 30, $this->feed->labels2[$n], $this->settings['setka']);
+                imagestring($this->img, 2, $x - (20 - $this->settings['tf']), $this->settings['h'] - 30, $this->labels2[$n], $this->settings['setka']);
                 imageline($this->img, $x, 1, $x, $this->settings['ah'], IMG_COLOR_STYLED);
             }
             //</editor-fold>
@@ -679,7 +690,7 @@ class ChartBuilder
      */
     protected function addLines(){
 
-        foreach ($this->feed->lines as $lines) {
+        foreach ($this->lines as $lines) {
             $this->drawLines($lines['price'],$lines['x'],$this->settings['lines_'.$lines['type']]['color']);
         }
 
@@ -697,15 +708,19 @@ class ChartBuilder
     {
         //перебор подготовленых данных и отрисовка каждой скользящей средней
         $y_sma_name = 15;
-        foreach ($this->feed->MA as $ma) {
+        foreach ($this->MA as $ma) {
 
-            $count = count($ma['data'])-1;
+            //Последнее значение МА на оси Х
+            if($this->settings['mav'] == 1) {
+                $this->drawPolygon($ma['data'][0],round($ma['data'][0],2),$ma['color']);
+            }  else {
+                $count = count($ma['data'])-1;
+                $x = $this->settings['aw'];
+                for($n = 0; $n<$count;$n++){
 
-            $x = $this->settings['aw'];
-            for($n = 0; $n<$count;$n++){
-
-                $this->drawMA($ma['data'][$n+1],$ma['data'][$n],$x,$ma['color']);
-                $x =  $x - $this->settings['barw'];
+                    $this->drawMA($ma['data'][$n+1],$ma['data'][$n],$x,$ma['color']);
+                    $x =  $x - $this->settings['barw'];
+                }
             }
 
             imagestring($this->img, 2, 20, $y_sma_name, $ma['name'], $ma['color']);
@@ -713,6 +728,189 @@ class ChartBuilder
 
         }
     }
+
+
+
+    public function addLabels()
+    {
+        $days = []; $key = 0;
+        foreach ($this->feed->t as $timestamp) {
+
+            // группировка данных по дням для формирования точек линий (open,high,low,close)
+            $days[date('Ymd',$timestamp)]['datakey'][] = $key;
+            $days[date('Ymd',$timestamp)]['o'][] = $this->feed->o[$key];
+            $days[date('Ymd',$timestamp)]['h'][] = $this->feed->h[$key];
+            $days[date('Ymd',$timestamp)]['l'][] = $this->feed->l[$key];
+            $days[date('Ymd',$timestamp)]['c'][] = $this->feed->c[$key];
+
+            $prev_timestamp = $timestamp;
+            $key++;
+        }
+        //перебор дней со своими значениями для формирования масива точек линий
+        if($this->settings['tf'] !='d' && $this->settings['tf'] !='w') {
+
+            $key = 0; $lines =[];
+            foreach ($days as $date => $val) {
+
+                $keys = [ //ключи нужных значений точек в текущем дне
+                    'h'=>array_keys($val['h'], max($val['h']))[0],
+                    'l'=> array_keys($val['l'], min($val['l']))[0],
+                    'o'=>  count($val['o'])-1,
+                    'c'=> 0
+                ];
+
+                //массив точек начала линий со значением цены (x - номер бара по счету с начала)
+                if($this->settings['lines_hi']['check']) {
+                    $lines[] = ['type' => 'hi', 'price'=> $val['h'][$keys['h']],'x'=>$val['datakey'][$keys['h']]];
+                }
+
+                if($this->settings['lines_lo']['check']) {
+                    $lines[] = ['type' => 'lo','price'=> $val['l'][$keys['l']],'x'=>$val['datakey'][$keys['l']]];
+                }
+
+                if($this->settings['lines_op']['check']) {
+                    $lines[] = ['type' => 'oo','price'=> $val['o'][$keys['o']],'x'=>$val['datakey'][$keys['o']]];
+                }
+
+                if($this->settings['lines_cl']['check']) {
+                    $lines[] = ['type' => 'cl','price'=> $val['c'][$keys['c']],'x'=>$val['datakey'][$keys['c']]];
+                }
+
+                $key++;
+                if($key == $this->settings['lines_d']) {
+                    break;
+                }
+            }
+            $this->lines =  $lines;
+        }
+
+
+        $dateform = array( // формы времни для нижней шкалы под графиком
+            '1' => array('H', 'H:i'),
+            '2' => array('H', 'H:i'),
+            '3' => array('H', 'H:i'),
+            '5' => array('d', 'D d M'),
+            '15' => array('d', 'D d M'),
+            '30' => array('d', 'd M'),
+            '60' => array('W', 'd M'),
+            'd' => array('M', 'M Y'),
+            'w' => array('Y', 'Y')
+        );
+
+        $dateform2 = array(// формы времни для верхней шкалы под графиком
+            '1' => array('H', 'H:i'),
+            '2' => array('H', 'H:i'),
+            '3' => array('H', 'H:i'),
+            '5' => array('i', 'H:i', '00'),
+            '15' => array('i', 'H', '00'),
+            '30' => array('d', 'd M'),
+            '60' => array('W', 'd M'),
+            'd' => array('M', 'M Y'),
+            'w' => array('W', '')
+        );
+
+        $key = 0;
+        $prev_timestamp = $this->feed->t[0];
+
+        foreach ($this->feed->t as $timestamp) {
+
+            //-------------
+            if (date($dateform2[$this->settings['tf']][0], $timestamp) == $dateform2[$this->settings['tf']][2] && date('H', $timestamp) != '16') {
+                $this->labels2[$key - 1] = date($dateform2[$this->settings['tf']][1], $timestamp);
+            }
+
+            //-------------
+            if (date($dateform[$this->settings['tf']][0], $prev_timestamp) != date($dateform[$this->settings['tf']][0], $timestamp)) {
+                $this->labels[$key - 1] = date($dateform[$this->settings['tf']][1], $prev_timestamp);
+            }
+
+
+            $prev_timestamp = $timestamp;
+            $key++;
+        }
+    }
+
+
+    public function calculateMA()
+    {
+        if(isset($this->settings['sma1']['choice'])) {
+
+            $this->MA[] = [
+                'name'=>'sma ' . $this->settings['sma1']['choice'],
+                'data' => $this->getSMA($this->feed->c,$this->settings['sma1']['choice'],$this->bars_count),
+                'color' => $this->settings['sma1']['color']
+            ];
+        }
+
+        if(isset($this->settings['sma2']['choice'])) {
+
+            $this->MA[] = [
+                'name'=>'sma ' . $this->settings['sma2']['choice'],
+                'data' => $this->getSMA($this->feed->c,$this->settings['sma2']['choice'],$this->bars_count),
+                'color' => $this->settings['sma2']['color']
+            ];
+        }
+
+        if(isset($this->settings['sma3']['choice'])) {
+
+            $this->MA[] = [
+                'name'=>'sma ' . $this->settings['sma3']['choice'],
+                'data' => $this->getSMA($this->feed->c,$this->settings['sma3']['choice'],$this->bars_count),
+                'color' => $this->settings['sma3']['color']
+            ];
+        }
+
+        if(isset($this->settings['ema1']['choice'])) {
+
+            $this->MA[] = [
+                'name'=>'ema ' . $this->settings['ema1']['choice'],
+                'data' => $this->getEMA($this->feed->c,$this->settings['ema1']['choice'],$this->bars_count),
+                'color' => $this->settings['ema1']['color']
+            ];
+        }
+
+        if(isset($this->settings['ema2']['choice'])) {
+
+            $this->MA[] = [
+                'name'=>'ema ' . $this->settings['ema1']['choice'],
+                'data' => $this->getEMA($this->feed->c,$this->settings['ema1']['choice'],$this->bars_count),
+                'color' => $this->settings['ema1']['color']
+            ];
+        }
+
+        if(isset($this->settings['ema3']['choice'])) {
+
+            $this->MA[] = [
+                'name'=>'ema ' . $this->settings['ema3']['choice'],
+                'data' => $this->getEMA($this->feed->c,$this->settings['ema3']['choice'],$this->bars_count),
+                'color' => $this->settings['ema3']['color']
+            ];
+        }
+
+    }
+
+
+    public function getSMA($data,$period,$bars_count) {
+        $A= [];
+        $count = count($data)-$period;
+        for ($i=0;$i<=$count;$i++) {
+            $A[] = round(array_sum(array_slice($data, $i, $period))/$period,2);
+        }
+        return array_slice($A,0,$bars_count);
+    }
+
+    public function getEMA($data,$period,$bars_count) {
+        $A= [];
+        $data = array_reverse($data);
+        for ($i=0;$i<count($data);$i++) {
+            if($i==$period-1) {
+                $A[] = round(array_sum(array_slice($data,0, $period))/$period,2);
+            }
+            else { $A[] = $data[$i]*2/($period+1)+end($A)*(1-2/($period+1));}
+        }
+        return array_slice(array_reverse($A),0,$bars_count);
+    }
+
     /**
      * @return array
      */

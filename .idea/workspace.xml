@@ -8,6 +8,8 @@
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/DataFeedApp/ChartBuilder/ChartBuilder.php" afterPath="$PROJECT_DIR$/src/DataFeedApp/ChartBuilder/ChartBuilder.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/DataFeedApp/ChartBuilder/ChartDataFeeder.php" afterPath="$PROJECT_DIR$/src/DataFeedApp/ChartBuilder/ChartDataFeeder.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/DataFeedApp/ChartsDownloader/Sources/BaseFeed.php" afterPath="$PROJECT_DIR$/src/DataFeedApp/ChartsDownloader/Sources/BaseFeed.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/DataFeedApp/ChartsDownloader/Sources/IqFeed.php" afterPath="$PROJECT_DIR$/src/DataFeedApp/ChartsDownloader/Sources/IqFeed.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web_charts/chart2.php" afterPath="$PROJECT_DIR$/web_charts/chart2.php" />
     </list>
     <ignored path="w.iws" />
@@ -60,8 +62,8 @@
       <file leaf-file-name="ChartsController.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/AppBundle/Controller/Presets/ChartsController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1088">
-              <caret line="179" column="5" selection-start-line="179" selection-start-column="5" selection-end-line="179" selection-end-column="5" />
+            <state relative-caret-position="-2667">
+              <caret line="22" column="5" selection-start-line="22" selection-start-column="5" selection-end-line="22" selection-end-column="5" />
               <folding>
                 <element signature="e#4454#4744#0#PHP" expanded="false" />
               </folding>
@@ -72,31 +74,31 @@
       <file leaf-file-name="ChartBuilder.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/DataFeedApp/ChartBuilder/ChartBuilder.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="303">
-              <caret line="691" column="0" selection-start-line="691" selection-start-column="0" selection-end-line="691" selection-end-column="0" />
+            <state relative-caret-position="590">
+              <caret line="152" column="16" selection-start-line="152" selection-start-column="16" selection-end-line="152" selection-end-column="16" />
               <folding>
                 <element signature="e#192#2530#0#PHP" expanded="false" />
                 <element signature="e#2557#2683#0#PHP" expanded="false" />
-                <element signature="e#3808#4426#0#PHP" expanded="false" />
-                <element signature="e#4532#4796#0#PHP" expanded="false" />
-                <element signature="e#4862#5241#0#PHP" expanded="false" />
-                <element signature="e#5359#7405#0#PHP" expanded="false" />
-                <element signature="e#5560#5605#0#PHP" expanded="false" />
-                <element signature="e#6677#7256#0#PHP" expanded="false" />
-                <element signature="e#7989#8138#0#PHP" expanded="false" />
-                <element signature="e#10197#13493#0#PHP" expanded="false" />
-                <element signature="e#13612#14048#0#PHP" expanded="false" />
-                <element signature="e#14111#17747#0#PHP" expanded="false" />
-                <element signature="e#16337#16838#0#PHP" expanded="false" />
-                <element signature="e#17808#19637#0#PHP" expanded="false" />
-                <element signature="e#19687#22209#0#PHP" expanded="false" />
-                <element signature="e#19893#19930#0#PHP" expanded="false" />
-                <element signature="e#20448#20489#0#PHP" expanded="false" />
-                <element signature="e#21370#21409#0#PHP" expanded="false" />
-                <marker date="1483727203840" expanded="true" signature="7660:7863" ph="..." />
-                <marker date="1483727203840" expanded="true" signature="19929:19962" ph="..." />
-                <marker date="1483727203840" expanded="true" signature="20488:20678" ph="..." />
-                <marker date="1483727203840" expanded="true" signature="21408:21543" ph="..." />
+                <element signature="e#4014#4632#0#PHP" expanded="false" />
+                <element signature="e#4738#5002#0#PHP" expanded="false" />
+                <element signature="e#5068#5447#0#PHP" expanded="false" />
+                <element signature="e#5565#7611#0#PHP" expanded="false" />
+                <element signature="e#5766#5811#0#PHP" expanded="false" />
+                <element signature="e#6883#7462#0#PHP" expanded="false" />
+                <element signature="e#7640#8075#0#PHP" expanded="false" />
+                <element signature="e#8195#8344#0#PHP" expanded="false" />
+                <element signature="e#8456#9104#0#PHP" expanded="false" />
+                <element signature="e#9245#9733#0#PHP" expanded="false" />
+                <element signature="e#9853#10252#0#PHP" expanded="false" />
+                <element signature="e#10403#13699#0#PHP" expanded="false" />
+                <element signature="e#13818#14254#0#PHP" expanded="false" />
+                <element signature="e#14317#17953#0#PHP" expanded="false" />
+                <element signature="e#16543#17044#0#PHP" expanded="false" />
+                <element signature="e#18014#19843#0#PHP" expanded="false" />
+                <element signature="e#21536#21575#0#PHP" expanded="false" />
+                <element signature="e#23845#27699#0#PHP" expanded="false" />
+                <marker date="1483990580878" expanded="true" signature="7866:8069" ph="..." />
+                <marker date="1483990580878" expanded="true" signature="20140:20173" ph="..." />
               </folding>
             </state>
           </provider>
@@ -105,21 +107,28 @@
       <file leaf-file-name="ChartDataFeeder.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/DataFeedApp/ChartBuilder/ChartDataFeeder.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="415">
-              <caret line="163" column="31" selection-start-line="163" selection-start-column="31" selection-end-line="163" selection-end-column="31" />
-              <folding>
-                <element signature="e#1617#3186#0#PHP" expanded="false" />
-                <element signature="e#7089#8637#0#PHP" expanded="false" />
-              </folding>
+            <state relative-caret-position="352">
+              <caret line="37" column="23" selection-start-line="37" selection-start-column="23" selection-end-line="37" selection-end-column="23" />
+              <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="edit.html.twig" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/Resources/views/presets/charts/edit.html.twig">
+      <file leaf-file-name="IqFeed.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/DataFeedApp/ChartsDownloader/Sources/IqFeed.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1638">
-              <caret line="78" column="0" selection-start-line="78" selection-start-column="0" selection-end-line="78" selection-end-column="0" />
+            <state relative-caret-position="189">
+              <caret line="14" column="1" selection-start-line="14" selection-start-column="1" selection-end-line="14" selection-end-column="1" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="BaseFeed.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/DataFeedApp/ChartsDownloader/Sources/BaseFeed.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="331">
+              <caret line="84" column="36" selection-start-line="84" selection-start-column="36" selection-end-line="84" selection-end-column="36" />
               <folding />
             </state>
           </provider>
@@ -164,7 +173,6 @@
         <option value="$PROJECT_DIR$/src/ConsoleBundle/Command/UpdateLevel1Command.php" />
         <option value="$PROJECT_DIR$/src/ConsoleBundle/Command/UpdatePremarketCommand.php" />
         <option value="$PROJECT_DIR$/src/DataFeedApp/ChartsDownloader/Sources/BaseInterface.php" />
-        <option value="$PROJECT_DIR$/src/DataFeedApp/ChartsDownloader/Sources/BaseFeed.php" />
         <option value="$PROJECT_DIR$/src/ConsoleBundle/Repository/Charts/DailyHistoryRepository.php" />
         <option value="$PROJECT_DIR$/src/ConsoleBundle/Entity/Charts/DailyHistory.php" />
         <option value="$PROJECT_DIR$/src/ConsoleBundle/Command/ChartsDownloadCommand.php" />
@@ -197,10 +205,11 @@
         <option value="$PROJECT_DIR$/src/AppBundle/Controller/Presets/ChartsController.php" />
         <option value="$PROJECT_DIR$/app/Resources/views/presets/charts/edit.html.twig" />
         <option value="$PROJECT_DIR$/app/Resources/views/screener/result_layout.html.twig" />
-        <option value="$PROJECT_DIR$/src/DataFeedApp/ChartsDownloader/Sources/IqFeed.php" />
         <option value="$PROJECT_DIR$/src/DataFeedApp/RemoteServerConnector.php" />
         <option value="$PROJECT_DIR$/src/DataFeedApp/ChartsDownloader/Sources/Google.php" />
         <option value="$PROJECT_DIR$/web_charts/chart.php" />
+        <option value="$PROJECT_DIR$/src/DataFeedApp/ChartsDownloader/Sources/BaseFeed.php" />
+        <option value="$PROJECT_DIR$/src/DataFeedApp/ChartsDownloader/Sources/IqFeed.php" />
         <option value="$PROJECT_DIR$/web_charts/chart2.php" />
         <option value="$PROJECT_DIR$/src/DataFeedApp/ChartBuilder/ChartDataFeeder.php" />
         <option value="$PROJECT_DIR$/src/DataFeedApp/ChartBuilder/ChartBuilder.php" />
@@ -373,6 +382,46 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="Sources" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="w" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="w" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="AppBundle" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="w" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="w" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="AppBundle" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Form" />
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
           </PATH>
@@ -575,7 +624,9 @@
       <workItem from="1483521490054" duration="15006000" />
       <workItem from="1483601275001" duration="230000" />
       <workItem from="1483609579118" duration="22952000" />
-      <workItem from="1483710874035" duration="12158000" />
+      <workItem from="1483710874035" duration="12826000" />
+      <workItem from="1483884777029" duration="17425000" />
+      <workItem from="1483975802964" duration="7545000" />
     </task>
     <task id="LOCAL-00001" summary="init commit">
       <created>1479042159203</created>
@@ -647,7 +698,14 @@
       <option name="project" value="LOCAL" />
       <updated>1483648398879</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="Chart builder - draw MA">
+      <created>1483728206547</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1483728206547</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -677,7 +735,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="707711000" />
+    <option name="totallyTimeSpent" value="733349000" />
   </component>
   <component name="TodoView" selected-index="2">
     <todo-panel id="selected-file">
@@ -694,7 +752,7 @@
     <editor active="false" />
     <layout>
       <window_info id="Remote Host" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32977587" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17395945" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1696905" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3094984" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4108858" sideWeight="0.5032017" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.18623266" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -756,29 +814,16 @@
     <MESSAGE value="start DataFeedApp/ChartBuilder" />
     <MESSAGE value="ChartDataFeeder, start drawFunctions to ChartBuilder" />
     <MESSAGE value=" ChartBuilder draw functions, charts settings page" />
-    <option name="LAST_COMMIT_MESSAGE" value=" ChartBuilder draw functions, charts settings page" />
+    <MESSAGE value="Chart builder - draw MA" />
+    <option name="LAST_COMMIT_MESSAGE" value="Chart builder - draw MA" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="100" />
+      <option name="time" value="103" />
     </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/vendor/knplabs/knp-menu/tests/Knp/Menu/Tests/Loader/ArrayLoaderTest.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1475">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/vendor/knplabs/knp-menu/tests/Knp/Menu/Tests/MenuFactoryTest.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="226">
-          <caret line="22" column="0" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/config/parameters.yml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="42">
@@ -975,13 +1020,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/AppBundle/Form/SingleChartSettingsType.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="882">
-          <caret line="91" column="35" selection-start-line="91" selection-start-column="35" selection-end-line="91" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/vendor/dentiman/bootstrap-bundle/Resources/views/Form/fields.html.twig">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -1031,14 +1069,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Resources/views/presets/charts/edit.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1638">
-          <caret line="78" column="0" selection-start-line="78" selection-start-column="0" selection-end-line="78" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/AppBundle/Form/ChartsLayoutsType.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -1053,13 +1083,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="441">
           <caret line="77" column="38" selection-start-line="77" selection-start-column="38" selection-end-line="77" selection-end-column="38" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/DataFeedApp/ChartsDownloader/Sources/IqFeed.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-252">
-          <caret line="20" column="37" selection-start-line="20" selection-start-column="37" selection-end-line="20" selection-end-column="37" />
         </state>
       </provider>
     </entry>
@@ -1097,17 +1120,38 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-273">
           <caret line="26" column="49" selection-start-line="26" selection-start-column="49" selection-end-line="26" selection-end-column="49" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$APPLICATION_HOME_DIR$/plugins/php/lib/php.jar!/com/jetbrains/php/lang/psi/stubs/data/date.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="302">
+          <caret line="794" column="9" selection-start-line="794" selection-start-column="9" selection-end-line="794" selection-end-column="9" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/AppBundle/Controller/Presets/ChartsController.php">
+    <entry file="file://$PROJECT_DIR$/src/AppBundle/Form/SingleChartSettingsType.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1088">
-          <caret line="179" column="5" selection-start-line="179" selection-start-column="5" selection-end-line="179" selection-end-column="5" />
-          <folding>
-            <element signature="e#4454#4744#0#PHP" expanded="false" />
-          </folding>
+        <state relative-caret-position="-794">
+          <caret line="147" column="54" selection-start-line="147" selection-start-column="54" selection-end-line="147" selection-end-column="54" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Resources/views/presets/charts/edit.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="4">
+          <caret line="23" column="0" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/DataFeedApp/ChartsDownloader/Sources/BaseFeed.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="331">
+          <caret line="84" column="36" selection-start-line="84" selection-start-column="36" selection-end-line="84" selection-end-column="36" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1119,44 +1163,59 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/AppBundle/Controller/Presets/ChartsController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-2667">
+          <caret line="22" column="5" selection-start-line="22" selection-start-column="5" selection-end-line="22" selection-end-column="5" />
+          <folding>
+            <element signature="e#4454#4744#0#PHP" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/DataFeedApp/ChartsDownloader/Sources/IqFeed.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="189">
+          <caret line="14" column="1" selection-start-line="14" selection-start-column="1" selection-end-line="14" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/DataFeedApp/ChartBuilder/ChartDataFeeder.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="415">
-          <caret line="163" column="31" selection-start-line="163" selection-start-column="31" selection-end-line="163" selection-end-column="31" />
-          <folding>
-            <element signature="e#1617#3186#0#PHP" expanded="false" />
-            <element signature="e#7089#8637#0#PHP" expanded="false" />
-          </folding>
+        <state relative-caret-position="352">
+          <caret line="37" column="23" selection-start-line="37" selection-start-column="23" selection-end-line="37" selection-end-column="23" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/DataFeedApp/ChartBuilder/ChartBuilder.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="303">
-          <caret line="691" column="0" selection-start-line="691" selection-start-column="0" selection-end-line="691" selection-end-column="0" />
+        <state relative-caret-position="590">
+          <caret line="152" column="16" selection-start-line="152" selection-start-column="16" selection-end-line="152" selection-end-column="16" />
           <folding>
             <element signature="e#192#2530#0#PHP" expanded="false" />
             <element signature="e#2557#2683#0#PHP" expanded="false" />
-            <element signature="e#3808#4426#0#PHP" expanded="false" />
-            <element signature="e#4532#4796#0#PHP" expanded="false" />
-            <element signature="e#4862#5241#0#PHP" expanded="false" />
-            <element signature="e#5359#7405#0#PHP" expanded="false" />
-            <element signature="e#5560#5605#0#PHP" expanded="false" />
-            <element signature="e#6677#7256#0#PHP" expanded="false" />
-            <element signature="e#7989#8138#0#PHP" expanded="false" />
-            <element signature="e#10197#13493#0#PHP" expanded="false" />
-            <element signature="e#13612#14048#0#PHP" expanded="false" />
-            <element signature="e#14111#17747#0#PHP" expanded="false" />
-            <element signature="e#16337#16838#0#PHP" expanded="false" />
-            <element signature="e#17808#19637#0#PHP" expanded="false" />
-            <element signature="e#19687#22209#0#PHP" expanded="false" />
-            <element signature="e#19893#19930#0#PHP" expanded="false" />
-            <element signature="e#20448#20489#0#PHP" expanded="false" />
-            <element signature="e#21370#21409#0#PHP" expanded="false" />
-            <marker date="1483727203840" expanded="true" signature="7660:7863" ph="..." />
-            <marker date="1483727203840" expanded="true" signature="19929:19962" ph="..." />
-            <marker date="1483727203840" expanded="true" signature="20488:20678" ph="..." />
-            <marker date="1483727203840" expanded="true" signature="21408:21543" ph="..." />
+            <element signature="e#4014#4632#0#PHP" expanded="false" />
+            <element signature="e#4738#5002#0#PHP" expanded="false" />
+            <element signature="e#5068#5447#0#PHP" expanded="false" />
+            <element signature="e#5565#7611#0#PHP" expanded="false" />
+            <element signature="e#5766#5811#0#PHP" expanded="false" />
+            <element signature="e#6883#7462#0#PHP" expanded="false" />
+            <element signature="e#7640#8075#0#PHP" expanded="false" />
+            <element signature="e#8195#8344#0#PHP" expanded="false" />
+            <element signature="e#8456#9104#0#PHP" expanded="false" />
+            <element signature="e#9245#9733#0#PHP" expanded="false" />
+            <element signature="e#9853#10252#0#PHP" expanded="false" />
+            <element signature="e#10403#13699#0#PHP" expanded="false" />
+            <element signature="e#13818#14254#0#PHP" expanded="false" />
+            <element signature="e#14317#17953#0#PHP" expanded="false" />
+            <element signature="e#16543#17044#0#PHP" expanded="false" />
+            <element signature="e#18014#19843#0#PHP" expanded="false" />
+            <element signature="e#21536#21575#0#PHP" expanded="false" />
+            <element signature="e#23845#27699#0#PHP" expanded="false" />
+            <marker date="1483990580878" expanded="true" signature="7866:8069" ph="..." />
+            <marker date="1483990580878" expanded="true" signature="20140:20173" ph="..." />
           </folding>
         </state>
       </provider>
